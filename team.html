@@ -46,6 +46,9 @@ sitemap:
                 <div style="text-align: justify;"> 
                     {{ teammatey.description }} 
                 </div>
+				{% if teammatey.degrees %}
+					<ul>{{ teammatey.degrees }}</ul>
+				{% endif %}
             </p>
             <br>
             <br>
