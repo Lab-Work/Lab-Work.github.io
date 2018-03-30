@@ -12,6 +12,40 @@ sitemap:
 	<h1>Team</h1>
 </header>
 
+{% assign sorted = (site.teams | sort: 'date') | reverse %}
+{% for team in sorted %}
+    <header class="major">
+        <h2>{{ team.name }}</h2>
+    </header>
+    <!--<br>
+    {% for people in team.people %}
+    {% assign teammatey = site.people | where:"key", people  | first %}
+    <p style="clear: both;">
+    <span class="image  left" style="max-width: 150px;">
+    {% if teammatey.site %}
+        <a href="{{ teammatey.site }}">
+    {% endif %}
+    <img src="{{ site.baseurl }}{{ teammatey.image }}" alt="" />
+    {% if teammatey.site %}
+        </a>
+    {% endif %}
+    </span>
+    <h3>
+        {% if teammatey.site %}
+            <a href="{{ teammatey.site }}">
+        {% endif %}
+        <b>{{ teammatey.name}}</b>
+        {% if teammatey.site %}
+            </a>
+        {% endif %}
+    </h3>
+    <div style="text-align: justify;"> {{ teammatey.description }} </div>
+    </p>
+    <br>
+    <br>-->
+{% endfor %}
+{% endfor %}
+
 
 
 <h3> <strong>PhD students   </strong></h3>
