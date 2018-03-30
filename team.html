@@ -14,7 +14,7 @@ sitemap:
 
 <h2>TEAMS</h2>
 {% assign sorted = (site.teams | sort: 'appear') %}
-{% for team in site.teams %}
+{% for team in sorted %}
     <h2>
         {{team.name}}
     </h2>
@@ -22,9 +22,6 @@ sitemap:
         <br>
         {% for people in team.people %}
             {% assign teammatey = site.people | where:"key", people  | first %}
-            <h3>
-                {{ teammatey.name }}
-            </h3>
             <p style="clear: both;">
                 <span class="image  left" style="max-width: 150px;">
                     {% if teammatey.site %}
