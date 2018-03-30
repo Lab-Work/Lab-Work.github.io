@@ -13,9 +13,6 @@ sitemap:
 </header>
 
 {% assign sortedpeople = (site.people | sort: 'lastname') %}
-{% for ppl in sortedpeople %}
-<h3>{{ppl.firstname}}</h3>
-{% endfor %}
 
 {% assign sorted = (site.teams | sort: 'appear') | where:"class", "current" %}
 {% for team in sorted %}
@@ -64,7 +61,7 @@ sitemap:
     </h2>
     <div class="content">
         <br>        
-        {% for teammatey in (site.people | sort: 'lastname') %}
+        {% for teammatey in sortedpeople %}
             {% if team.people contains teammatey.key %}
             <p style="clear: both;">
                 <span class="image  left" style="max-width: 150px;">
