@@ -19,7 +19,7 @@ sitemap:
     </h2>
     <div class="content">
         <br>
-        {% for people in team.people %}
+        {% for people in (team.people %}
             {% assign teammatey = site.people | where:"key", people  | first %}
             <p style="clear: both;">
                 <span class="image  left" style="max-width: 150px;">
@@ -58,9 +58,9 @@ sitemap:
         {{team.name}}
     </h2>
     <div class="content">
-        <br>
-        {% for people in team.people %}
-            {% assign teammatey = (site.people | sort: 'lastname') | where:"key", people  | first %}
+        <br>        
+        {% for teammatey in (site.people | sort: "lastname") %}
+            {% if teammatey.key in team.people %}
             <p style="clear: both;">
                 <span class="image  left" style="max-width: 150px;">
                     {% if teammatey.site %}
@@ -86,6 +86,7 @@ sitemap:
             </p>
             <br>
             <br>
+            {% endif %}
         {% endfor %}
     </div>
 {% endfor %}
