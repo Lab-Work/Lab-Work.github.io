@@ -24,7 +24,7 @@ sitemap:
         <br>
         {% for teammatey in sortedbydate %}
             {% if team.people contains teammatey.key %}
-            <p style="clear: both;">
+            <p style="clear: both; float: left">
                 <span class="image  left" style="max-width: 150px;">
                     {% if teammatey.site %}
                         <a href="{{ teammatey.site }}">
