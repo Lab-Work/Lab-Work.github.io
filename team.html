@@ -165,3 +165,7 @@ Position after completion: M.S. program, Technology Management, UIUC</p>
 <li>Ye Sun, Departmental Fellowship, UIUC 2013</li>
 <li>Samuel Rivera, Graduate Research Fellowship, National Science Foundation 2013</li>
 </ul>
+
+{% for team in site.teams %}
+    <h2>{{ team.name }}</h2>
+{% endfor %}
