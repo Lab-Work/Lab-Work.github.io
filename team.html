@@ -97,16 +97,15 @@ sitemap:
 
 <h3>Research Interns and Undergraduate Students</h3>
 (VS) indicates visiting student; (VU) indicates Vanderbilt student; (I) indicates UIUC student; year indicates beginning of visit, collaboration, or employment in the group.
-
+<ul>
 {% for student in site.data.internsundergrads %}
-    <ul>
         <li>{{ student.firstname }} {{ student.lastname }} {{ student.tag }}, {{ student.degree }}, {{ student.department }}, {{ student.year }}</li>
-    </ul>
 {% endfor %}
+</ul>
 
 <h3>Student Awards and Reseaerch Internships</h3>
+<ul>
 {% for award in site.data.awards %}
-    <ul>
-        <li>{{ award.name }}, {{ award.award }}, {{ award.organization }}, {{ award.year }}</li>
-    </ul>
+    <li>{{ award.name }}, {{ award.award }}, {{ award.organization }}, {{ award.year }}</li>
 {% endfor %}
+</ul>
