@@ -60,7 +60,7 @@ sitemap:
     <div class="content">
         <br>        
         {% for teammatey in (site.people | sort: "lastname") %}
-            {% if teammatey.key in team.people %}
+            {% if team.people contains teammatey.key %}
             <p style="clear: both;">
                 <span class="image  left" style="max-width: 150px;">
                     {% if teammatey.site %}
