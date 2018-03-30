@@ -1,6 +1,7 @@
 ---
 key: "reece"
-name: "Reece Otsuka"
+firstname: "Reece"
+lastname: "Otsuka"
 description: "(co-advised with Prof. Junho Song)<br />
 M.S., Civil and Environmental Engineering, UIUC, 2014<br />
 B.S., Civil Engineering, Massachusetts Institute of Technology, 2012<br />

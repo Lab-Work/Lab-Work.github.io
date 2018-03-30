@@ -1,6 +1,7 @@
 ---
 key: "sudeep"
-name: "Sudeep Gowrishankar"
+firstname: "Sudeep"
+lastname: "Gowrishankar"
 description: "M.S., Mechanical Engineering, 2013<br />
 B.S., Mechanical Engineering, UIUC, 2011<br />
 Position after graduation: DMC Engineering<br />"

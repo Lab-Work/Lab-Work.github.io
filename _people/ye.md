@@ -1,6 +1,7 @@
 ---
 key: "ye"
-name: "Ye Sun"
+firstname: "Ye"
+lastname: "Sun"
 description: "Ph.D, Sustainable and Resilient Infrastructure Systems, CEE, UIUC 2017 <br />
 M.S., Sustainable and Resilient Infrastructure Systems, CEE, UIUC, 2014<br />
 B.S., Civil Engineering,Tsinghua University, 2012<br />

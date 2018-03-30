@@ -1,6 +1,7 @@
 ---
 key: "will"
-name: "William Barbour"
+firstname: "William"
+lastname: "Barbour"
 description: "Ph.D, Civil Infrastructure Systems, CEE, Vanderbilt University 2020 (expected)<br />
 M.S., Sustainable and Resilient Infrastructure Systems, CEE, UIUC, 2017<br />
 B.S., Biosystems Engineering, University of Tennessee, Knoxville, 2015"

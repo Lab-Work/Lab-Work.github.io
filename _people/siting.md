@@ -1,6 +1,7 @@
 ---
 key: "siting"
-name: "Siting Chang"
+firstname: "Siting"
+lastname: "Chang"
 description: "M.S., Civil and Environmental Engineering, UIUC, 2012<br />
 B.S., Transportation Engineering, Jilin University, 2010<br />
 Position after graduation: M.S. program, Computer Science, UIUC"

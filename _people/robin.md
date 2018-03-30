@@ -1,6 +1,7 @@
 ---
 key: "robin"
-name: "Robin Guers"
+firstname: "Robin"
+lastname: "Guers"
 description: "(co-advised with Prof. Cedric Langbort)<br />
 M.S., Aerospace Engineering, UIUC, 2013<br />
 M.S., Aerospace Engineering, ISAE SUPAERO, 2011<br />

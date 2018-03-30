@@ -1,6 +1,7 @@
 ---
 key: "yanning"
-name: "Yanning Li"
+firstname: "Yanning"
+lastname: "Li"
 description: "Ph.D, Sustainable and Resilient Infrastructure Systems, CEE, UIUC 2017<br />
 M.S., Mechanical Engineering, KAUST 2012<br />
 B.S., Mechanical Engineering, Zhejiang University 2011<br />

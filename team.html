@@ -12,8 +12,7 @@ sitemap:
 	<h1>Team</h1>
 </header>
 
-<h2>TEAMS</h2>
-{% assign sorted = (site.teams | sort: 'appear') %}
+{% assign sorted = (site.teams | sort: 'appear') | where:"class", "current" %}
 {% for team in sorted %}
     <h2>
         {{team.name}}
@@ -36,7 +35,47 @@ sitemap:
                     {% if teammatey.site %}
                         <a href="{{ teammatey.site }}">
                     {% endif %}
-                    <b>{{ teammatey.name}}</b>
+                    <b>{{ teammatey.firstname }} {{ teammatey.lastname }}</b>
+                    {% if teammatey.site %}
+                        </a>
+                    {% endif %}
+                </h3>
+                <div style="text-align: justify;"> 
+                    {{ teammatey.description }} 
+                </div>
+            </p>
+            <br>
+            <br>
+        {% endfor %}
+    </div>
+{% endfor %}
+
+<h2>Alumni</h2>
+
+{% assign sorted = (site.teams | sort: 'appear') | where:"class", "alumni" %}
+{% for team in sorted %}
+    <h2>
+        {{team.name}}
+    </h2>
+    <div class="content">
+        <br>
+        {% for people in team.people %}
+            {% assign teammatey = (site.people | sort: 'lastname') | where:"key", people  | first %}
+            <p style="clear: both;">
+                <span class="image  left" style="max-width: 150px;">
+                    {% if teammatey.site %}
+                        <a href="{{ teammatey.site }}">
+                    {% endif %}
+                    <img src="{{ site.baseurl }}{{ teammatey.image }}" alt="" />
+                    {% if teammatey.site %}
+                        </a>
+                    {% endif %}
+                </span>
+                <h3>
+                    {% if teammatey.site %}
+                        <a href="{{ teammatey.site }}">
+                    {% endif %}
+                    <b>{{ teammatey.firstname }} {{ teammatey.lastname }}</b>
                     {% if teammatey.site %}
                         </a>
                     {% endif %}
