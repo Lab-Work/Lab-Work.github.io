@@ -13,7 +13,7 @@ sitemap:
 </header>
 
 {% assign sortedbyname = (site.people | sort: 'lastname') %}
-{% assign sortedbydate = (site.people | sort: 'lastname') %}
+{% assign sortedbydate = (site.people | sort: 'degreedate') %}
 
 {% assign sorted = (site.teams | sort: 'appear') | where:"class", "current" %}
 {% for team in sorted %}
