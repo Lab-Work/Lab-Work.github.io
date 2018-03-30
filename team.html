@@ -45,10 +45,10 @@ sitemap:
                 </h3>
                 <div style="text-align: justify; overflow-x: hidden; overflow-y: hidden;"> 
                     {{ teammatey.description }} 
+					{% if teammatey.degrees %}
+						<ul>{{ teammatey.degrees }}</ul>
+					{% endif %}
                 </div>
-				{% if teammatey.degrees %}
-					<ul>{{ teammatey.degrees }}</ul>
-				{% endif %}
             </p>
             <br>
             <br>
