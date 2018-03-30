@@ -1,7 +1,7 @@
 ---
-layout: page
-title: Team
-description: Team
+layout: null
+title: Research Team
+description: Lab research team
 sitemap:
     priority: 0.7
     lastmod: 2018-03-21
@@ -12,6 +12,48 @@ sitemap:
 	<h1>Team</h1>
 </header>
 
+<div id="main">
+   <section class="main special">
+      {% assign sorted = (site.teams | sort: 'date') | reverse %}
+      {% for team in sorted %}
+      <div class="content">
+        {% if team.name == "Alumni" %}
+                   <header class="major">
+                        <h2>{{ team.name }}</h2>
+                   </header>
+         {% endif %} 
+         <br>
+         {% for people in team.people %}
+         {% assign teammatey = site.people | where:"key", people  | first %}
+         <p style="clear: both;">
+            <span class="image  left" style="max-width: 150px;">
+            {% if teammatey.site %}
+            <a href="{{ teammatey.site }}">
+            {% endif %}
+            <img src="{{ site.baseurl }}{{ teammatey.image }}" alt="" />
+            {% if teammatey.site %}
+            </a>
+            {% endif %}
+            </span>
+         <h3>
+            {% if teammatey.site %}
+            <a href="{{ teammatey.site }}">
+            {% endif %}
+            <b>{{ teammatey.name}}</b>
+            {% if teammatey.site %}
+            </a>
+            {% endif %}
+         </h3>
+         <div style="text-align: justify;"> {{ teammatey.description }} </div>
+         </p>
+         <br>
+         <br>
+         {% endfor %}
+      </div>
+      {% endfor %}
+      <br/>
+   </section>
+</div>
 
 
 <h3> <strong>PhD students   </strong></h3>
