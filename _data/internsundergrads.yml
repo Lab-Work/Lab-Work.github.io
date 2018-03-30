@@ -1,102 +1,102 @@
 - firstname: Miles
-    lastname: Churchill
-    degree: BS
-    department: Civil and Environmental Engineering
-    year: 2016
-    tag: I
+  lastname: Churchill
+  degree: BS
+  department: Civil and Environmental Engineering
+  year: 2016
+  tag: I
 - firstname: Chris
-    lastname: Chen
-    degree: BS
-    department: Electrical and Computer Engineering
-    year: 2016
-    tag: I
+  lastname: Chen
+  degree: BS
+  department: Electrical and Computer Engineering
+  year: 2016
+  tag: I
 - firstname: Nimit
-    lastname: Agrawal
-    degree: BS
-    department: Computer Science
-    year: 2015
-    tag: I
+  lastname: Agrawal
+  degree: BS
+  department: Computer Science
+  year: 2015
+  tag: I
 - firstname: Juan Carlos 
-    lastname: Martinez Mori
-    degree: BS
-    department: Civil and Environmental Engineering
-    year: 2015
-    tag: I
+  lastname: Martinez Mori
+  degree: BS
+  department: Civil and Environmental Engineering
+  year: 2015
+  tag: I
 - firstname: Fangyu
-    lastname: Wu
-    degree: BS
-    department: Civil and Environmental Engineering
-    year: 2015
-    tag: I
+  lastname: Wu
+  degree: BS
+  department: Civil and Environmental Engineering
+  year: 2015
+  tag: I
 - firstname: Guangyu
-    lastname: Zhou
-    degree: BS
-    department: Computer Science
-    year: 2015
-    tag: I
+  lastname: Zhou
+  degree: BS
+  department: Computer Science
+  year: 2015
+  tag: I
 - firstname: Maya
-    lastname: Meng
-    degree: BS
-    department: Computer Science
-    year: 2014
-    tag: I
+  lastname: Meng
+  degree: BS
+  department: Computer Science
+  year: 2014
+  tag: I
 - firstname: Chase
-    lastname: Duncan
-    degree: BS
-    department: Computer Science
-    year: 2014
-    tag: I
+  lastname: Duncan
+  degree: BS
+  department: Computer Science
+  year: 2014
+  tag: I
 - firstname: Alec
-    lastname: Mori
-    degree: BS
-    department: Computer Science
-    year: 2014
-    tag: I
+  lastname: Mori
+  degree: BS
+  department: Computer Science
+  year: 2014
+  tag: I
 - firstname: Thomas
-    lastname: Breier
-    degree: BS
-    department: Technical University of Munich, Germany
-    year: 2014
-    tag: I
+  lastname: Breier
+  degree: BS
+  department: Technical University of Munich, Germany
+  year: 2014
+  tag: I
 - firstname: Meng
-    lastname: Hang
-    degree: BS
-    department: Civil and Environmental Engineering
-    year: 2013
-    tag: I
+  lastname: Hang
+  degree: BS
+  department: Civil and Environmental Engineering
+  year: 2013
+  tag: I
 - firstname: Bhinav
-    lastname: Sura
-    degree: BS
-    department: Computer Science
-    year: 2013
-    tag: I
+  lastname: Sura
+  degree: BS
+  department: Computer Science
+  year: 2013
+  tag: I
 - firstname: Jon
-    lastname: Que
-    degree: BS
-    department: Civil and Environmental Engineering
-    year: 2012
-    tag: I
+  lastname: Que
+  degree: BS
+  department: Civil and Environmental Engineering
+  year: 2012
+  tag: I
 - firstname: Mostafa Reisi
-    lastname: Gahrooei
-    degree: Ph.D.
-    department: Georgia Tech
-    year: 2012
-    tag: VS
+  lastname: Gahrooei
+  degree: Ph.D.
+  department: Georgia Tech
+  year: 2012
+  tag: VS
 - firstname: Raphael
-    lastname: Stern
-    degree: BS
-    department: Civil and Environmental Engineering
-    year: 2012
-    tag: I
+  lastname: Stern
+  degree: BS
+  department: Civil and Environmental Engineering
+  year: 2012
+  tag: I
 - firstname: Sebastien
-    lastname: Deprez
-    degree: BS
-    department: Ecole Polytechnique, France
-    year: 2011
-    tag: VS
+  lastname: Deprez
+  degree: BS
+  department: Ecole Polytechnique, France
+  year: 2011
+  tag: VS
 - firstname: Eileen
-    lastname: Walz
-    degree: BS
-    department: Civil and Environmental Engineering
-    year: 2011
-    tag: I
+  lastname: Walz
+  degree: BS
+  department: Civil and Environmental Engineering
+  year: 2011
+  tag: I
