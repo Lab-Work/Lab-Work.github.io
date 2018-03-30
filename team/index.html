@@ -13,15 +13,13 @@ sitemap:
 </header>
 
 <div id="main">
-   <section class="main special">
+   <section class="main">
       {% assign sorted = (site.teams | sort: 'date') | reverse %}
       {% for team in sorted %}
       <div class="content">
-        {% if team.name == "Alumni" %}
-                   <header class="major">
-                        <h2>{{ team.name }}</h2>
-                   </header>
-         {% endif %} 
+        <header class="major">
+            <h2>{{ team.name }}</h2>
+        </header>
          <br>
          {% for people in team.people %}
          {% assign teammatey = site.people | where:"key", people  | first %}
@@ -56,14 +54,14 @@ sitemap:
 </div>
 
 
-<h3> <strong>PhD students   </strong></h3>
+
+<!--<h3> <strong>PhD students   </strong></h3>
 <span class="image left"><img src="{{ "/images/raphael-stern.jpg" | absolute_url }}" alt="" /></span>
 Rafi Stern, <a href="http://publish.illinois.edu/raphaelstern/">http://publish.illinois.edu/raphaelstern/</a><br />
 Ph.D, Sustainable and Resilient Infrastructure Systems, CEE, UIUC 2018 (expected)<br />
 M.S., Sustainable and Resilient Infrastructure Systems, CEE, UIUC, 2015<br />
 B.S., Civil Engineering, University of Illinois at Urbana-Champaign, 2013<br />
 
-<p>&nbsp;</p>
 <span class="image left"><img src="{{ "/images/barbour.jpg" | absolute_url }}" alt="" /></span>
 William Barbour, <a href="mailto:wwbarbo2@illinois.edu" target="_blank" rel="noopener"><span class="il">william.w.barbour@vanderbilt.edu</span></a><br />
 Ph.D, Civil Infrastructure Systems, CEE, Vanderbilt University 2020 (expected)<br />
@@ -85,7 +83,6 @@ B.S., Sustainable and Resilient Infrastructure Systems, CEE, UIUC, 2015<br />
 Ph.D. Applied and Computational Mathematics, Temple University, 2013.<br />
 B.S. Applied and Computational Mathematics, HuaZhong University of Science and Technology, 2007.<br />
 Position after completion: Union Bank, NA.<br />
-
 
 <p><strong>PhD Students</strong></p>
 <span class="image left"><img src="{{ "/images/Ye-Sun.jpg" | absolute_url }}" alt="" width="10"/></span>
@@ -118,7 +115,6 @@ B.S., Transportation Engineering, Jilin University, 2010<br />
 Position after graduation: M.S. program, Computer Science, UIUC</p>
 <p>&nbsp;</p>
 
-
 <span class="image left"><img src="{{ "/images/untitled.png" | absolute_url }}" alt="" width="10"/></span>
 Brian Donovan, <a href="http://www.brianpdonovan.com/">http://www.brianpdonovan.com/</a><br />
 M.S. Civil and Environmental Engineering UIUC, 2015<br />
@@ -137,7 +133,6 @@ Sudeep Gowrishankar, <a href="mailto:sgowris2@illinois.edu">sgowris2@illinois.ed
 M.S., Mechanical Engineering, 2013<br />
 B.S., Mechanical Engineering, UIUC, 2011<br />
 Position after graduation: DMC Engineering<br />
-
 
 <span class="image left"><img src="{{ "/images/image10-150x150.jpg" | absolute_url }}" alt="" width="10"/></span>
 Reece Otsuka, <a href="mailto:otsuka2@illinois.edu">otsuka2@illinois.edu</a> (co-advised with Prof. Junho Song)<br />
@@ -206,4 +201,4 @@ Position after completion: M.S. program, Technology Management, UIUC</p>
 <li>Brian Donovan, Departmental Fellowship, UIUC 2013</li>
 <li>Ye Sun, Departmental Fellowship, UIUC 2013</li>
 <li>Samuel Rivera, Graduate Research Fellowship, National Science Foundation 2013</li>
-</ul>
+</ul>-->
