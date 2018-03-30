@@ -15,6 +15,12 @@ defaults:
     layout: post
     author:
 
+collections:
+  projects :
+  pastprojects :
+  teams:
+  people:
+
 # Jekyll
 permalink:          /blog/:title/
 markdown:           kramdown
