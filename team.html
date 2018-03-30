@@ -12,7 +12,10 @@ sitemap:
 	<h1>Team</h1>
 </header>
 
-<h3>{{site.people | sort: 'lastname'}}</h3>
+{% assign sortedpeople = (site.people | sort: 'lastname') %}
+{% for ppl in sortedpeople %}
+<h3>{{ppl.firstname}}</h3>
+{% endfor %}
 
 {% assign sorted = (site.teams | sort: 'appear') | where:"class", "current" %}
 {% for team in sorted %}
