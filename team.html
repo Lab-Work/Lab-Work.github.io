@@ -13,36 +13,43 @@ sitemap:
 </header>
 
 <h2>TEAMS</h2>
+{% assign sorted = (site.teams | sort: 'appear') %}
 {% for team in site.teams %}
-    <h2>Header</h2>
+    <h2>
+        {{team.name}}
+    </h2>
     <div class="content">
-    <br>
-    {% for people in team.people %}
-        {% assign teammatey = site.people | where:"key", people  | first %}
-        <h3>{{ teammatey.name }}</h3>
-        <!--<p style="clear: both;">
-        <span class="image  left" style="max-width: 150px;">
-        {% if teammatey.site %}
-            <a href="{{ teammatey.site }}">
-        {% endif %}
-        <img src="{{ site.baseurl }}{{ teammatey.image }}" alt="" />
-        {% if teammatey.site %}
-            </a>
-        {% endif %}
-        </span>
-        <h3>
-        {% if teammatey.site %}
-            <a href="{{ teammatey.site }}">
-        {% endif %}
-        <b>{{ teammatey.name}}</b>
-        {% if teammatey.site %}
-            </a>
-        {% endif %}
-        </h3>-->
-        <!--<div style="text-align: justify;"> {{ teammatey.description }} </div>
-        </p>
         <br>
-        <br>-->
-    {% endfor %}
+        {% for people in team.people %}
+            {% assign teammatey = site.people | where:"key", people  | first %}
+            <h3>
+                {{ teammatey.name }}
+            </h3>
+            <p style="clear: both;">
+                <span class="image  left" style="max-width: 150px;">
+                    {% if teammatey.site %}
+                        <a href="{{ teammatey.site }}">
+                    {% endif %}
+                    <img src="{{ site.baseurl }}{{ teammatey.image }}" alt="" />
+                    {% if teammatey.site %}
+                        </a>
+                    {% endif %}
+                </span>
+                <h3>
+                    {% if teammatey.site %}
+                        <a href="{{ teammatey.site }}">
+                    {% endif %}
+                    <b>{{ teammatey.name}}</b>
+                    {% if teammatey.site %}
+                        </a>
+                    {% endif %}
+                </h3>
+                <div style="text-align: justify;"> 
+                    {{ teammatey.description }} 
+                </div>
+            </p>
+            <br>
+            <br>
+        {% endfor %}
     </div>
 {% endfor %}
