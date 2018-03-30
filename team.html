@@ -99,6 +99,7 @@ sitemap:
 (VS) indicates visiting student; (VU) indicates Vanderbilt student; (I) indicates UIUC student; year indicates beginning of visit, collaboration, or employment in the group.
 
 {% for student in site.teams.internsundergrads %}
+    student
     <ul>
         <li>{{ student.firstname }} {{ student.lastname }} {{ student.tag }}, {{ student.degree }}, {{ student.department }}, {{ student.year }}</li>
     </ul>
