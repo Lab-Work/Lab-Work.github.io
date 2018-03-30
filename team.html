@@ -65,7 +65,7 @@ sitemap:
         <br>        
         {% for teammatey in sortedbyname %}
             {% if team.people contains teammatey.key %}
-            <p style="clear: both;">
+            <p style="clear: both; float: left">
                 <span class="image  left" style="max-width: 150px;">
                     {% if teammatey.site %}
                         <a href="{{ teammatey.site }}">
@@ -93,4 +93,16 @@ sitemap:
             {% endif %}
         {% endfor %}
     </div>
+{% endfor %}
+
+<h3>Research Interns and Undergraduate Students</h3>
+(VS) indicates visiting student; (VU) indicates Vanderbilt student; (I) indicates UIUC student; year indicates beginning of visit, collaboration, or employment in the group.
+
+{% for student in site.teams.internsundergrads %}
+    <ul>{{ student.firstname }} {{ student.lastname }} {{ student.tag }}, {{ student.degree }}, {{ student.department }}, {{ student.year }}</ul>
+{% endfor %}
+
+<h3>Student Awards and Reseaerch Internships</h3>
+{% for award in site.teams.awards %}
+    <ul>{{ award.name }}, {{ award.award }}, {{ award.organization }}, {{ award.year }}</ul>
 {% endfor %}
