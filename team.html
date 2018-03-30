@@ -15,8 +15,6 @@ sitemap:
 <h2>TEAMS</h2>
 {% for team in site.teams %}
     <h2>Header</h2>
-    {% assign sorted = (site.teams | sort: 'date') | reverse %}
-    {% for team in sorted %}
     <div class="content">
     <br>
     {% for people in team.people %}
