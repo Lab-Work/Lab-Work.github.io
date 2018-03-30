@@ -12,7 +12,7 @@ sitemap:
 	<h1>Team</h1>
 </header>
 
-{{site.people | sort: 'lastname'}}
+<h3>{{site.people | sort: 'lastname'}}</h3>
 
 {% assign sorted = (site.teams | sort: 'appear') | where:"class", "current" %}
 {% for team in sorted %}
