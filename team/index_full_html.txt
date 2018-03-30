@@ -1,0 +1,106 @@
+---
+layout: null
+title: Transportation Research Group
+description: A transportation cyber physical systems lab at the Institute for Software Integrated Systems
+sitemap:
+    priority: 1.0
+    lastmod: 2017-11-02
+    changefreq: weekly
+---
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+  Jekyll integration by somiibo.com
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+    {% include head.html %}
+
+
+	</head>
+	<body class="is-loading">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+            <h1>{{site.title}}</h1>
+						<h2>A Transportation Cyber Physical Systems Lab </h2>
+						<p>At the Institute for Software Integrated Systems <br>
+                            Vanderbilt University
+						</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="{{ "/" | absolute_url }}" class="logo">{{site.title}}</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+
+            {% include nav.html %}
+
+						<ul class="icons">
+              <li><a href="https://twitter.com/{{site.twitter}}" class="icon fa-twitter" rel="nofollow"><span class="label">Twitter</span></a></li>
+              <li><a href="https://github.com/{{site.github}}" class="icon fa-github" rel="nofollow"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						{% assign sorted = (site.teams | sort: 'date') | reverse %}
+                        {% for team in sorted %}
+                            <div class="content">
+                            <header class="major">
+                                <h2>{{ team.name }}</h2>
+                            </header>
+                            <br>
+                            {% for people in team.people %}
+                                {% assign teammatey = site.people | where:"key", people  | first %}
+                                <p style="clear: both;">
+                                <span class="image  left" style="max-width: 150px;">
+                                {% if teammatey.site %}
+                                    <a href="{{ teammatey.site }}">
+                                {% endif %}
+                                <img src="{{ site.baseurl }}{{ teammatey.image }}" alt="" />
+                                {% if teammatey.site %}
+                                    </a>
+                                {% endif %}
+                                </span>
+                                <h3>
+                                    {% if teammatey.site %}
+                                        <a href="{{ teammatey.site }}">
+                                    {% endif %}
+                                    <b>{{ teammatey.name}}</b>
+                                    {% if teammatey.site %}
+                                        </a>
+                                    {% endif %}
+                                </h3>
+                                <div style="text-align: justify;"> {{ teammatey.description }} </div>
+                                </p>
+                                <br>
+                                <br>
+                            {% endfor %}
+                            </div>
+                        {% endfor %}
+
+					</div>
+
+				<!-- Footer -->
+        {% include foot.html %}
+
+			</div>
+
+		<!-- Scripts -->
+		{% include scripts-main.html %}
+    {% include tracking.html %}
+
+	</body>
+</html>
