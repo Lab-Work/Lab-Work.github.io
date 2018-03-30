@@ -12,11 +12,9 @@ sitemap:
 	<h1>Team</h1>
 </header>
 
-{% assign sorted = (site.teams | sort: 'date') | reverse %}
+{% assign sorted = (site.teams | sort: 'appear') %}
 {% for team in sorted %}
-    <header class="major">
-        <h2>{{ team.name }}</h2>
-    </header>
+    <h2>{{ team.name }}</h2>
     <!--<br>
     {% for people in team.people %}
     {% assign teammatey = site.people | where:"key", people  | first %}
