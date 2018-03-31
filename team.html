@@ -43,8 +43,11 @@ sitemap:
                         </a>
                     {% endif %}
                 </h3>
-                <div style="text-align: justify; overflow-x: hidden; overflow-y: hidden;"> 
-                    {{ teammatey.description }} 
+                <div style="text-align: justify; overflow-x: hidden; overflow-y: hidden; text-indent: 1em;"> 
+                    {{ teammatey.description }}
+					{% if teammatey.site %}
+						Website: <a href="{{ teammatey.site }}">{{ teammatey.firstname }}'s Website</a>
+					{% endif %}
 					{% if teammatey.degrees %}
 						<ul>{{ teammatey.degrees }}</ul>
 					{% endif %}
