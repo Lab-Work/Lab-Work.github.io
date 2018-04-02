@@ -8,5 +8,5 @@ image: /images/people/raphael-stern.jpg
 degrees: "<li>Ph.D, Sustainable and Resilient Infrastructure Systems, CEE, UIUC 2018 (expected)</li>
 <li>M.S., Sustainable and Resilient Infrastructure Systems, CEE, UIUC, 2015</li>
 <li>B.S., Civil Engineering, University of Illinois at Urbana-Champaign, 2013</li>"
-site: http://publish.illinois.edu/raphaelstern/
+site: http://raphaelstern.com/
 ---
