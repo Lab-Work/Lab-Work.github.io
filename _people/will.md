@@ -8,6 +8,6 @@ description: "<p>William Barbour is a doctoral student in civil and environmenta
 degrees: "<li>Ph.D, Civil Infrastructure Systems, CEE, Vanderbilt University 2020 (expected)</li>
 <li>M.S., Sustainable and Resilient Infrastructure Systems, CEE, UIUC, 2017</li>
 <li>B.S., Biosystems Engineering, University of Tennessee, Knoxville, 2015</li>"
-image: /images/people/barbour.jpg
+image: /images/people/barbour_11_2016.jpg
 site: https://barbourww.github.io
 ---
