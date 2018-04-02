@@ -22,7 +22,7 @@ sitemap:
     </h2>
     <div class="content">
         <br>
-        {% for teammatey in sortedbydate %}
+        {% for teammatey in sortedbyname %}
             {% if team.people contains teammatey.key %}
             <p style="clear: both; float: left; overflow: auto;">
                 <span class="image  left" style="max-width: 150px;">
@@ -91,7 +91,9 @@ sitemap:
                     {% endif %}
                 </h3>
                 <div style="text-align: justify;"> 
-                    {{ teammatey.description }} 
+                    {% if teammatey.degrees %}
+						<ul>{{ teammatey.degrees }}</ul>
+					{% endif %}
                 </div>
             </p>
             <br>
@@ -105,7 +107,7 @@ sitemap:
 (VS) indicates visiting student; (VU) indicates Vanderbilt student; (I) indicates UIUC student; year indicates beginning of visit, collaboration, or employment in the group.
 <ul>
 {% for student in site.data.internsundergrads %}
-        <li>{{ student.firstname }} {{ student.lastname }} {{ student.tag }}, {{ student.degree }}, {{ student.department }}, {{ student.year }}</li>
+        <li>{{ student.firstname }} {{ student.lastname }} [ {{ student.tag }} ], {{ student.degree }}, {{ student.department }}, {{ student.year }}</li>
 {% endfor %}
 </ul>
 
