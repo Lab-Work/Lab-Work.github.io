@@ -71,7 +71,7 @@ sitemap:
         <br>        
         {% for teammatey in sortedbyname %}
             {% if team.people contains teammatey.key %}
-            <p style="clear: both; float: left;">
+            <p style="clear: both; float: left; overflow: auto;">
                 <span class="image  left" style="max-width: 150px;">
                     {% if teammatey.site %}
                         <a href="{{ teammatey.site }}">
@@ -90,7 +90,7 @@ sitemap:
                         </a>
                     {% endif %}
                 </h3>
-                <div style="text-align: justify;"> 
+                <div style="text-align: justify; overflow-x: hidden; overflow-y: hidden; text-indent: 1em;"> 
                     {% if teammatey.degrees %}
 						<ul>{{ teammatey.degrees }}</ul>
 					{% endif %}
