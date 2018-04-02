@@ -1,5 +1,5 @@
 ---
-name: Past postdoctoral researchers
+name: Past Postdoctoral Researchers
 class: alumni
 appear: 4
 description: 

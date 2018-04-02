@@ -1,5 +1,5 @@
 ---
-name: Current M.S. students
+name: Current M.S. Students
 class: current
 appear: 3
 description: 

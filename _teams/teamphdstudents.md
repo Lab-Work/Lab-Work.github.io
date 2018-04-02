@@ -1,5 +1,5 @@
 ---
-name: Current Ph.D. students
+name: Current Ph.D. Students
 class: current
 appear: 2
 description: 

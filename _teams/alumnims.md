@@ -1,5 +1,5 @@
 ---
-name: Past M.S. students
+name: Past M.S. Students
 class: alumni
 appear: 6
 description: 

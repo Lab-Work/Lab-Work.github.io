@@ -1,5 +1,5 @@
 ---
-name: Research staff 
+name: Past Research Staff 
 class: alumni
 appear: 7
 description: 

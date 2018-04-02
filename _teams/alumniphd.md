@@ -1,5 +1,5 @@
 ---
-name: Past Ph.D. students
+name: Past Ph.D. Students
 class: alumni
 appear: 5
 description: 
