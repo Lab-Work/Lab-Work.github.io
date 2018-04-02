@@ -1,13 +1,43 @@
-- firstname: Miles
-  lastname: Churchill
+- firstname: Derek
+  lastname: Gloudemans
   degree: BS
   department: Civil and Environmental Engineering
-  year: 2016
+  year: 2018
+  tag: VU
+- firstname: George
+  lastname: Gunter
+  degree: BS
+  department: Civil and Environmental Engineering
+  year: 2017
+  tag: I, VS
+- firstname: Yuhao
+  lastname: Lu
+  degree: BS
+  department: Mathematics
+  year: 2017
+  tag: I
+- firstname: Yanbing
+  lastname: Wang
+  degree: BS
+  department: Civil and Environmental Engineering
+  year: 2017
+  tag: I
+- firstname: Bochen
+  lastname: Xu
+  degree: BS
+  department: Computer Science
+  year: 2017
   tag: I
 - firstname: Chris
   lastname: Chen
   degree: BS
   department: Electrical and Computer Engineering
+  year: 2016
+  tag: I
+- firstname: Miles
+  lastname: Churchill
+  degree: BS
+  department: Civil and Environmental Engineering
   year: 2016
   tag: I
 - firstname: Nimit
@@ -34,14 +64,20 @@
   department: Computer Science
   year: 2015
   tag: I
-- firstname: Maya
-  lastname: Meng
+- firstname: Thomas
+  lastname: Breier
+  degree: BS
+  department: Technical University of Munich, Germany
+  year: 2014
+  tag: VS
+- firstname: Chase
+  lastname: Duncan
   degree: BS
   department: Computer Science
   year: 2014
   tag: I
-- firstname: Chase
-  lastname: Duncan
+- firstname: Maya
+  lastname: Meng
   degree: BS
   department: Computer Science
   year: 2014
@@ -50,12 +86,6 @@
   lastname: Mori
   degree: BS
   department: Computer Science
-  year: 2014
-  tag: I
-- firstname: Thomas
-  lastname: Breier
-  degree: BS
-  department: Technical University of Munich, Germany
   year: 2014
   tag: I
 - firstname: Meng
@@ -70,18 +100,18 @@
   department: Computer Science
   year: 2013
   tag: I
+- firstname: Mostafa Reisi
+  lastname: Gahrooei
+  degree: Ph.D.
+  department: Georgia Institute of Technology
+  year: 2012
+  tag: VS
 - firstname: Jon
   lastname: Que
   degree: BS
   department: Civil and Environmental Engineering
   year: 2012
   tag: I
-- firstname: Mostafa Reisi
-  lastname: Gahrooei
-  degree: Ph.D.
-  department: Georgia Tech
-  year: 2012
-  tag: VS
 - firstname: Raphael
   lastname: Stern
   degree: BS
