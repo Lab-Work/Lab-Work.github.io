@@ -1,7 +1,7 @@
 ---
 name: Past Postdoctoral Researchers
 class: alumni
-appear: 4
+appear: 5
 description: 
-people: ["shimao"]
+people: ["shimao", "thibault"]
 ---

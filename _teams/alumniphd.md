@@ -1,7 +1,7 @@
 ---
 name: Past Ph.D. Students
 class: alumni
-appear: 5
+appear: 6
 description: 
 people: ["ye", "yanning", "ren"]
 ---
