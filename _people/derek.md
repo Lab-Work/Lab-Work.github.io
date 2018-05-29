@@ -8,5 +8,4 @@ description: "<p>Derek Gloudemans is a masters student in computer science at Va
 degrees: "<li>Ph.D, Computer Science, CEE, Vanderbilt University 2022 (expected)</li>
 <li>B.S., Civil and Environmental Engineering, Vanderbilt University, Nashville, 2018</li>"
 image: /images/people/Gloudemans_05_2018.jpg
-site: 
 ---
