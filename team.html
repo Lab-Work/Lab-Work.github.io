@@ -60,11 +60,13 @@ sitemap:
     </div>
 {% endfor %}
 
-<h2>Alumni</h2>
+<header class="major">
+	<h1>Alumni</h1>
+</header>
 
 {% assign sorted = (site.teams | sort: 'appear') | where:"class", "alumni" %}
 {% for team in sorted %}
-	{% if team.people.length > 0 %}
+	{% if team.people %}
 		<h2>
 			{{team.name}}
 		</h2>
