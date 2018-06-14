@@ -13,10 +13,6 @@ sitemap:
 </header>
 
 {% assign sortedbyname = (site.people | sort: 'lastname') %}
-{% for person in sortedbyname %}
-	{{person.key}}
-{% endfor %}
-
 {% assign sortedbydate = (site.people | sort: 'degreedate') %}
 
 {% assign sorted = (site.teams | sort: 'appear') | where:"class", "current" %}
@@ -25,7 +21,6 @@ sitemap:
 		<h2>
 			{{team.name}}
 		</h2>
-		<h3>{{team.people}}</h3>
 		<div class="content">
 			<br>
 			{% for teammatey in sortedbyname %}
