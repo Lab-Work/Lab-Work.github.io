@@ -13,12 +13,12 @@ sitemap:
 </header>
 
 {% assign sortedbyname = (site.people | sort: 'lastname') %}
-<h3>sortedbyname</h3>
+<h3>{{sortedbyname}}</h3>
 {% assign sortedbydate = (site.people | sort: 'degreedate') %}
 
 {% assign sorted = (site.teams | sort: 'appear') | where:"class", "current" %}
 {% for team in sorted %}
-	{% if team.people %}
+	{% if team.people.size > 0 %}
 		<h2>
 			{{team.name}}
 		</h2>
