@@ -14,7 +14,7 @@ sitemap:
 
 {% assign sortedbyname = (site.people | sort: 'lastname') %}
 {% for person in sortedbyname %}
-	person
+	{{person.key}}
 {% endfor %}
 
 {% assign sortedbydate = (site.people | sort: 'degreedate') %}
@@ -28,8 +28,8 @@ sitemap:
 		<div class="content">
 			<br>
 			{% for teammatey in sortedbyname %}
-				teammatey.key
 				{% if team.people contains teammatey.key %}
+				<h3>{{teammatey.key}}</h3>
 				<p style="clear: both; float: left; overflow: auto;">
 					<span class="image  left" style="max-width: 150px;">
 						{% if teammatey.site %}
