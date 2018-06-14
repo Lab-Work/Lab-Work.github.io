@@ -13,51 +13,54 @@ sitemap:
 </header>
 
 {% assign sortedbyname = (site.people | sort: 'lastname') %}
+<h3>sortedbyname</h3>
 {% assign sortedbydate = (site.people | sort: 'degreedate') %}
 
 {% assign sorted = (site.teams | sort: 'appear') | where:"class", "current" %}
 {% for team in sorted %}
-    <h2>
-        {{team.name}}
-    </h2>
-    <div class="content">
-        <br>
-        {% for teammatey in sortedbyname %}
-            {% if team.people contains teammatey.key %}
-            <p style="clear: both; float: left; overflow: auto;">
-                <span class="image  left" style="max-width: 150px;">
-                    {% if teammatey.site %}
-                        <a href="{{ teammatey.site }}">
-                    {% endif %}
-                    <img src="{{ site.baseurl }}{{ teammatey.image }}" alt="" />
-                    {% if teammatey.site %}
-                        </a>
-                    {% endif %}
-                </span>
-                <h3>
-                    {% if teammatey.site %}
-                        <a href="{{ teammatey.site }}">
-                    {% endif %}
-                    <b>{{ teammatey.firstname }} {{ teammatey.lastname }}</b>
-                    {% if teammatey.site %}
-                        </a>
-                    {% endif %}
-                </h3>
-                <div style="text-align: justify; overflow-x: hidden; overflow-y: hidden; text-indent: 1em;"> 
-                    {{ teammatey.description }}
-					{% if teammatey.site %}
-						<p>Website: <a href="{{ teammatey.site }}">{{ teammatey.firstname }}'s Website</a></p>
-					{% endif %}
-					{% if teammatey.degrees %}
-						<ul style="margin-left: 4px;">{{ teammatey.degrees }}</ul>
-					{% endif %}
-                </div>
-            </p>
-            <br>
-            <br>
-            {% endif %}
-        {% endfor %}
-    </div>
+	{% if team.people %}
+		<h2>
+			{{team.name}}
+		</h2>
+		<div class="content">
+			<br>
+			{% for teammatey in sortedbyname %}
+				{% if team.people contains teammatey.key %}
+				<p style="clear: both; float: left; overflow: auto;">
+					<span class="image  left" style="max-width: 150px;">
+						{% if teammatey.site %}
+							<a href="{{ teammatey.site }}">
+						{% endif %}
+						<img src="{{ site.baseurl }}{{ teammatey.image }}" alt="" />
+						{% if teammatey.site %}
+							</a>
+						{% endif %}
+					</span>
+					<h3>
+						{% if teammatey.site %}
+							<a href="{{ teammatey.site }}">
+						{% endif %}
+						<b>{{ teammatey.firstname }} {{ teammatey.lastname }}</b>
+						{% if teammatey.site %}
+							</a>
+						{% endif %}
+					</h3>
+					<div style="text-align: justify; overflow-x: hidden; overflow-y: hidden; text-indent: 1em;"> 
+						{{ teammatey.description }}
+						{% if teammatey.site %}
+							<p>Website: <a href="{{ teammatey.site }}">{{ teammatey.firstname }}'s Website</a></p>
+						{% endif %}
+						{% if teammatey.degrees %}
+							<ul style="margin-left: 4px;">{{ teammatey.degrees }}</ul>
+						{% endif %}
+					</div>
+				</p>
+				<br>
+				<br>
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
 {% endfor %}
 
 <header class="major">
