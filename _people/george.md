@@ -8,3 +8,4 @@ degrees: "<li>B.S, Civil Infrastructure Systems, CEE, University of Illinois 201
 image: /images/people/GeorgeGunterHeadshot.jpg
 site: 
 ---
+
