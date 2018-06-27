@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Vanderbilt, Ford team up to measure impacts of Adaptive Cruise Control on traffic"
-excerpt: "Led by PhD Student Rafi Stern, we teamed up with Ford at the Michigan Proving Ground teo test 36 adaptive cruise control vehicles."
+excerpt: "Led by PhD student Rafi Stern, we teamed up with Ford at the Michigan Proving Ground to test 36 adaptive cruise control vehicles."
 image: "/images/RafiDanFord2018_crop.jpg"
 ---
 
