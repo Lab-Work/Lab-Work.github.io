@@ -1,7 +1,7 @@
 # Site
 title:              'Work Research Group'
 bio:                'A transportation cyber physical systems lab at Vanderbilt University'
-description:        "Jekyll version of the Massively theme by HTML5UP"
+description:        "Our research group uses sensing technologies, models, data, and advanced analytics to understand mobility systems so that we can improve them. Our research projects explore the interplay between autonomous vehicles and phantom traffic jams. We also use large mobility datasets to understand urban traffic congestion at city scales, and freight rail traffic at the regional scale. We also build mathematical models and systems theory tools to understand the underlying behavior of traffic flow."
 locale:             en_US
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
