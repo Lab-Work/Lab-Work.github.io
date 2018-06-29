@@ -2,6 +2,15 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
+      <loc>/blog/2018-05-08-Peshel-visit/</loc>
+      
+        <lastmod>2018-06-29T08:12:18-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
       <loc>/blog/Ford-tests/</loc>
       
         <lastmod>2018-06-27T00:00:00-05:00</lastmod>
@@ -242,6 +251,16 @@
   
     <url>
       <loc>/blog/page2/</loc>
+       <lastmod>2017-11-02T00:00:00-05:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>1.0</priority>
+      
+     </url>
+  
+    <url>
+      <loc>/blog/page3/</loc>
        <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
