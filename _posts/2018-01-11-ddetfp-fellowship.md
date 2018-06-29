@@ -2,6 +2,7 @@
 layout: post
 title: "Dwight David Eisenhower Transportation Fellowship Award (2018)"
 excerpt: "William Barbour and Raphael Stern named 2018 Dwight David Eisenhower Transportation Fellows"
+date: 2018-01-11
 image: "/images/FHWA_logo.jpg"
 ---
 
