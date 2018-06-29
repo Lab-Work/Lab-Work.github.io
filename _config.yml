@@ -46,6 +46,9 @@ facebook:           default
 instagram:          default
 github:             Lab-Work
 
+plugins:
+  - jekyll-seo-tag
+
 # personal
 location:           Institute for Software Integrated Systems, 1025 16th Ave S, Suite 102, Nashville, TN 37212.
 phone:              999-999-9999
