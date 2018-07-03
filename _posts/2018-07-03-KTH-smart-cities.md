@@ -2,7 +2,7 @@
 layout: post
 title: "Prof. Work speaks at Smart Cities Summer School at KTH"
 excerpt: "The Integrated Transport Research Lab at the KTH Royal Institute of Technology in Stockholm organized a summer school on smart cities."
-date: 2018-06-03
+date: 2018-07-03
 image: "/images/KTH2018.png"
 ---
 
