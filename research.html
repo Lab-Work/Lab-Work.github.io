@@ -1,109 +1,67 @@
 ---
 layout: page
 title: Research
-description: Research
+description: 
 sitemap:
     priority: 0.7
-    lastmod: 2018-03-21
-    changefreq: weekly
+    lastmod: 2018-07-03
+    changefreq: monthly
 ---
 
 <header class="major">
 	<h1>Research</h1>
 </header>
 
-<p>Our research focuses on developing new estimation approaches to improve our understanding of transportation systems at increasingly large scales. A summary of representative projects is below; please see <a href="/publications">here</a> for a complete list of our research products and publications.</p>
-<h2><strong><em>Large-scale traffic estimation with </em></strong><strong><em>performance guarantees</em></strong></h2>
-<span class="image right"><img src="{{ "/images/largescale.png" | absolute_url }}" alt="" /></span>
-<p>Despite important advances in computation and sensing, real-time traffic estimation problems are still open to a number of critical issues including: (i) the entire state of the transportation network is too large for the estimators to scale in real time; (ii) few results are available which provide a theoretical analysis of the performance of traffic estimation algorithm, and (iii) the non-observability of the traffic model is inevitable due to the existence of shocks and the sparsity of sensor measurements.</p>
-<p>Our work aims at designing scalable distributed traffic estimation algorithms to address issues (i) and (ii) with specific care of issue (iii). Large-scale networks can be partitioned into overlapping local sections, with the traffic density on each local section described by a traffic model on the local state, and estimated by a cheap commodity computer (e.g., an agent).  The main algorithmic challenge is to obtain theoretical bounds on the performance of the estimator, even as the system state switches between observable and unobservable modes. We are also interested in the development of estimation algorithms when with performance guarantees when not all sensor data can be transmitted due to energy and communication costs.</p>
-<p><strong>Funding: </strong>National Science Foundation</p>
-<p><strong>Students:</strong> Ye Sun</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>Y. Sun and D. Work, “Online estimation with synthetic measurements under an event-triggered sensor scheduler.” <em>submitted to the IEEE Transactions on Control Systems Technology</em>, 2016.<em> </em><strong>Download</strong>: <a href="https://www.dropbox.com/s/5fr1u8hnds4fr43/SunWork2016.pdf?dl=0">preprint.</a></li>
-<li>Y. Sun and D. Work. “Kalman filtering with synthetic measurements under an event-triggered sensor scheduler.” <em>to appear in the European Controls Conference, June 2016.</em></li>
-<li>Y. Sun and D. Work. “Scaling the Kalman filter for large-scale traffic estimation.” <em>submitted to the IEEE Transactions on Control of Network Systems, February 2015. </em><strong>Download: </strong>  <a href="https://www.dropbox.com/s/i4pa1lhd09f3dyv/DLKCF_TCNS_extended.pdf?dl=0">extended version</a>, <a href="https://github.com/yesun/DLKCF">source code</a>.</li>
-<li>Y. Sun and D. Work. “A distributed local Kalman consensus filter for trafﬁc estimation.” <em>in Proceedings of</em><em> the IEEE Conference on Decision and Control, pp. 6484–6491, 2014.</em></li>
-</ol>
-<h2>Quantifying resilience with coarse GPS data</h2>
-<span class="image right"><img src="{{ "/images/2943c-color_pace_3weeks.png" | absolute_url }}" alt="" /></span>
-<p>What effects do natural disasters have on our transportation infrastructure?  How resilient are our cities to extreme events, and how quickly do they recover?  Our work aims to answer these questions in a way that is low-cost and practical, by analyzing millions of GPS records from taxis equipped with GPS.  In this way, it is possible to determine the pace of traffic (i.e., travel time per mile) between various regions of the city, and detect atypical congestion. Our method is tested using a dataset of nearly 700 million taxi trips from New York City.  We have made the dataset publicly available <a title="Open data" href="/data">here</a>.</p>
-<p>The basic idea is that city traffic conditions follow a fairly periodic pattern.  The figure (left) shows the average pace (travel time per mile) between various regions of the city over the course of three weeks (East of the Hudson, Upper Manhattan, Midtown, and Lower Manhattan).  High travel times are obvious during rush hour each day, especially in the Midtown-to-Midtown trips (M-M).</p>
-<p>On a particular day, the traffic conditions may deviate significantly from this expected behavior.  This is usually due to an extreme event such as a natural disaster or bad weather conditions.  Based on this deviation, it is possible to measure how “usual” or “unusual” the traffic conditions are.  For more information about how this probabilistic computation is performed, see our paper:</p>
-<p>Brian Donovan and Daniel B. Work. “Using coarse GPS data to quantify city-scale transportation system resilience to extreme events.”  presented at the<em> </em><em>Transportation Research Board 94th Annual Meeting, January 2015. </em> <a href="https://www.dropbox.com/s/deruyszudfqrll0/TRB15DonovanWork.pdf">preprint</a>, <a href="https://github.com/UIUC-Transportation-Data/gpsresilience">source code</a>.</p>
-<p>You can also download the data here:  <a href="http://dx.doi.org/10.13012/J8PN93H8">http://dx.doi.org/10.13012/J8PN93H8</a></p>
-<p>Brian Donovan and Daniel B. Work  &#8220;New York City Taxi Trip Data (2010-2013)&#8221;. 1.0. University of Illinois at Urbana-Champaign. Dataset. <a href="http://dx.doi.org/10.13012/J8PN93H8" target="_blank">http://dx.doi.org/10.13012/J8PN93H8</a>, 2014.</p>
-<p>This <a href="https://www.youtube.com/watch?v=cIACwnqLT5E">video</a> shows all of the taxi trips during the weeks before, during and after Hurricane Sandy, color coded by their pace.  On the right is a normal week for comparison.  The graph at the top indicates how typical or atypical the traffic conditions are, and indicates that it took over five days for the city traffic network to recover from the storm.</p>
-<p>One interesting finding is that travel times are actually lower than expected in many parts of the city during the recovery process.  This indicates a change in the usage of the transportation infrastructure – it is likely that the hurricane caused a decrease in usage.  This is especially true in areas like Lower Manhattan, which experienced severe flooding and power outages.  Another surprising result is observable throughout the city on Wednesday the 31st, when the network is completely congested by people try to return to normal operations. This result  indicates that there is room for further research in the post-disaster process of repopulating the city after an evacuation.</p>
-<p><strong>Funding: </strong>National Science Foundation</p>
-<p><strong>Students:</strong> Brian Donovan</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>Source Code: <a href="https://github.com/Lab-Work/gpsresilience">https://github.com/Lab-Work/gpsresilience</a></li>
-<li><a href="/data">2010-2013 NYC Taxi Dataset</a></li>
-<li><a href="/data">2010-2013 NYC Traffic Estimates</a></li>
-<li>B. Donovan, J. Lee, and D. Work. “A high resolution method for quantifying resilience of urban road networks.” <em>submitted to IEEE Transactions on Intelligent Transportation Systems, 2016. </em><strong>Download:</strong> <em> </em><a href="https://www.dropbox.com/s/d2d2xgfw89p8jg6/DonovanLeeWorkTransITS.pdf?dl=0">preprint</a>.</li>
-<li>X. Guan, C. Chen, and D. Work. “From Warnings to Awareness and Actions: Insights from Hurricane Sandy.” <em>submitted to the 2017 Transportation Research Board Annual Meeting</em>, 2016.</li>
-<li>B. Donovan and D. Work. “Empirically quantifying city-scale transportation resilience to extreme events” <em>submitted to Transportation Research Part C: Emerging Technologies</em><em>,</em> 2016. <strong>Download:</strong> <a href="https://www.dropbox.com/s/hk4kxosxs0umyx8/DonovanWorkTR-C2016.pdf?dl=0">preprint</a>.</li>
-<li> X. Guan, C. Chen, and D. Work. “Tracking the Evolution of Infrastructure Systems and Mass Responses Using Publically Available Data.” <em>submitted to PLOS ONE</em>, 2016.</li>
-<li>B. Donovan and D. Work. “Using coarse GPS data to quantify city-scale transportation system resilience to extreme events.” <em>presented at the</em> <em>Transportation Research Board 94th Annual Meeting, August 2014. </em><strong>Download: </strong><a href="https://www.dropbox.com/s/deruyszudfqrll0/TRB15DonovanWork.pdf">preprint</a>, <a href="https://github.com/UIUC-Transportation-Data/gpsresilience">source code</a> <a href="http://dx.doi.org/10.13012/J8PN93H8">data</a>.</li>
-</ol>
-<p>&nbsp;</p>
-<h2>Improving intelligent transportation systems (ITS) in safety-critical environments</h2>
-<span class="image right"><img src="{{ "/images/ThermalColormap-300x169.png" | absolute_url }}" alt="" /></span>
-<p>The enormous and rapidly increasing amount of traffic data opens tremendous opportunities for the development of intelligent transportation systems. However, real time traffic estimation and optimal traffic management in safety critical environments are still open problems. One example occurs in rural work zones, where existing sensor coverage is sparse.</p>
-<p>Our work aims at improving ITS in safety-critical situations via: <em>i)</em> the development of a low-cost and low-power wireless sensor network for traffic monitoring in work zones; <em>ii)</em> the development of mathematical traffic models on networks for amenable for optimal traffic management. In this work, a low-cost and low-power wireless traffic sensor platform is built using the passive infrared camera and machine learning algorithms to detect vehicles and estimate the traffic speed. Concurrently, we are developing a theoretical framework traffic estimation and optimal traffic management for networks of conservation laws. The developed sensor network, a variety of traffic estimation algorithms (including ensemble Kalman filter and Particle filter), and the optimal traffic management (using convex programs) are simulated and validated in micro-simulation environment.</p>
-<p><strong>Funding: </strong>Illinois Department of Transportation</p>
-<p><strong>Students:</strong> Yanning Li, Juan Carlos Martinez Mori, Chris Chen, Fangyu Wu</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>Y. Li, J. C. Martinez Mori, and D. Work, “Estimating traffic conditions from smart work zone systems.” <em>submitted to the Journal of Intelligent Transportation Systems, </em>2016. <strong>Download:</strong> <a href="https://www.dropbox.com/s/0p4s5amhcjjou5h/LiMoriWork2016.pdf?dl=0">preprint</a>.</li>
-<li>Y. Li, C. Claudel, B. Piccoli, and D. Work. “A convex formulation of traffic dynamics on transportation networks.” <em>submitted to SIAM Journal on Applied Mathematics,</em> 2016. <strong>Download: </strong><a href="https://www.dropbox.com/s/6bid1dgqgzrpamv/LiClaudelPiccoliWork2016.pdf?dl=0">preprint</a>.</li>
-<li>Y. Li, J. C. Martinez Mori, and D. Work, “Improving the effectiveness of smart work zone technologies,” <em>Illinois Department of Transportation Technical Report</em>, <em>submitted for review July 2016. </em></li>
-<li>B. Donovan Y. Li,  R. Stern J. Jiang C. Claudel, and D. Work. “Vehicle detection and speed estimation with PIR sensors.” <em>International Conference on Information Processing in Sensor Networks, peer reviewed poster session,</em> April 2015. <strong>Download:</strong> <a href="https://www.dropbox.com/s/i8dhtzy3iiessm4/IPSN2015.pdf?dl=0">preprint</a></li>
+<p>Our lab's research focuses on developing new estimation approaches to improve our understanding of transportation systems at increasingly large scales. A summary of representative projects is below; please see <a href="/publications">here</a> for a complete list of our research products and publications.</p>
 
-</ol>
-<h2>TrafficTurk</h2>
+{% assign sorted = (site.research | sort: 'order') %}
+{% assign sortedprojects = (site.projects | sort: 'order') %}
 
-<span class="image right"><img src="{{ "/images/cdb51-traffic2bturk_11.jpg" | absolute_url }}" alt="" /></span>
-<p>TrafficTurk is a mobile application that allows easy collection of traffic data.  The app functions as a turning movement counter &#8211; the user stands at an intersection and swipes the screen when a vehicle passes.  The user swipes the trajectory of the car on an intersection image &#8211; different types of swipes correspond to various types  of turns.  All of these turns are sent wirelessly to a central server in realtime, so they can be analyzed and stored in a database. The purpose of TrafficTurk is to collect data on a large scale during unusual events. Ideally, many users will simultaneously collect data at nearby intersections in order to get a complete picture of the traffic patterns.  The server sends a map to the app, allowing users to scroll around and see various intersections.  They choose the one that they intend to collect data at, and begin counting. TrafficTurk is designed for the worst-case scenario.  During some types of unusual events, mobile networks become crowded or even fail entirely.  For this reason, the app must be able to function with intermittent or absent internet connections.  To support this, the app can easily pre-cache all of the intersections in an area.  In this way, it is possible to count at these intersections even if there are no mobile networks available near them.  Similarly, the app maintains a cache of collected data which only clears once the server has received it.  In this way, the app has a 100% data collection guarantee as long as the phone eventually connects to a wireless network.</p>
-<p>&nbsp;</p>
-<p><strong>Funding: </strong>Civil and Environmental Engineering, UIUC; College of Engineering, UIUC; Illinois Department of Transportation; National Science Foundation</p>
-<p><strong>Students:</strong> Brian Donovan, Sudeep Gowrishankar, Mostafa Reisi Gahrooei, Jon Que, Bhinav Sura, Meng Han</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>TrafficTurk Android application <a href="https://play.google.com/store/apps/details?id=my.traffic.turk ">https://play.google.com/store/apps/details?id=my.traffic.turk </a></li>
-<li>“Inferring traffic signal phases from turning movement counters using hidden Markov models.” M. Reisi Gahrooei and D. Work, <em>in press, IEEE Transactions on Intelligent Transportation Systems,</em>PP(99), pp. 1-11, June 2014.<strong> Download: </strong><a href="https://www.dropbox.com/s/gr637fsvg2gkkh1/ReisiGahrooeiWork2014.pdf">preprint</a>, <a href="https://github.com/reisiga2/TrafficSignalPhaseEstimation">source code</a></li>
-<li>“Estimating traffic control strategies with inverse optimal control.” S. Gowrishankar and D. Work. <em> </em><em>in Proceedings of the </em>IEEE Conference on Intelligent Transportation Systems, April 2013.  <strong>Download:</strong><a href="https://www.dropbox.com/s/rbnn7x7n76p7uo7/GowrishankarWork13.pdf">preprint</a>, <a href="https://github.com/sgowris2/InverseOptimalControl">source code</a></li>
-<li>“Estimating traffic signal phases from turning movement counters.” M. Reisi Gahrooei and D. Work. <em> in Proceedings of the IEEE Conference on Intelligent Transportation Systems, April 2013, pp. </em>1113 – 1118<em>. </em><strong>Download: </strong><a href="https://www.dropbox.com/s/cahvladdq9xz9wg/IEEEITSC_Phase_Estimation.pdf">preprint</a>, <a href="https://github.com/reisiga2/Estimating-phases-from-turning-movement-counts">source code</a></li>
-<li>AwesomeStitch for OpenStreetMap: <a href="https://github.com/Lab-Work/AwesomeStitch">https://github.com/Lab-Work/AwesomeStitch</a></li>
-</ol>
-<p>&nbsp;</p>
-<h2>Traffic State Estimation and Incident Detection</h2>
-<span class="image right"><img src="{{ "/images/DensityEvolution.png" | absolute_url }}" alt="" /></span>
-<div>Joint traffic state estimation and incident detection is a critical problem for both traffic monitoring and highway safety. In this project, multiple model filtering techniques (e.g., particle filter and Kalman filter) and macroscopic traffic flow models are proposed to jointly estimate the traffic state and detect traffic incidents in real-time using sensor data. The algorithms are tested through incident data generated by a microscopic traffic simulation software (CORSIM) and field data collected from the mobile century experiment by Berkeley, 2008. The left figure shows the traffic density evolution from a CORSIM simulation, where the red area in the plot indicates the traffic congestion caused by an incident.</div>
-<div>
-<p><strong>Funding: </strong>Federal Highway Administration</p>
-<p><strong>Students:</strong> Ren Wang</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>R. Wang, S. Fan, and D. Work. “Efficient multiple model particle filtering for joint traffic state estimation and incident detection.” <em>Transportation Research Part C: Emerging Technologies (in press), 2016. </em><strong>Download:</strong> <a href="https://www.dropbox.com/s/fun0n62yfg1dx97/WangFanWork_TRC_v1.pdf?dl=0">preprint</a>.</li>
-<li>R. Wang, D. Work, and R. Sowers. “Multiple Model Particle Filter for Traffic Estimation and Incident Detection.”  <em>IEEE Transactions on Intelligent Transportation Systems (in press), 2016. </em><strong>Download: </strong><a href="https://www.dropbox.com/s/fxhsv55ncbo58md/WangWorkSowers2016.pdf?dl=0">preprint</a>, <a href="https://github.com/Lab-Work/MMPF_Traffic_Estimation_Incident_Detection">source code</a>.</li>
-<li>R. Wang and D. Work &#8221;Joint parameter and state estimation algorithms for real-time traffic monitoring.&#8221; NEXTRANS, technical report. No. DTRT12-G-UTC05, December 2013.</li>
-<li>R. Wang and D. Work. “Interactive multiple model ensemble Kalman filter for traffic estimation and incident detection.” <em>in Proceedings of</em><em> the IEEE Conference on Intelligent Transportation Systems, pp 804–809, October 2014. </em><strong>Download: </strong><a href="https://www.dropbox.com/s/0b27rjncbzoonsr/WangWorkITSC14.pdf?dl=0">preprint</a>, <a href="https://github.com/Lab-Work/IMM_EnKF_Traffic_Estimation_Incident_Detection">source code</a></li>
-</ol>
-</div>
-<div>
-<h2>Decision Making with Data Uncertainty in Life Cycle Assessment</h2>
-<span class="image right"><img src="{{ "/images/LCA.png" | absolute_url }}" alt="" /></span>
-<div>In life cycle assessment, when product systems are optimized to minimize environmental impacts, uncertainty in the process data may impact optimal decisions. In this project, a robust optimization approach is proposed for decision making under uncertainty at the life cycle inventory stage. The level of protection against data uncertainty can be controlled to reflect varying degrees of conservatism. The left figure shows the comparison between the proposed robust optimization approach (red) and deterministic optimization approach (blue) in terms of carbon oxygen output for an electricity generation problem with varying degrees of protection against data uncertainty.</div>
+{% for pl in sorted %}
+	{% if pl.projects.size > 0 %}
+		<h1>
+			{{pl.name}}
+		</h1>
 
-<div>
-<p><strong>Students:</strong> Ren Wang</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>“Application of robust optimization in matrix-based LCI for decision making under uncertainty. ” R. Wang and D. Work, <em></em><em>International Journal of Life Cycle Assessment</em>, 19(5) ,pp. 1110-1118, 2014. <strong>Download: </strong><a href="https://www.dropbox.com/s/elvgcnmvjwi0i7t/IJLCA_WangWork.pdf">preprint</a>, <a href="https://github.com/renwang/Robust_Optimization_LCI_Uncertainty">source code</a>, <a href="http://link.springer.com/article/10.1007%2Fs11367-013-0685-y">manuscript</a>.</li>
-</ol>
-</div>
-</div>
+		<div class="content">
+			<br>
+			{% for proj in sortedprojects %}
+				{% if pl.projects contains proj.key %}
+					<h2>
+						{% if proj.site %}
+							<a href="{{ proj.site }}">
+						{% endif %}
+								
+						<b>{{ proj.name }}</b>
+							
+						{% if proj.site %}
+							</a>
+						{% endif %}
+					</h2>	
+			
+					<img src="{{ proj.image }}" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					{{ proj.description }}
+						
+					{% if proj.funding %}
+						<p><strong>Funding: </strong> {{proj.funding}} </p>
+					{% endif %}
+
+					{% if proj.students %}
+						<p><strong>Students: </strong> {{proj.students}} </p>
+					{% endif %}
+
+					{% if proj.publications %}
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							{{proj.publications}}
+						</ol>
+					{% endif %}
+			
+				<br>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+	{% endif %}
+{% endfor %}
