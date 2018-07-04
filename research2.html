@@ -1,0 +1,67 @@
+---
+layout: page
+title: Research
+description: 
+sitemap:
+    priority: 0.7
+    lastmod: 2018-07-03
+    changefreq: monthly
+---
+
+<header class="major">
+	<h1>Research</h1>
+</header>
+
+<p>Our lab's research focuses on developing new estimation approaches to improve our understanding of transportation systems at increasingly large scales. A summary of representative projects is below; please see <a href="/publications">here</a> for a complete list of our research products and publications.</p>
+
+{% assign sorted = (site.research | sort: 'order') %}
+{% assign sortedprojects = (site.projects | sort: 'order') %}
+
+{% for pl in sorted %}
+	{% if pl.projects.size > 0 %}
+		<h1>
+			{{pl.name}}
+		</h1>
+
+		<div class="content">
+			<br>
+			{% for proj in sortedprojects %}
+				{% if pl.projects contains proj.key %}
+					<h2>
+						{% if proj.site %}
+							<a href="{{ proj.site }}">
+						{% endif %}
+								
+						<b>{{ proj.name }}</b>
+							
+						{% if proj.site %}
+							</a>
+						{% endif %}
+					</h2>	
+			
+					<img src="{{ proj.image }}" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					{{ proj.description }}
+						
+					{% if proj.funding %}
+						<p><strong>Funding: </strong> {{proj.funding}} </p>
+					{% endif %}
+
+					{% if proj.students %}
+						<p><strong>Students: </strong> {{proj.students}} </p>
+					{% endif %}
+
+					{% if proj.publications %}
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							{{proj.publications}}
+						</ol>
+					{% endif %}
+			
+				<br>
+				{% endif %}
+			{% endfor %}
+		</div>
+
+	{% endif %}
+{% endfor %}

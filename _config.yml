@@ -15,11 +15,13 @@ defaults:
     layout: post
     author:
 
+# update here to add a new site collection for indexing
 collections:
-  projects :
-  pastprojects :
+  projects:
+  research:
   teams:
   people:
+  
 
 # Jekyll
 permalink:          /blog/:title/

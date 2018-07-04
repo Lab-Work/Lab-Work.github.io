@@ -4,11 +4,11 @@
 	html5up.net | @ajlkn
   Jekyll integration by somiibo.com
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
---><html>
+-->
+<html>
 	<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 <title>Open data</title>
 <meta name="description" content="Open Data">
@@ -23,8 +23,8 @@
 <meta name="theme-color" content="#ffffff">
 
 <!-- CSS -->
-<link rel="stylesheet" href="/assets/css/main.css">
-<noscript><link rel="stylesheet" href="/assets/css/noscript.css"></noscript>
+<link rel="stylesheet" href="/assets/css/main.css" />
+<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
 
 	</head>
 	<body class="is-loading">
@@ -44,7 +44,7 @@
   <li class=""><a href="/">Home</a></li>
   <li class=""><a href="/about/">About</a></li>
 <li class=""><a href="/team/">Team</a></li>
-    <li class=""><a href="/research/">Research</a></li>
+    <li class=""><a href="/research2/">Research</a></li>
     <li class=""><a href="/publications/">Publicatons</a></li>
      <li class=""><a href="/teaching/">Teaching</a></li>
     <li class=" active "><a href="/data/">Data</a></li>
@@ -66,7 +66,6 @@
 	<h1>Open Data</h1>
 </header>
 
-</p>
 <p><em>Our group strives to make our software and datasets easily accessible to promote reproducible research. Our <a title="Publications" href="http://publish.illinois.edu/dbwork/publications/">open source codes </a>are available under a permissive <a href="http://opensource.org/licenses/NCSA">open source license</a> and published on </em><em><a href="https://github.com/Lab-Work">Github</a></em>. Open datasets are published here.</p>
 
 
@@ -78,78 +77,55 @@
 <p>This dataset was obtained through a <em>Freedom of Information Law</em> (FOIL) request from the <em><a href="http://www.nyc.gov/html/tlc/html/home/home.shtml">New York City Taxi &amp; Limousine Commission</a></em> (NYCT&amp;L). It covers four years of taxi operations in New York City and includes 697,622,444 trips. Thanks to a generous hosting policy by the University of Illinois at Urbana Champaign, we are able to make this large dataset publicly available.</p>
 <p>You are free to use the data as you wish, we only kindly ask you to consider citing the following works if you plan to publish subsequent results using the dataset:</p>
 <p>Brian Donovan and Daniel B. Work. <span style="color:#555555">“Using coarse GPS data to quantify city-scale transportation system resilience to extreme events.”  presented at the<em> </em></span><em style="color:#555555">Transportation Research Board 94th Annual Meeting, January 2015. </em> <a href="https://www.dropbox.com/s/deruyszudfqrll0/TRB15DonovanWork.pdf">preprint</a>, <a href="https://github.com/UIUC-Transportation-Data/gpsresilience">source code</a>.</p>
-<p>Brian Donovan and Daniel B. Work  “New York City Taxi Trip Data (2010-2013)”. 1.0. University of Illinois at Urbana-Champaign. Dataset. <a href="http://dx.doi.org/10.13012/J8PN93H8" target="_blank" rel="noopener">http://dx.doi.org/10.13012/J8PN93H8</a>, 2014.</p>
+<p>Brian Donovan and Daniel B. Work  &#8220;New York City Taxi Trip Data (2010-2013)&#8221;. 1.0. University of Illinois at Urbana-Champaign. Dataset. <a href="http://dx.doi.org/10.13012/J8PN93H8" target="_blank" rel="noopener">http://dx.doi.org/10.13012/J8PN93H8</a>, 2014.</p>
 <p><strong>Download the data here:</strong>  <a href="http://dx.doi.org/10.13012/J8PN93H8">http://dx.doi.org/10.13012/J8PN93H8</a></p>
 <p>The data is stored in CSV format, organized by year and month. In each file, each row represents a single taxi trip.  As there are several entries per second for four years, the raw trip data takes up about 116GB in text CSV format. The data has been compressed (zip) to reduce download time.</p>
 <p>The <a href="http://www.theguardian.com/news/datablog/2010/jul/16/data-plural-singular">data is</a> organized as follows:</p>
 <ul>
-<li>
-<strong>medallion:</strong> a permit to operate a yellow taxi cab in New York City, it is effectively a (randomly assigned) car ID.  See also <a href="http://en.wikipedia.org/wiki/Taxicabs_of_New_York_City#Medallions">medallions</a>.</li>
-<li>
-<strong>hack license:</strong> a license to drive the vehicle, it is effectively a (randomly assigned) driver ID. See also <a href="http://nycitycab.com/HackLicense.aspx">hack license</a>.</li>
-<li>
-<strong>vender id:</strong>  e.g., <em>Verifone Transportation Systems</em> (VTS), or <em>Mobile Knowledge Systems Inc</em> (CMT), implemented as part of the <a href="http://www.nyc.gov/html/tlc/html/industry/taxicab_serv_enh_archive.shtml">Technology Passenger Enhancements Project</a>.</li>
-<li>
-<strong>rate_code: </strong>taximeter rate, see <a href="http://www.nyc.gov/html/tlc/html/passenger/taxicab_rate.shtml">NYCT&amp;L description</a>.</li>
-<li>
-<strong>store_and_fwd_flag:</strong> unknown attribute.</li>
-<li>
-<strong>pickup datetime:</strong> start time of the trip, mm-dd-yyyy hh24:mm:ss EDT.</li>
-<li>
-<strong> dropoff datetime:</strong> end time of the trip, mm-dd-yyyy hh24:mm:ss EDT.</li>
-<li>
-<strong> passenger count:</strong> number of passengers on the trip, default value is one.</li>
+<li><strong>medallion:</strong> a permit to operate a yellow taxi cab in New York City, it is effectively a (randomly assigned) car ID.  See also <a href="http://en.wikipedia.org/wiki/Taxicabs_of_New_York_City#Medallions">medallions</a>.</li>
+<li><strong>hack license:</strong> a license to drive the vehicle, it is effectively a (randomly assigned) driver ID. See also <a href="http://nycitycab.com/HackLicense.aspx">hack license</a>.</li>
+<li><strong>vender id:</strong>  e.g., <em>Verifone Transportation Systems</em> (VTS), or <em>Mobile Knowledge Systems Inc</em> (CMT), implemented as part of the <a href="http://www.nyc.gov/html/tlc/html/industry/taxicab_serv_enh_archive.shtml">Technology Passenger Enhancements Project</a>.</li>
+<li><strong>rate_code: </strong>taximeter rate, see <a href="http://www.nyc.gov/html/tlc/html/passenger/taxicab_rate.shtml">NYCT&amp;L description</a>.</li>
+<li><strong>store_and_fwd_flag:</strong> unknown attribute.</li>
+<li><strong>pickup datetime:</strong> start time of the trip, mm-dd-yyyy hh24:mm:ss EDT.</li>
+<li><strong> dropoff datetime:</strong> end time of the trip, mm-dd-yyyy hh24:mm:ss EDT.</li>
+<li><strong> passenger count:</strong> number of passengers on the trip, default value is one.</li>
 <li>t<strong>rip time in secs:</strong> trip time measured by the taximeter in seconds.</li>
-<li>
-<strong> trip distance:</strong> trip distance measured by the taximeter in miles.</li>
-<li>
-<strong> pickup_longitude and pickup_latitude:</strong> GPS coordinates at the start of the trip.</li>
-<li>
-<strong>dropoff longitude and dropoff latitude:</strong> GPS coordinates at the end of the trip.</li>
+<li><strong> trip distance:</strong> trip distance measured by the taximeter in miles.</li>
+<li><strong> pickup_longitude and pickup_latitude:</strong> GPS coordinates at the start of the trip.</li>
+<li><strong>dropoff longitude and dropoff latitude:</strong> GPS coordinates at the end of the trip.</li>
 </ul>
 <p>The medallion and hack licenses are reassigned each year, so it is only possible to track drivers and vehicles within each year. This is necessary for to render the data pseudo-anonymous, since de-anonymized data from 2013 can be reconstructed from existing published datasets, see the note on anonymity below.</p>
-<br>
+<br />
 
 <p>Please note that the dataset contains a large number of errors. For example, there are several trips where the reported meter distances are significantly shorter than the straight-line distance, violating Euclidean geometry. For some periods, the field trip_time_in_secs is reported in seconds, in others it is reported in minutes (see the first record above). Generally the trip time can be safely computed by subtracting the pickup_datetime from the dropoff_datetime.  Additionally, many trips report GPS coordinates of (0,0), or cover impossible distances, times, or velocities. All of these types of obvious trip errors should be discarded in any analysis. In our preliminary investigations, <strong>these errors account for roughly 7.5% of all trips.</strong>  More details about these errors are available in the above <a href="https://www.dropbox.com/s/deruyszudfqrll0/TRB15DonovanWork.pdf">article</a> and corresponding <a href="https://github.com/UIUC-Transportation-Data/gpsresilience">open source code</a>. Currently, only the raw data (no error filtering) is available for download via this site.</p>
 <p>Fare data is also available from 2010-2014. The fare data takes about 75GB in raw text CSV format, and is also zipped to reduce download times.  The files are also organized by year and month, and contain the following attributes:</p>
 <ul>
-<li>
-<strong>medallion:</strong> a permit to operate a yellow taxi cab in New York City, it is effectively a (randomly assigned) car ID. See also <a href="http://en.wikipedia.org/wiki/Taxicabs_of_New_York_City#Medallions">medallions</a>.</li>
-<li>
-<strong>hack license:</strong> a license to drive the vehicle, it is effectively a (randomly assigned) driver ID. See also <a href="http://nycitycab.com/HackLicense.aspx">hack license</a>.</li>
-<li>
-<strong>vender id:</strong>  e.g., <em>Verifone Transportation Systems</em> (VTS), or <em>Mobile Knowledge Systems Inc</em> (CMT), implemented as part of the <a href="http://www.nyc.gov/html/tlc/html/industry/taxicab_serv_enh_archive.shtml">Technology Passenger Enhancements Project</a>.</li>
-<li>
-<strong>pickup datetime:</strong> start time of the trip, mm-dd-yyyy hh24:mm:ss EDT.</li>
-<li>
-<strong>payment type:</strong> Cash or credit card.</li>
-<li>
-<strong>fare amount:</strong> the meter fare, it should include the Newark surcharge, in USD.</li>
-<li>
-<strong> surcharge:</strong> Extra fees, such as rush hour and overnight surcharges, in USD.</li>
-<li>
-<strong> mta tax:</strong> <span style="color:#555555">Metropolitan commuter transportation mobility tax, in USD.</span>
-</li>
-<li>
-<strong> tip amount:</strong> tip amount, in USD.</li>
-<li>
-<strong> tolls amount:</strong> total price paid for tolls, summed across all tolls for the trip, in USD.</li>
-<li>
-<strong>total amount:</strong> all charges that are presented to the passenger at time of fare payment (includes tip for non-cash trips), in USD.</li>
+<li><strong>medallion:</strong> a permit to operate a yellow taxi cab in New York City, it is effectively a (randomly assigned) car ID. See also <a href="http://en.wikipedia.org/wiki/Taxicabs_of_New_York_City#Medallions">medallions</a>.</li>
+<li><strong>hack license:</strong> a license to drive the vehicle, it is effectively a (randomly assigned) driver ID. See also <a href="http://nycitycab.com/HackLicense.aspx">hack license</a>.</li>
+<li><strong>vender id:</strong>  e.g., <em>Verifone Transportation Systems</em> (VTS), or <em>Mobile Knowledge Systems Inc</em> (CMT), implemented as part of the <a href="http://www.nyc.gov/html/tlc/html/industry/taxicab_serv_enh_archive.shtml">Technology Passenger Enhancements Project</a>.</li>
+<li><strong>pickup datetime:</strong> start time of the trip, mm-dd-yyyy hh24:mm:ss EDT.</li>
+<li><strong>payment type:</strong> Cash or credit card.</li>
+<li><strong>fare amount:</strong> the meter fare, it should include the Newark surcharge, in USD.</li>
+<li><strong> surcharge:</strong> Extra fees, such as rush hour and overnight surcharges, in USD.</li>
+<li><strong> mta tax:</strong> <span style="color:#555555">Metropolitan commuter transportation mobility tax, in USD.</span></li>
+<li><strong> tip amount:</strong> tip amount, in USD.</li>
+<li><strong> tolls amount:</strong> total price paid for tolls, summed across all tolls for the trip, in USD.</li>
+<li><strong>total amount:</strong> all charges that are presented to the passenger at time of fare payment (includes tip for non-cash trips), in USD.</li>
 </ul>
 <p>Again, note the medallion and hack licenses change each year.</p>
-<br>
+<br />
 
 <p><strong>A note on anonymity. </strong>The published datasets on this site have been <em>pseudo-anonymized</em> to obscure personally identifiable information. It is well known that location data is notoriously difficult to anonymize, see for example the works of <a href="http://www.winlab.rutgers.edu/~gruteser/">Marco Gruteser</a> or <a href="http://research.microsoft.com/en-us/um/people/jckrumm/">John Krumm</a>. Moreover, a subset of the of the raw dataset obtained via a FOIL request (published by <a href="http://chriswhong.com/open-data/foil_nyc_taxi/">Chris Whong</a>) has already been <a href="http://blogs.lse.ac.uk/impactofsocialsciences/2014/07/16/nyc-improperly-anonymized-taxi-logs-pandurangan/">de-anonymized</a> by Vijay Pandurangan. Because the true ids can still be recovered with a FOIL request and by following the techniques described in the above links, we only aim to make recovering the true ids slightly more work than writing a new FOIL request to NYCT&amp;L.</p>
 <p><strong>How we pseudo-anonymized the datasets. </strong> The <em>medallion </em>and<em> hack licenses </em>were pseudo-anonymized by assigning a randomly generated medallion and hack license, instead of using the hashed medallion and hack licenses provided by NYCT&amp;L. Each year contains a new set of medallions and hack licenses. This means it is possible to track a driver through all of 2010, but it is NOT possible to track the <em>same driver </em>in 2011, for example. We are not able to give a medallion or hack license across the complete dataset because the 2013 data has already been de-anonymized, and doing so would trivially compromise the remaining data. Finally, the dataset may still be vulnerable to statistical or other attacks to recover the IDs, and thus we do not claim it is anonymous.</p>
 <p>We ultimately decided to publish this dataset in an effort to make our own research reproducible, and to aid other researchers interested in taxi operations.</p>
-<p>The NYYT&amp;L Commission does not restrict publishing the data, as determined from personal communication with the Commission. “The data was disclosed pursuant to the NYS Freedom of Information Law, therefore there is no licensing restriction on your publication of the data.”</p>
-<p>Moreover, the University of Illinois at Urbana Champaign Institutional Review Board reviewed our request to publish this dataset. “Since you received this information via the Freedom of Information Law, and will be analyzing trip and fare data, you are not considered interacting or intervening with human subjects, therefore, it has been determined that this project as described does not meet the definition of human subjects research as defined in 45CFR46(d)(f) or at 21CFR56.102(c)(e) and determined publication does not constitute human subjects research.”</p>
+<p>The NYYT&amp;L Commission does not restrict publishing the data, as determined from personal communication with the Commission. &#8220;The data was disclosed pursuant to the NYS Freedom of Information Law, therefore there is no licensing restriction on your publication of the data.&#8221;</p>
+<p>Moreover, the University of Illinois at Urbana Champaign Institutional Review Board reviewed our request to publish this dataset. &#8220;Since you received this information via the Freedom of Information Law, and will be analyzing trip and fare data, you are not considered interacting or intervening with human subjects, therefore, it has been determined that this project as described does not meet the definition of human subjects research as defined in 45CFR46(d)(f) or at 21CFR56.102(c)(e) and determined publication does not constitute human subjects research.&#8221;</p>
 <h3><strong>2008 Mobile Century experiment GPS trajectory data</strong></h3>
 <p><a href="http://traffic.berkeley.edu/project/mobilecentury">Mobile Century</a> was an experiment run at UC Berkeley to test the potential to use GPS data to estimate traffic conditions. The dataset contains 8 hours of GPS trajectory data from 100 vehicles on a ~10 mile stretch of I-880 in California, as well as inductive loop detector data from <a href="http://pems.dot.ca.gov/">PeMS</a>, and travel times recorded by license plate recognition. The dataset remains one of the most comprehensive public GPS datasets for traffic monitoring research.</p>
 <p>The key reference paper for the dataset is:</p>
 <p>J.-C. Herrera, D. Work, J. Ban, R. Herring, Q. Jacobson, and A. Bayen. “Evaluation of traffic data obtained via GPS-enabled Mobile Phones: the Mobile Century experiment.”  <em>Transportation Research Part C,</em> 18(3), pp. 568–583, 2010. DOI: 10.1016/j.trc.2009.10.006.<strong> </strong><strong>Download:</strong> <a style="color:#3088ff" href="https://www.dropbox.com/s/6oview283tkiyw1/TRC09.pdf">preprint</a>,  <a style="color:#3088ff" href="http://www.sciencedirect.com/science/article/pii/S0968090X09001430">manuscript</a>.  <span style="color:#ff6600"><em>Most Cited Transportation Research Part C: Emerging Technologies Article Since 2008 (June 2013).</em></span></p>
-<p><strong>Download the data here: </strong><a href="http://traffic.berkeley.edu/project/downloads/mobilecenturydata">http://traffic.berkeley.edu/project/downloads/mobilecenturydata</a></p>
+<p><strong>Download the data here: </strong><a href="http://traffic.berkeley.edu/project/downloads/mobilecenturydata">http://traffic.berkeley.edu/project/downloads/mobilecenturydata</a></p></p>
 					</section>
 
 					<!-- Footer -->
@@ -182,13 +158,7 @@
 </footer>
 <!-- Copyright -->
 <div id="copyright">
-  <ul>
-<li>© HTML5 UP</li>
-<li>Design by <a href="https://html5up.net">HTML5 UP</a>
-</li>
-<li>Jekyll Integration by <a href="https://somiibo.com">Somiibo</a>
-</li>
-</ul>
+  <ul><li>&copy; HTML5 UP</li><li>Design by <a href="https://html5up.net">HTML5 UP</a></li><li>Jekyll Integration by <a href="https://somiibo.com">Somiibo</a></li></ul>
 </div>
 
 
