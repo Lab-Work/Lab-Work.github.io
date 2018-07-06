@@ -1,5 +1,5 @@
 ---
 name: "Current Research Projects"
 order: 1
-projects: []
+projects: ["rail_eta", "rail_dispatch"]
 ---
