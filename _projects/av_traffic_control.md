@@ -16,5 +16,5 @@ publications: "<li>R. Stern, S. Cui, M. L. Delle Monache, R. Bhadani, M. Bunting
 <li>S. Cui, B. Seibold, R. Stern, and D. Work. \"Stabilizing Traffic Flow via a Single Autonomous Vehicle: Possibilities and Limitations.\" <em>in Proceedings of the IEEE Intelligent Vehicle Symposium, Redondo Beach, CA</em>, June 2017<strong>Download: </strong><a href='https://ieeexplore.ieee.org/document/7995897/'>manuscript</a>.</li>
 <li>F. Wu, R. Stern, M. Churchill, M. L. Delle Monache, Han, Piccoli, and D. Work. \"Measuring fuel consumption in oscillatory traffic: experimental results\" <em>in Proceedings of the Transportation Research Board Annual Meeting, Washington, DC</em>, January 2017. <strong>Download: </strong><a href='https://hal.archives-ouvertes.fr/hal-01516133/document'>manuscript</a>.</li>"
 
-image: /images/ring_road_exp.jpg
+image: /images/ring_road_exp.JPG
 ---
