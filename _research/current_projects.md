@@ -1,5 +1,5 @@
 ---
 name: "Current Projects"
 order: 1
-projects: ["rail_eta", "rail_dispatch", "motor_fault"]
+projects: ["av_traffic_control", "rail_eta", "rail_dispatch", "motor_fault"]
 ---
