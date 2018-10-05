@@ -16,5 +16,6 @@ strategies exist.
 
 students: "Yanbing Wang"
 
+image: /images/velocity_est.png
 ---
 
