@@ -15,7 +15,5 @@ strategies exist.
 <p>The main goal of this project is to investigate the ability of recently developed heterogeneous traffic flow models to capture the increasingly sophisticated features of urban traffic streams. Estimation algorithms will be developed to assess the model capabilities when combined with streaming data using nonlinear estimation techniques such as the particle filter.  Additionally, analysis from model implementations will provide insights on transportation planning and management strategies that are most suitable for today’s urban traffic complexity.
 
 students: "Yanbing Wang"
-
-image: /images/stringline.png
 ---
 
