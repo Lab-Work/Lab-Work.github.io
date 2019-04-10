@@ -7,5 +7,5 @@ description: "<p>Derek Gloudemans is a masters student in computer science at Va
 <p>Derek’s career and research interests focus on the usage of computational and statistical techniques to address large-scale and multiparameter problems traditionally solved using human intuition, with a particular emphasis on transportation systems engineering. Example projects include fault detection in the freight rail sector using machine learning. Derek is also interested in large-scale urban planning with a focus on sustainability, mobility and equality of service.</p>"
 degrees: "<li>Ph.D, Computer Science, CEE, Vanderbilt University 2022 (expected)</li>
 <li>B.S., Civil and Environmental Engineering, Vanderbilt University, Nashville, 2018</li>"
-image: /images/people/Gloudemans_05_2018.jpg
+image: /images/people/4_2019_Derek_Gloudemans.jpg
 ---
