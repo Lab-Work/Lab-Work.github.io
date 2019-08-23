@@ -3,8 +3,8 @@ key: "george"
 firstname: "George"
 lastname: "Gunter"
 degreedate: 2018-12-01
-description: "<p>George Gunter is a current undergraduate student at the University of Illinois at Urbana Champaign in the Civil and Environmental Engineering department. In addition to seeking a bachelors in CEE George is pursuing minor degrees in Mathematics and Computer Science. George is currently a research intern at the Institute for Software Integrating Systems in Daniel Work's research Group at Vanderbilt University</p>"
-degrees: "<li>B.S, Civil Infrastructure Systems, CEE, University of Illinois 2018 (expected)</li>"
+description: "<p>George Gunter is a PhD student in Civil Engineering and the Insitutte for Software Integrated Systems at Vanderbilt University. He earned his B.S. from the University of Illinois at Urbana Champaign. His research interests are broadly in applications of cyber-physical systems to civil infrastructure, specializing in smart and connected transportations sytems with a focus on traffic cmodeling and control.</p>"
+degrees: "<li>B.S, Civil Infrastructure Systems, CEE, University of Illinois 2019</li>"
 image: /images/people/GeorgeGunterHeadshot.jpg
 site: 
 ---
