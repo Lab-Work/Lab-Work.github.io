@@ -20,5 +20,5 @@ students: "Yanbing Wang"
 
 publications: "<li>Y. Wang and D. Work. \"Heterogeneous traffic estimation with particle filtering.\" submitted to  <em>IEEE Conference on Intelligent Transportation Systems</em>, 2019. <strong>Download: </strong><a href='https://vanderbilt.box.com/s/4dmhigxcn56zw8u4gqr0yqnwufohp60f'>preprint</a>.</li>"
 
-image: /images/velocity_est.png
+image: /images/partial observation.png
 ---
