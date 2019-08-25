@@ -1,5 +1,5 @@
 ---
 name: "Current Projects"
 order: 1
-projects: ["mixed_autonomy_control",rail_eta", "rail_dispatch", "radar_param_est", mix_traffic_est","tensor_outlier"]
+projects: ["mixed_autonomy_control","rail_eta", "rail_dispatch", "radar_param_est", mix_traffic_est","tensor_outlier"]
 ---
