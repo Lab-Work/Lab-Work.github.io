@@ -1,3 +1,45 @@
+- firstname: Daniel
+  lastname: Chen
+  degree: BS
+  department: Civil and Environmental Engineering
+  year: 2019
+  tag: VU
+- firstname: Matthew
+  lastname: Estopinal
+  degree: BS
+  department: Electrical Engineering and Computer Science
+  year: 2019
+  tag: VU
+- firstname: Nikki
+  lastname: Gloudemans
+  degree: BS
+  department: Mechanical Engineering
+  year: 2019
+  tag: VU
+- firstname: Brandon
+  lastname: Hall
+  degree: BS
+  department: Electrical and Computer Engineering
+  year: 2019
+  tag: VS
+- firstname: Jazon
+  lastname: Jiao
+  degree: BS
+  department: Electrical Engineering and Computer Science
+  year: 2019
+  tag: VU
+- firstname: Ricardo
+  lastname: Sandoval
+  degree: BS
+  department: Electrical Engineering and Computer Science
+  year: 2019
+  tag: VU
+- firstname: Caleb
+  lastname: Van Geffen
+  degree: BS
+  department: Electrical Engineering and Computer Science
+  year: 2019
+  tag: VU
 - firstname: Derek
   lastname: Gloudemans
   degree: BS
