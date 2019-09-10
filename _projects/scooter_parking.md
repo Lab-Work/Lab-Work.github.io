@@ -11,7 +11,8 @@ description: "<p>Proliferation of shared urban mobility devices (SUMDs), particu
 
 students: "Will Barbour, Ricardo Sandoval, Caleb Van Geffen"
 
-publications: "<li>W. Barbour, J. C. Martinez Mori, S. Kuppa, D. Work. \"Estimating Arrival Times for US Freight Rail Traffic.\" <em>Transportation Research Part C: Emerging Technologies</em>, 2018. <strong>Download: </strong><a href='https://www.dropbox.com/s/ojet2nbntvfeo54/Barbouretal2017.pdf?dl=0'>preprint</a>.</li>"
+publications: "<li>W. Barbour, M. Wilbur, R. Sandoval, C. Van Geffen, B. Hall, A. Dubey, D. Work. \"Data driven methods for effective micromobility parking.\" In <em>Proceedings of the Transportation Research Board Annual Meeting</em>, 2020 (submitted). <strong>Download: </strong><a href='{{site.url}}/download/scooter_parking_TRB20_preprint.pdf'>preprint</a>.</li>"
+
 
 image: /images/campus_cluster_map_low_res.png
 ---
