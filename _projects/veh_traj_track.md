@@ -1,7 +1,7 @@
 ---
 key: "veh_traj_track"
 
-order: 4
+order: 2
 
 name: "Fast and Accurate Detection and Tracking of Vehicles for Trajectory Extraction"
 

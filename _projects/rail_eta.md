@@ -1,7 +1,7 @@
 ---
 key: "rail_eta"
 
-order: 2
+order: 6
 
 name: "Estimating arrival times on freight railroads using machine learning"
 
