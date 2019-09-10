@@ -11,7 +11,7 @@ description: "<p>Proliferation of shared urban mobility devices (SUMDs), particu
 
 students: "Will Barbour, Ricardo Sandoval, Caleb Van Geffen"
 
-publications: "<li>W. Barbour, M. Wilbur, R. Sandoval, C. Van Geffen, B. Hall, A. Dubey, D. Work. \"Data driven methods for effective micromobility parking.\" In <em>Proceedings of the Transportation Research Board Annual Meeting</em>, 2020 (submitted). <strong>Download: </strong><a href='{{site.url}}/download/scooter_parking_TRB20_preprint.pdf'>preprint</a>.</li>"
+publications: "<li>W. Barbour, M. Wilbur, R. Sandoval, C. Van Geffen, B. Hall, A. Dubey, D. Work. \"Data driven methods for effective micromobility parking.\" In <em>Proceedings of the Transportation Research Board Annual Meeting</em>, 2020 (submitted). <strong>Download: </strong><a href='/download/scooter_parking_TRB20_preprint.pdf'>preprint</a>.</li>"
 
 
 image: /images/campus_cluster_map_low_res.png
