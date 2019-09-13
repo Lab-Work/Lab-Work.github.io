@@ -3,8 +3,8 @@ key: "nicole"
 firstname: "Nicole"
 lastname: "Gloudemans"
 degreedate: 2022-05-08
-description: "<p>Caroline Janssen is an undergraduate student in civil and environmental engineering at Vanderbilt University. She is currently working as an undergraduate research assistant in Prof. Dan Work's lab at the Institute for Software Integrated Systems.</p>
-<p>Caroline's career and research interests focus on smart cities and sustainable transportation and infrastructure development. Presently, she's working on experiments that examine how cars equipped with adaptive cruise control affect traffic flow.</p>"
-degrees: "<li>B.E., Civil and Environmental Engineering, Vanderbilt University, 2020 (expected)</li>"
-image: "/images/people/caroline.jpg"
+description: "<p>Nicole is a second-year undergraduate student in mechanical engineering at Vanderbilt University. Nicole's long-term career interests are in robotics and autonomous agents.</p>
+<p>Currently, Nicole is working on computer vision related projects, utilizing computer aided design software to create synthetic data for augmentation of image datasets and for training object re-identification algorithms. Nicole is also working on image-to-image translation of noisy traffic data.  In the past, Nicole has worked on designing, building and testing a multi-camera mount for collection of traffic data.</p>"
+degrees: "<li>B.E., Civil and Environmental Engineering, Vanderbilt University, 2022 (expected)</li>"
+image: "/images/people/N_Gloudemans.jpg"
 ---
