@@ -14,6 +14,6 @@ students: "Yue Hu"
 
 publications: "<li>Y. Hu and D. Work. \"Robust Tensor Recovery with Fiber Outliers for Traffic Events.\" submitted to  <em>ACM Transactions on Knowledge Discovery from Data (TKDD)</em>, 2019(under review). <strong>Download: </strong><a href='https://arxiv.org/abs/1908.10198'>preprint</a>.</li>"
 
-image: /images/traffic_outlier.PNG
+image: /images/traffic_outlier.png
 ---
 
