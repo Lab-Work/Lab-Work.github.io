@@ -2,135 +2,252 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
-      <loc>/blog/KTH-smart-cities/</loc>
+      <loc>https://lab-work.github.io/blog/KCchamber/</loc>
       
-        <lastmod>2018-07-03T00:00:00-04:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/Ford-tests/</loc>
-      
-        <lastmod>2018-06-27T00:00:00-04:00</lastmod>
+        <lastmod>2019-09-24T00:00:00-05:00</lastmod>
       
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
-      <loc>/blog/ofo-Analytics/</loc>
+      <loc>https://lab-work.github.io/blog/VUSE-posters/</loc>
       
-        <lastmod>2018-06-21T00:00:00-04:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/SIAM2018/</loc>
-      
-        <lastmod>2018-06-13T00:00:00-04:00</lastmod>
+        <lastmod>2019-09-05T00:00:00-05:00</lastmod>
       
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
-      <loc>/blog/Hyperloop-One/</loc>
+      <loc>https://lab-work.github.io/blog/VSA/</loc>
       
-        <lastmod>2018-06-13T00:00:00-04:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/Benni-visit/</loc>
-      
-        <lastmod>2018-05-23T00:00:00-04:00</lastmod>
+        <lastmod>2019-07-27T00:00:00-05:00</lastmod>
       
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
-      <loc>/blog/Junho-visit/</loc>
+      <loc>https://lab-work.github.io/blog/scooters/</loc>
       
-        <lastmod>2018-05-21T00:00:00-04:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/Memento/</loc>
-      
-        <lastmod>2018-05-14T00:00:00-04:00</lastmod>
+        <lastmod>2019-06-24T00:00:00-05:00</lastmod>
       
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
-      <loc>/blog/Peshel-visit/</loc>
+      <loc>https://lab-work.github.io/blog/ICROMA/</loc>
       
-        <lastmod>2018-05-08T00:00:00-04:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/kavli/</loc>
-      
-        <lastmod>2018-04-06T00:00:00-04:00</lastmod>
+        <lastmod>2019-06-18T00:00:00-05:00</lastmod>
       
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
-      <loc>/blog/Amr_Visit/</loc>
+      <loc>https://lab-work.github.io/blog/DDETFP19/</loc>
       
-        <lastmod>2018-03-10T00:00:00-05:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/Nashvilles-transit-plan/</loc>
-      
-        <lastmod>2018-03-10T00:00:00-05:00</lastmod>
+        <lastmod>2019-01-02T00:00:00-06:00</lastmod>
       
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
-      <loc>/blog/will-wins-eno/</loc>
+      <loc>https://lab-work.github.io/blog/ITSC2018/</loc>
       
-        <lastmod>2018-03-10T00:00:00-05:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>/blog/NAE/</loc>
-      
-        <lastmod>2018-02-08T00:00:00-05:00</lastmod>
+        <lastmod>2018-11-08T00:00:00-06:00</lastmod>
       
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
     </url>
   
     <url>
-      <loc>/blog/ddetfp-fellowship/</loc>
+      <loc>https://lab-work.github.io/blog/PIRE/</loc>
       
-        <lastmod>2018-01-11T00:00:00-05:00</lastmod>
+        <lastmod>2018-10-26T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/raphael-defense/</loc>
+      
+        <lastmod>2018-10-26T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/vuse-symposium/</loc>
+      
+        <lastmod>2018-10-26T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/Sustainable-Transportation/</loc>
+      
+        <lastmod>2018-09-18T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/ipam-newsletter/</loc>
+      
+        <lastmod>2018-09-10T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/array-of-things-workshop/</loc>
+      
+        <lastmod>2018-08-30T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/KTH-smart-cities/</loc>
+      
+        <lastmod>2018-07-03T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/Ford-tests/</loc>
+      
+        <lastmod>2018-06-27T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/ofo-Analytics/</loc>
+      
+        <lastmod>2018-06-21T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/SIAM2018/</loc>
+      
+        <lastmod>2018-06-13T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/Hyperloop-One/</loc>
+      
+        <lastmod>2018-06-13T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/Benni-visit/</loc>
+      
+        <lastmod>2018-05-23T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/Junho-visit/</loc>
+      
+        <lastmod>2018-05-21T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/Memento/</loc>
+      
+        <lastmod>2018-05-14T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/Peshel-visit/</loc>
+      
+        <lastmod>2018-05-08T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/kavli/</loc>
+      
+        <lastmod>2018-04-06T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/Amr_Visit/</loc>
+      
+        <lastmod>2018-03-10T00:00:00-06:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/Nashvilles-transit-plan/</loc>
+      
+        <lastmod>2018-03-10T00:00:00-06:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/will-wins-eno/</loc>
+      
+        <lastmod>2018-03-10T00:00:00-06:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/NAE/</loc>
+      
+        <lastmod>2018-02-08T00:00:00-06:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/ddetfp-fellowship/</loc>
+      
+        <lastmod>2018-01-11T00:00:00-06:00</lastmod>
       
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
@@ -138,8 +255,8 @@
   
   
     <url>
-      <loc>/about/</loc>
-       <lastmod>2018-03-21T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/about/</loc>
+       <lastmod>2018-03-21T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
@@ -148,8 +265,8 @@
      </url>
   
     <url>
-      <loc>/blog/</loc>
-       <lastmod>2018-03-15T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/blog/</loc>
+       <lastmod>2018-03-15T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
@@ -158,8 +275,8 @@
      </url>
   
     <url>
-      <loc>/data/</loc>
-       <lastmod>2018-03-21T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/data/</loc>
+       <lastmod>2018-03-21T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
@@ -168,8 +285,8 @@
      </url>
   
     <url>
-      <loc>/elements/</loc>
-       <lastmod>2017-11-02T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/elements/</loc>
+       <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
@@ -178,8 +295,8 @@
      </url>
   
     <url>
-      <loc>/</loc>
-       <lastmod>2017-11-02T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/</loc>
+       <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
@@ -188,8 +305,8 @@
      </url>
   
     <url>
-      <loc>/publications/</loc>
-       <lastmod>2018-03-21T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/publications/</loc>
+       <lastmod>2018-03-21T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
@@ -198,18 +315,8 @@
      </url>
   
     <url>
-      <loc>/research/</loc>
-       <lastmod>2018-03-21T00:00:00-04:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>0.7</priority>
-      
-     </url>
-  
-    <url>
-      <loc>/research2/</loc>
-       <lastmod>2018-07-03T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/research/</loc>
+       <lastmod>2018-07-03T00:00:00-05:00</lastmod>
       
        <changefreq>monthly</changefreq>
       
@@ -218,8 +325,8 @@
      </url>
   
     <url>
-      <loc>/service/</loc>
-       <lastmod>2018-03-21T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/service/</loc>
+       <lastmod>2018-03-21T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
@@ -228,7 +335,7 @@
      </url>
   
     <url>
-      <loc>/sitemap.xml</loc>
+      <loc>https://lab-work.github.io/sitemap.xml</loc>
        <lastmod>2017-11-10T00:20:35+00:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -238,8 +345,8 @@
      </url>
   
     <url>
-      <loc>/teaching/</loc>
-       <lastmod>2018-03-21T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/teaching/</loc>
+       <lastmod>2018-03-21T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
@@ -248,8 +355,8 @@
      </url>
   
     <url>
-      <loc>/team/</loc>
-       <lastmod>2018-03-21T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/team/</loc>
+       <lastmod>2018-03-21T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
@@ -258,7 +365,7 @@
      </url>
   
     <url>
-      <loc>/feed.xml</loc>
+      <loc>https://lab-work.github.io/feed.xml</loc>
        <lastmod>2017-11-10T00:20:35+00:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -268,7 +375,7 @@
      </url>
   
     <url>
-      <loc>/feed.xslt.xml</loc>
+      <loc>https://lab-work.github.io/feed.xslt.xml</loc>
        <lastmod>2017-11-10T00:20:35+00:00</lastmod>
       
        <changefreq>weekly</changefreq>
@@ -278,8 +385,8 @@
      </url>
   
     <url>
-      <loc>/blog/page2/</loc>
-       <lastmod>2017-11-02T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/blog/page2/</loc>
+       <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
@@ -288,8 +395,28 @@
      </url>
   
     <url>
-      <loc>/blog/page3/</loc>
-       <lastmod>2017-11-02T00:00:00-04:00</lastmod>
+      <loc>https://lab-work.github.io/blog/page3/</loc>
+       <lastmod>2017-11-02T00:00:00-05:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>1.0</priority>
+      
+     </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/page4/</loc>
+       <lastmod>2017-11-02T00:00:00-05:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>1.0</priority>
+      
+     </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/page5/</loc>
+       <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
