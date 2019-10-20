@@ -12,7 +12,7 @@ funding: "National Science Foundation"
 
 students: "Yue Hu"
 
-publications: "<li>Y. Hu and D. Work. \"Robust Tensor Recovery with Fiber Outliers for Traffic Events.\" submitted to  <em>ACM Transactions on Knowledge Discovery from Data (TKDD)</em>, 2019(under review). <strong>Download: </strong><a href='https://arxiv.org/abs/1908.10198'>preprint</a>.</li>"
+publications: "<li>Y. Hu and D. Work. \"Robust Tensor Recovery with Fiber Outliers for Traffic Events.\" submitted to  <em>ACM Transactions on Knowledge Discovery from Data (TKDD)</em>, 2019(under review). <strong>Download: </strong><a href='https://arxiv.org/abs/1908.10198'>preprint</a>.</li> <strong>Code: </strong><a href='https://github.com/Lab-Work/Robust_tensor_recovery_for_traffic_events'>Lab-Work github</a>.</li>"
 
 image: /images/traffic_outlier.png
 ---
