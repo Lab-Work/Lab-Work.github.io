@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
 <title>Research</title>
-<meta name="description" content="Research">
+<meta name="description" content="">
 
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
@@ -44,8 +44,8 @@
   <li class=""><a href="/">Home</a></li>
   <li class=""><a href="/about/">About</a></li>
 <li class=""><a href="/team/">Team</a></li>
-    <li class=" active "><a href="/research2/">Research</a></li>
-    <li class=""><a href="/publications/">Publicatons</a></li>
+    <li class=" active "><a href="/research/">Research</a></li>
+    <li class=""><a href="/publications/">Publications</a></li>
      <li class=""><a href="/teaching/">Teaching</a></li>
     <li class=""><a href="/data/">Data</a></li>
 </ul>
@@ -66,101 +66,509 @@
 	<h1>Research</h1>
 </header>
 
-<p>Our research focuses on developing new estimation approaches to improve our understanding of transportation systems at increasingly large scales. A summary of representative projects is below; please see <a href="/publications">here</a> for a complete list of our research products and publications.</p>
-<h2><strong><em>Large-scale traffic estimation with </em></strong><strong><em>performance guarantees</em></strong></h2>
-<span class="image right"><img src="/images/largescale.png" alt="" /></span>
-<p>Despite important advances in computation and sensing, real-time traffic estimation problems are still open to a number of critical issues including: (i) the entire state of the transportation network is too large for the estimators to scale in real time; (ii) few results are available which provide a theoretical analysis of the performance of traffic estimation algorithm, and (iii) the non-observability of the traffic model is inevitable due to the existence of shocks and the sparsity of sensor measurements.</p>
-<p>Our work aims at designing scalable distributed traffic estimation algorithms to address issues (i) and (ii) with specific care of issue (iii). Large-scale networks can be partitioned into overlapping local sections, with the traffic density on each local section described by a traffic model on the local state, and estimated by a cheap commodity computer (e.g., an agent).  The main algorithmic challenge is to obtain theoretical bounds on the performance of the estimator, even as the system state switches between observable and unobservable modes. We are also interested in the development of estimation algorithms when with performance guarantees when not all sensor data can be transmitted due to energy and communication costs.</p>
-<p><strong>Funding: </strong>National Science Foundation</p>
-<p><strong>Students:</strong> Ye Sun</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>Y. Sun and D. Work, “Online estimation with synthetic measurements under an event-triggered sensor scheduler.” <em>submitted to the IEEE Transactions on Control Systems Technology</em>, 2016.<em> </em><strong>Download</strong>: <a href="https://www.dropbox.com/s/5fr1u8hnds4fr43/SunWork2016.pdf?dl=0">preprint.</a></li>
-<li>Y. Sun and D. Work. “Kalman filtering with synthetic measurements under an event-triggered sensor scheduler.” <em>to appear in the European Controls Conference, June 2016.</em></li>
-<li>Y. Sun and D. Work. “Scaling the Kalman filter for large-scale traffic estimation.” <em>submitted to the IEEE Transactions on Control of Network Systems, February 2015. </em><strong>Download: </strong>  <a href="https://www.dropbox.com/s/i4pa1lhd09f3dyv/DLKCF_TCNS_extended.pdf?dl=0">extended version</a>, <a href="https://github.com/yesun/DLKCF">source code</a>.</li>
-<li>Y. Sun and D. Work. “A distributed local Kalman consensus filter for trafﬁc estimation.” <em>in Proceedings of</em><em> the IEEE Conference on Decision and Control, pp. 6484–6491, 2014.</em></li>
-</ol>
-<h2>Quantifying resilience with coarse GPS data</h2>
-<span class="image right"><img src="/images/2943c-color_pace_3weeks.png" alt="" /></span>
-<p>What effects do natural disasters have on our transportation infrastructure?  How resilient are our cities to extreme events, and how quickly do they recover?  Our work aims to answer these questions in a way that is low-cost and practical, by analyzing millions of GPS records from taxis equipped with GPS.  In this way, it is possible to determine the pace of traffic (i.e., travel time per mile) between various regions of the city, and detect atypical congestion. Our method is tested using a dataset of nearly 700 million taxi trips from New York City.  We have made the dataset publicly available <a title="Open data" href="/data">here</a>.</p>
-<p>The basic idea is that city traffic conditions follow a fairly periodic pattern.  The figure (left) shows the average pace (travel time per mile) between various regions of the city over the course of three weeks (East of the Hudson, Upper Manhattan, Midtown, and Lower Manhattan).  High travel times are obvious during rush hour each day, especially in the Midtown-to-Midtown trips (M-M).</p>
-<p>On a particular day, the traffic conditions may deviate significantly from this expected behavior.  This is usually due to an extreme event such as a natural disaster or bad weather conditions.  Based on this deviation, it is possible to measure how “usual” or “unusual” the traffic conditions are.  For more information about how this probabilistic computation is performed, see our paper:</p>
-<p>Brian Donovan and Daniel B. Work. “Using coarse GPS data to quantify city-scale transportation system resilience to extreme events.”  presented at the<em> </em><em>Transportation Research Board 94th Annual Meeting, January 2015. </em> <a href="https://www.dropbox.com/s/deruyszudfqrll0/TRB15DonovanWork.pdf">preprint</a>, <a href="https://github.com/UIUC-Transportation-Data/gpsresilience">source code</a>.</p>
-<p>You can also download the data here:  <a href="http://dx.doi.org/10.13012/J8PN93H8">http://dx.doi.org/10.13012/J8PN93H8</a></p>
-<p>Brian Donovan and Daniel B. Work  &#8220;New York City Taxi Trip Data (2010-2013)&#8221;. 1.0. University of Illinois at Urbana-Champaign. Dataset. <a href="http://dx.doi.org/10.13012/J8PN93H8" target="_blank">http://dx.doi.org/10.13012/J8PN93H8</a>, 2014.</p>
-<p>This <a href="https://www.youtube.com/watch?v=cIACwnqLT5E">video</a> shows all of the taxi trips during the weeks before, during and after Hurricane Sandy, color coded by their pace.  On the right is a normal week for comparison.  The graph at the top indicates how typical or atypical the traffic conditions are, and indicates that it took over five days for the city traffic network to recover from the storm.</p>
-<p>One interesting finding is that travel times are actually lower than expected in many parts of the city during the recovery process.  This indicates a change in the usage of the transportation infrastructure – it is likely that the hurricane caused a decrease in usage.  This is especially true in areas like Lower Manhattan, which experienced severe flooding and power outages.  Another surprising result is observable throughout the city on Wednesday the 31st, when the network is completely congested by people try to return to normal operations. This result  indicates that there is room for further research in the post-disaster process of repopulating the city after an evacuation.</p>
-<p><strong>Funding: </strong>National Science Foundation</p>
-<p><strong>Students:</strong> Brian Donovan</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>Source Code: <a href="https://github.com/Lab-Work/gpsresilience">https://github.com/Lab-Work/gpsresilience</a></li>
-<li><a href="/data">2010-2013 NYC Taxi Dataset</a></li>
-<li><a href="/data">2010-2013 NYC Traffic Estimates</a></li>
-<li>B. Donovan, J. Lee, and D. Work. “A high resolution method for quantifying resilience of urban road networks.” <em>submitted to IEEE Transactions on Intelligent Transportation Systems, 2016. </em><strong>Download:</strong> <em> </em><a href="https://www.dropbox.com/s/d2d2xgfw89p8jg6/DonovanLeeWorkTransITS.pdf?dl=0">preprint</a>.</li>
-<li>X. Guan, C. Chen, and D. Work. “From Warnings to Awareness and Actions: Insights from Hurricane Sandy.” <em>submitted to the 2017 Transportation Research Board Annual Meeting</em>, 2016.</li>
-<li>B. Donovan and D. Work. “Empirically quantifying city-scale transportation resilience to extreme events” <em>submitted to Transportation Research Part C: Emerging Technologies</em><em>,</em> 2016. <strong>Download:</strong> <a href="https://www.dropbox.com/s/hk4kxosxs0umyx8/DonovanWorkTR-C2016.pdf?dl=0">preprint</a>.</li>
-<li> X. Guan, C. Chen, and D. Work. “Tracking the Evolution of Infrastructure Systems and Mass Responses Using Publically Available Data.” <em>submitted to PLOS ONE</em>, 2016.</li>
-<li>B. Donovan and D. Work. “Using coarse GPS data to quantify city-scale transportation system resilience to extreme events.” <em>presented at the</em> <em>Transportation Research Board 94th Annual Meeting, August 2014. </em><strong>Download: </strong><a href="https://www.dropbox.com/s/deruyszudfqrll0/TRB15DonovanWork.pdf">preprint</a>, <a href="https://github.com/UIUC-Transportation-Data/gpsresilience">source code</a> <a href="http://dx.doi.org/10.13012/J8PN93H8">data</a>.</li>
-</ol>
-<p>&nbsp;</p>
-<h2>Improving intelligent transportation systems (ITS) in safety-critical environments</h2>
-<span class="image right"><img src="/images/ThermalColormap-300x169.png" alt="" /></span>
-<p>The enormous and rapidly increasing amount of traffic data opens tremendous opportunities for the development of intelligent transportation systems. However, real time traffic estimation and optimal traffic management in safety critical environments are still open problems. One example occurs in rural work zones, where existing sensor coverage is sparse.</p>
-<p>Our work aims at improving ITS in safety-critical situations via: <em>i)</em> the development of a low-cost and low-power wireless sensor network for traffic monitoring in work zones; <em>ii)</em> the development of mathematical traffic models on networks for amenable for optimal traffic management. In this work, a low-cost and low-power wireless traffic sensor platform is built using the passive infrared camera and machine learning algorithms to detect vehicles and estimate the traffic speed. Concurrently, we are developing a theoretical framework traffic estimation and optimal traffic management for networks of conservation laws. The developed sensor network, a variety of traffic estimation algorithms (including ensemble Kalman filter and Particle filter), and the optimal traffic management (using convex programs) are simulated and validated in micro-simulation environment.</p>
-<p><strong>Funding: </strong>Illinois Department of Transportation</p>
-<p><strong>Students:</strong> Yanning Li, Juan Carlos Martinez Mori, Chris Chen, Fangyu Wu</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>Y. Li, J. C. Martinez Mori, and D. Work, “Estimating traffic conditions from smart work zone systems.” <em>submitted to the Journal of Intelligent Transportation Systems, </em>2016. <strong>Download:</strong> <a href="https://www.dropbox.com/s/0p4s5amhcjjou5h/LiMoriWork2016.pdf?dl=0">preprint</a>.</li>
-<li>Y. Li, C. Claudel, B. Piccoli, and D. Work. “A convex formulation of traffic dynamics on transportation networks.” <em>submitted to SIAM Journal on Applied Mathematics,</em> 2016. <strong>Download: </strong><a href="https://www.dropbox.com/s/6bid1dgqgzrpamv/LiClaudelPiccoliWork2016.pdf?dl=0">preprint</a>.</li>
-<li>Y. Li, J. C. Martinez Mori, and D. Work, “Improving the effectiveness of smart work zone technologies,” <em>Illinois Department of Transportation Technical Report</em>, <em>submitted for review July 2016. </em></li>
-<li>B. Donovan Y. Li,  R. Stern J. Jiang C. Claudel, and D. Work. “Vehicle detection and speed estimation with PIR sensors.” <em>International Conference on Information Processing in Sensor Networks, peer reviewed poster session,</em> April 2015. <strong>Download:</strong> <a href="https://www.dropbox.com/s/i8dhtzy3iiessm4/IPSN2015.pdf?dl=0">preprint</a></li>
+<p>Our lab's research focuses on developing new estimation approaches to improve our understanding of transportation systems at increasingly large scales. A summary of representative projects is below; please see <a href="/publications">here</a> for a complete list of our research products and publications.</p>
 
-</ol>
-<h2>TrafficTurk</h2>
 
-<span class="image right"><img src="/images/cdb51-traffic2bturk_11.jpg" alt="" /></span>
-<p>TrafficTurk is a mobile application that allows easy collection of traffic data.  The app functions as a turning movement counter &#8211; the user stands at an intersection and swipes the screen when a vehicle passes.  The user swipes the trajectory of the car on an intersection image &#8211; different types of swipes correspond to various types  of turns.  All of these turns are sent wirelessly to a central server in realtime, so they can be analyzed and stored in a database. The purpose of TrafficTurk is to collect data on a large scale during unusual events. Ideally, many users will simultaneously collect data at nearby intersections in order to get a complete picture of the traffic patterns.  The server sends a map to the app, allowing users to scroll around and see various intersections.  They choose the one that they intend to collect data at, and begin counting. TrafficTurk is designed for the worst-case scenario.  During some types of unusual events, mobile networks become crowded or even fail entirely.  For this reason, the app must be able to function with intermittent or absent internet connections.  To support this, the app can easily pre-cache all of the intersections in an area.  In this way, it is possible to count at these intersections even if there are no mobile networks available near them.  Similarly, the app maintains a cache of collected data which only clears once the server has received it.  In this way, the app has a 100% data collection guarantee as long as the phone eventually connects to a wireless network.</p>
-<p>&nbsp;</p>
-<p><strong>Funding: </strong>Civil and Environmental Engineering, UIUC; College of Engineering, UIUC; Illinois Department of Transportation; National Science Foundation</p>
-<p><strong>Students:</strong> Brian Donovan, Sudeep Gowrishankar, Mostafa Reisi Gahrooei, Jon Que, Bhinav Sura, Meng Han</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>TrafficTurk Android application <a href="https://play.google.com/store/apps/details?id=my.traffic.turk ">https://play.google.com/store/apps/details?id=my.traffic.turk </a></li>
-<li>“Inferring traffic signal phases from turning movement counters using hidden Markov models.” M. Reisi Gahrooei and D. Work, <em>in press, IEEE Transactions on Intelligent Transportation Systems,</em>PP(99), pp. 1-11, June 2014.<strong> Download: </strong><a href="https://www.dropbox.com/s/gr637fsvg2gkkh1/ReisiGahrooeiWork2014.pdf">preprint</a>, <a href="https://github.com/reisiga2/TrafficSignalPhaseEstimation">source code</a></li>
-<li>“Estimating traffic control strategies with inverse optimal control.” S. Gowrishankar and D. Work. <em> </em><em>in Proceedings of the </em>IEEE Conference on Intelligent Transportation Systems, April 2013.  <strong>Download:</strong><a href="https://www.dropbox.com/s/rbnn7x7n76p7uo7/GowrishankarWork13.pdf">preprint</a>, <a href="https://github.com/sgowris2/InverseOptimalControl">source code</a></li>
-<li>“Estimating traffic signal phases from turning movement counters.” M. Reisi Gahrooei and D. Work. <em> in Proceedings of the IEEE Conference on Intelligent Transportation Systems, April 2013, pp. </em>1113 – 1118<em>. </em><strong>Download: </strong><a href="https://www.dropbox.com/s/cahvladdq9xz9wg/IEEEITSC_Phase_Estimation.pdf">preprint</a>, <a href="https://github.com/reisiga2/Estimating-phases-from-turning-movement-counts">source code</a></li>
-<li>AwesomeStitch for OpenStreetMap: <a href="https://github.com/Lab-Work/AwesomeStitch">https://github.com/Lab-Work/AwesomeStitch</a></li>
-</ol>
-<p>&nbsp;</p>
-<h2>Traffic State Estimation and Incident Detection</h2>
-<span class="image right"><img src="/images/DensityEvolution.png" alt="" /></span>
-<div>Joint traffic state estimation and incident detection is a critical problem for both traffic monitoring and highway safety. In this project, multiple model filtering techniques (e.g., particle filter and Kalman filter) and macroscopic traffic flow models are proposed to jointly estimate the traffic state and detect traffic incidents in real-time using sensor data. The algorithms are tested through incident data generated by a microscopic traffic simulation software (CORSIM) and field data collected from the mobile century experiment by Berkeley, 2008. The left figure shows the traffic density evolution from a CORSIM simulation, where the red area in the plot indicates the traffic congestion caused by an incident.</div>
-<div>
-<p><strong>Funding: </strong>Federal Highway Administration</p>
-<p><strong>Students:</strong> Ren Wang</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>R. Wang, S. Fan, and D. Work. “Efficient multiple model particle filtering for joint traffic state estimation and incident detection.” <em>Transportation Research Part C: Emerging Technologies (in press), 2016. </em><strong>Download:</strong> <a href="https://www.dropbox.com/s/fun0n62yfg1dx97/WangFanWork_TRC_v1.pdf?dl=0">preprint</a>.</li>
-<li>R. Wang, D. Work, and R. Sowers. “Multiple Model Particle Filter for Traffic Estimation and Incident Detection.”  <em>IEEE Transactions on Intelligent Transportation Systems (in press), 2016. </em><strong>Download: </strong><a href="https://www.dropbox.com/s/fxhsv55ncbo58md/WangWorkSowers2016.pdf?dl=0">preprint</a>, <a href="https://github.com/Lab-Work/MMPF_Traffic_Estimation_Incident_Detection">source code</a>.</li>
-<li>R. Wang and D. Work &#8221;Joint parameter and state estimation algorithms for real-time traffic monitoring.&#8221; NEXTRANS, technical report. No. DTRT12-G-UTC05, December 2013.</li>
-<li>R. Wang and D. Work. “Interactive multiple model ensemble Kalman filter for traffic estimation and incident detection.” <em>in Proceedings of</em><em> the IEEE Conference on Intelligent Transportation Systems, pp 804–809, October 2014. </em><strong>Download: </strong><a href="https://www.dropbox.com/s/0b27rjncbzoonsr/WangWorkITSC14.pdf?dl=0">preprint</a>, <a href="https://github.com/Lab-Work/IMM_EnKF_Traffic_Estimation_Incident_Detection">source code</a></li>
-</ol>
-</div>
-<div>
-<h2>Decision Making with Data Uncertainty in Life Cycle Assessment</h2>
-<span class="image right"><img src="/images/LCA.png" alt="" /></span>
-<div>In life cycle assessment, when product systems are optimized to minimize environmental impacts, uncertainty in the process data may impact optimal decisions. In this project, a robust optimization approach is proposed for decision making under uncertainty at the life cycle inventory stage. The level of protection against data uncertainty can be controlled to reflect varying degrees of conservatism. The left figure shows the comparison between the proposed robust optimization approach (red) and deterministic optimization approach (blue) in terms of carbon oxygen output for an electricity generation problem with varying degrees of protection against data uncertainty.</div>
 
-<div>
-<p><strong>Students:</strong> Ren Wang</p>
-<p><strong>Publications and Products:</strong></p>
-<ol>
-<li>“Application of robust optimization in matrix-based LCI for decision making under uncertainty. ” R. Wang and D. Work, <em></em><em>International Journal of Life Cycle Assessment</em>, 19(5) ,pp. 1110-1118, 2014. <strong>Download: </strong><a href="https://www.dropbox.com/s/elvgcnmvjwi0i7t/IJLCA_WangWork.pdf">preprint</a>, <a href="https://github.com/renwang/Robust_Optimization_LCI_Uncertainty">source code</a>, <a href="http://link.springer.com/article/10.1007%2Fs11367-013-0685-y">manuscript</a>.</li>
-</ol>
-</div>
-</div>
+
+
+	
+		<h1>
+			Current Projects
+		</h1>
+
+		<div class="content">
+			<br>
+			
+				
+					<h2>
+						
+								
+						<b>Traffic flow control with connected and autonomous vehicles</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/Arizona_Platoon_Experiment.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>Increasingly the make-up of traffic includes vehicles with partially autonomous features, usch as Adaptive Cruise Control (ACC). While it has been shown that careful control of autonomous vehicles in mixed traffic can smooth traffic instabilities caused by human drivers, it has also been shown that currently available ACCs can fall victim to the same instabilities.</p> <p>This project will explore how connacted and autonomous vehicles (CAVs) can be used to effectively smooth traffic insyabilities. Currently, several Reinforcement Learning control methods have been developed that optimize for global smoothing. Experiments will be run in the future which involve real CAVs executing control algorithms in a freeway environment.</p>
+						
+					
+						<p><strong>Funding: </strong> National Science Foundation </p>
+					
+
+					
+						<p><strong>Students: </strong> George Gunter </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>G. Gunter, C. Janssen, W. Barbour, R. Stern, D. Work. “Model based string stability of adaptive cruise control systems using field data.” <em>Submitted to IEEE Transactions on Intelligent Vehicles</em>, 2019 (under review). <strong>Download:</strong><a href='https://arxiv.org/pdf/1902.04983.pdf'>manuscript</a>.</li>
+						</ol>
+					
+			
+				<br>
+				
+			
+				
+			
+				
+			
+				
+					<h2>
+						
+								
+						<b>Fast and Accurate Detection and Tracking of Vehicles for Trajectory Extraction</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/Vehicle_Trajectory_Tracking.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p> Accurate vehicle trajectory information is the backbone on which modern traffic flow models are built and is also useful for appraising the effects of next-generation transportation technologies and methods on the stability of traffic flow. This work seeks to provide an accurate, real-time source for vehicle trajectory information by leveraging computer vision algorithms to process information from a camera sensor network. Current work seeks to accelerate existing methods for 3D object detection and multi-object tracking to real-time processing speeds. Additional work will include intelligently handling object occlusions and re-identifying objects in images from different camera views.</p>
+						
+					
+						<p><strong>Funding: </strong> National Science Foundation, Tennessee Department of Transportation </p>
+					
+
+					
+						<p><strong>Students: </strong> Derek Gloudemans </p>
+					
+
+					
+			
+				<br>
+				
+			
+				
+			
+				
+					<h2>
+						
+								
+						<b>Management of shared e-scooter parking using historical data</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/campus_cluster_map_low_res.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>Proliferation of shared urban mobility devices (SUMDs), particularly dockless e-scooters, has created opportunities for users desiring efficient, short trips. Simultaneously, these devices have raised management challenges for cities and regulators in terms of safety, infrastructure, and parking. There is a need in some high-demand areas for dedicated parking locations for dockless e-scooters and other devices.</p> <p>We use the data generated by SUMD trips for establishing locations of parking facilities and assessing their required capacity and anticipated utilization. The problem objective is: find locations for a given number of parking facilities that maximize the number of trips that could reasonably be ended and parked at these facilities. Posed another way, what is the minimum number and best locations of parking facilities needed to cover a desired portion of trips at these facilities?</p> <p>We find areas of high-density trip destination points using unsupervised machine learning algorithms to serve as parking locations. The dwell time of each device is used to estimate the number of devices parked in a location over time and the necessary capacity of the parking facility. We test these methods on scooter data totalling approximately 100,000 trips at Vanderbilt University. DBSCAN is the most effective algorithm tested for determining high-performing parking locations. A selection of 19 parking locations, is enough to capture roughly 25% of all trips in the dataset. The vast majority of parking facilities found require a mean capacity of 6 scooters when sized for the 98th percentile observed demand.</p>
+						
+					
+
+					
+						<p><strong>Students: </strong> Will Barbour, Ricardo Sandoval, Caleb Van Geffen </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>W. Barbour, M. Wilbur, R. Sandoval, C. Van Geffen, B. Hall, A. Dubey, D. Work. "Data driven methods for effective micromobility parking." In <em>Proceedings of the Transportation Research Board Annual Meeting</em>, 2020 (submitted). <strong>Download: </strong><a href='/download/scooter_parking_TRB20_preprint.pdf'>preprint</a>.</li>
+						</ol>
+					
+			
+				<br>
+				
+			
+				
+					<h2>
+						
+								
+						<b>Estimating adaptive cruise control model parameters from on-board radar units</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/radar_all_track.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p> This project explores methods for model parameter estimation on a car-following model using data collected from Adaptive Cruise Control (ACC) enabled vehicles. The proposed methods are batch method least-squares and an online particle filter. Numerical experiments demonstrate the accuracy and computational performance of the methods relative to a commonly used simulation-based optimization approach. The methods are also assessed on empirical data collected from a 2019 model year ACC vehicle driven in a highway environment. Speed, space gap, and relative velocity data are recorded directly from the factory-installed radar unit via the vehicle’s CAN bus. The least-squares method has the fastest run-time performance, and is up to 3 orders of magnitude faster than other methods. The particle filter is faster than real-time, and therefore is suitable in streaming applications in which the datasets can grow arbitrarily large.
+						
+					
+						<p><strong>Funding: </strong> National Science Foundation </p>
+					
+
+					
+						<p><strong>Students: </strong> Yanbing Wang, George Gunter </p>
+					
+
+					
+			
+				<br>
+				
+			
+				
+			
+				
+			
+				
+			
+				
+					<h2>
+						
+								
+						<b>Estimating arrival times on freight railroads using machine learning</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/stringline.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>We have written a mixed integer linear optimization model that dispatches trains according to signaling constraints on single track railway lines with passing sidings and does so optimally according to the minimization of a weighted delay measure.</p> <p>This concept is similar to that used in commercial computer-aided dispatching systems, but those systems have the notable shortcoming of being overridden often in areas with complex dispatching situations. That is, they do not match the behavior of human dispatchers well. I propose to remedy this problem by performing inverse optimization according to known historical data for single track rail lines.</p> <p>Specifically, the forward optimization problem (dispatching trains) can be tuned to match historical dispatching behavior as closely as possible. The resulting dispatching model is a useful simulation tool that could be used for prediction of train arrivals, assessment of dispatching performance, investigation of track infrastructure layout, and schedule optimization.</p>
+						
+					
+
+					
+						<p><strong>Students: </strong> Will Barbour </p>
+					
+
+					
+			
+				<br>
+				
+			
+				
+			
+				
+					<h2>
+						
+								
+						<b>Estimating arrival times on freight railroads using machine learning</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/route_feature_weights.jpg" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>Numerous methods exist by which to estimate the arrival times (ETAs) of freight trains. Many have been applied to passenger rail, particularly in Europe. But few have investigated the predictability of freight railroads in the United States with large amounts of historical data. Using a dataset from CSX Transportation, we applied machine learning regression techniques on a rich feature set. The features mined from historical railroad operational data included train characteristics, crew information, and network state information.</p> <p>The dynamics of train operations across route segments is very complex and varied due to numerous factors including topography, locations of passing sidings, and locations of intermediate yards. For this reason, independent regression models were built for a series of discrete points across each route segment. The intuition behind this modeling decision is that the factors contributing to ETA prediction change as the train completes its route. This hypothesis is supported if significant changes are observed in regression feature weights between independent models.</p> <p>The methodology was tested on sections of the railroad with notoriously varied and unpredictable behavior. ETA predictive performance was compared to that of simple statisitcal methods, which are used in some prediction systems on the railroad. Results showed a consistent 20-30% improvement in prediction accuracy (mean average error) at the beginning of route segments.</p> <p>Feature weights did indeed change significantly between various regression models on the same route segment. In fact, difficult topographical areas were even identifiable by increased feature weight observed for train tonnage and length.</p>
+						
+					
+						<p><strong>Funding: </strong> Roadway Safety Institute, the University Transportation Center for US- DOT Region 5 </p>
+					
+
+					
+						<p><strong>Students: </strong> Will Barbour </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>W. Barbour, J. C. Martinez Mori, S. Kuppa, D. Work. "Estimating Arrival Times for US Freight Rail Traffic." <em>Transportation Research Part C: Emerging Technologies</em>, 2018. <strong>Download: </strong><a href='https://www.dropbox.com/s/ojet2nbntvfeo54/Barbouretal2017.pdf?dl=0'>preprint</a>.</li> <li>W. Barbour, J. C. Martinez Mori, S. Kuppa, D. Work. "Predicting Delay Occurrence at Freight Rail Sidings." <em>Proceedings of Transportation Research Board Annual Meeting, 2018</em> (to appear).</li> <li>W. Barbour, S. Kuppa, and D. Work. "Supporting Automated Operations with Improved Arrival Time Predictions on US Freight Railroads." <em>in Proceedings of the the ITRL Conference on Integrated Transport, Stockholm, Sweden</em>, 2016. <strong>Download: </strong><a href='https://www.dropbox.com/s/ojet2nbntvfeo54/Barbouretal2017.pdf?dl=0'>preprint</a>.</li>
+						</ol>
+					
+			
+				<br>
+				
+			
+				
+			
+				
+			
+				
+					<h2>
+						
+								
+						<b>Extreme Event Detection from Massive Transportation Data</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/traffic_outlier.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>This research project focuses on extreme events in urban transportation systems. Motivated by fast urbanization and increasing frequency of extreme weather events,  the need for methods to quantify infrastructure performance and resilience at city scales has become a priority. The research on extreme events can be greatly aided by high volume of empirical data collected recent years, such as the large taxi dataset published by New York city, or Waze app dataset collected in Nashville. Data may of course be sparse and is in some cases masked. However, the sheer volumn of data from various sources provides an underexploited starting point to understand how transportation systems respond to distuptions. <p>This project is aimed at finding a method that can overcome the constraints in high volume traffic data, and identify ''extreme'' behaviors from ''regular'' behaviors. Exploiting the regular patterns can be of help, which means we can rearrange the traffic data into higher dimensions. The porpose of the project is to develop a reliable algorithm to analysis the massive city traffic data in tensor format, and give a better insight on traffic pattern and extreme event behavior.
+						
+					
+						<p><strong>Funding: </strong> National Science Foundation </p>
+					
+
+					
+						<p><strong>Students: </strong> Yue Hu </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>Y. Hu and D. Work. "Robust Tensor Recovery with Fiber Outliers for Traffic Events." submitted to  <em>ACM Transactions on Knowledge Discovery from Data (TKDD)</em>, 2019(under review). <strong>Download: </strong><a href='https://arxiv.org/abs/1908.10198'>preprint</a>.</li>
+						</ol>
+					
+			
+				<br>
+				
+			
+		</div>
+
+	
+
+	
+		<h1>
+			Past Projects
+		</h1>
+
+		<div class="content">
+			<br>
+			
+				
+			
+				
+					<h2>
+						
+								
+						<b>Traffic flow implications of autonomous and partially autonomous vehicles</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/ring_road_exp.JPG" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>While it may be a long time before all the vehicles on our roadways are completely automated (if ever), it is likely that in the near future there will be an increasing number of autonomous (or partially autonomous) vehicles. These vehicles will likely drive somewhat differently than human drivers, and will thus influence the traffic dynamics. Similar to the shift from Eularian to Lagrangian traffic state estimation that occured when GPS-enabled smartphones entered the mainstream, a similar shift from Eularian control (control at fixed locations in the infrastructure, e.g., ramp metering) to Lagrangian control in the traffic flow may be possible, even with just a small number of autonomous vehicles in the traffic that can be controlled to control the overall traffic flow.</p> <p>The goal of this project is to identify the extent to which a small number of autonomous vehicles in the traffic flow (e.g., 5% of vehicles) are able to alter the traffic dynamics and mitigate adverse emergent phenomena such as traffic oscillations or phantom traffic jams. The work includes both theoretical contributions on traffic stability as well as extensive experimental work demonstrating the ability of a single autonomous vehicle in a flow of 20 human-piloted vehicles to completely eliminate traffic instabilities reducing overall fuel consumption by nearly 40%.</p>
+						
+					
+						<p><strong>Funding: </strong> National Science Foundation </p>
+					
+
+					
+						<p><strong>Students: </strong> Raphael Stern </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>R. Stern, S. Cui, M. L. Delle Monache, R. Bhadani, M. Bunting, M. Churchill, N. Hamilton, R. Haulcy, H. Pohlmann, F. Wu, B. Piccoli, B. Seibold, J. Sprinkle, D. Work. "Dissipation of stop-and-go waves via control of autonomous vehicles: Field experiments." <em>Transportation Research Part C: Emerging Technologies</em>, 2018. <strong>Download: </strong><a href='https://www.sciencedirect.com/science/article/pii/S0968090X18301517'>manuscript</a>.</li> <li>S. Cui, B. Seibold, R. Stern, and D. Work. "Stabilizing Traffic Flow via a Single Autonomous Vehicle: Possibilities and Limitations." <em>in Proceedings of the IEEE Intelligent Vehicle Symposium, Redondo Beach, CA</em>, June 2017. <strong>Download: </strong><a href='https://ieeexplore.ieee.org/document/7995897/'>manuscript</a>.</li> <li>F. Wu, R. Stern, M. Churchill, M. L. Delle Monache, Han, Piccoli, and D. Work. "Measuring fuel consumption in oscillatory traffic: experimental results" <em>in Proceedings of the Transportation Research Board Annual Meeting, Washington, DC</em>, January 2017. <strong>Download: </strong><a href='https://hal.archives-ouvertes.fr/hal-01516133/document'>manuscript</a>.</li>
+						</ol>
+					
+			
+				<br>
+				
+			
+				
+					<h2>
+						
+								
+						<b>Large-scale traffic estimation with performance guarantees</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/largescale.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>Despite important advances in computation and sensing, real-time traffic estimation problems are still open to a number of critical issues including: (i) the entire state of the transportation network is too large for the estimators to scale in real time; (ii) few results are available which provide a theoretical analysis of the performance of traffic estimation algorithm, and (iii) the non-observability of the traffic model is inevitable due to the existence of shocks and the sparsity of sensor measurements.</p> <p>Our work aims at designing scalable distributed traffic estimation algorithms to address issues (i) and (ii) with specific care of issue (iii). Large-scale networks can be partitioned into overlapping local sections, with the traffic density on each local section described by a traffic model on the local state, and estimated by a cheap commodity computer (e.g., an agent).  The main algorithmic challenge is to obtain theoretical bounds on the performance of the estimator, even as the system state switches between observable and unobservable modes. We are also interested in the development of estimation algorithms when with performance guarantees when not all sensor data can be transmitted due to energy and communication costs.</p>
+						
+					
+						<p><strong>Funding: </strong> National Science Foundation </p>
+					
+
+					
+						<p><strong>Students: </strong> Ye Sun </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>Y. Sun and D. Work. "Online estimation with synthetic measurements under an event-triggered sensor scheduler." <em>submitted to the IEEE Transactions on Control Systems Technology</em>, 2016.<em> </em><strong>Download</strong>: <a href='https://www.dropbox.com/s/5fr1u8hnds4fr43/SunWork2016.pdf?dl=0'>preprint.</a></li> <li>Y. Sun and D. Work. "Kalman filtering with synthetic measurements under an event-triggered sensor scheduler." <em>to appear in the European Controls Conference, June 2016.</em></li> <li>Y. Sun and D. Work. "Scaling the Kalman filter for large-scale traffic estimation." <em>submitted to the IEEE Transactions on Control of Network Systems, February 2015. </em><strong>Download: </strong>  <a href='https://www.dropbox.com/s/i4pa1lhd09f3dyv/DLKCF_TCNS_extended.pdf?dl=0'>extended version</a>, <a href='https://github.com/yesun/DLKCF'>source code</a>.</li> <li>Y. Sun and D. Work. "A distributed local Kalman consensus filter for trafﬁc estimation." <em>in Proceedings of</em><em> the IEEE Conference on Decision and Control, pp. 6484–6491, 2014.</em></li>
+						</ol>
+					
+			
+				<br>
+				
+			
+				
+			
+				
+					<h2>
+						
+								
+						<b>Improving intelligent transportation systems (ITS) in safety-critical environments</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/ThermalColormap-300x169.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>The enormous and rapidly increasing amount of traffic data opens tremendous opportunities for the development of intelligent transportation systems. However, real time traffic estimation and optimal traffic management in safety critical environments are still open problems. One example occurs in rural work zones, where existing sensor coverage is sparse.</p> <p>Our work aims at improving ITS in safety-critical situations via: <em>i)</em> the development of a low-cost and low-power wireless sensor network for traffic monitoring in work zones; <em>ii)</em> the development of mathematical traffic models on networks for amenable for optimal traffic management. In this work, a low-cost and low-power wireless traffic sensor platform is built using the passive infrared camera and machine learning algorithms to detect vehicles and estimate the traffic speed. Concurrently, we are developing a theoretical framework traffic estimation and optimal traffic management for networks of conservation laws. The developed sensor network, a variety of traffic estimation algorithms (including ensemble Kalman filter and Particle filter), and the optimal traffic management (using convex programs) are simulated and validated in micro-simulation environment.</p>
+						
+					
+						<p><strong>Funding: </strong> Illinois Department of Transportation </p>
+					
+
+					
+						<p><strong>Students: </strong> Yanning Li, Juan Carlos Martinez Mori, Chris Chen, Fangyu Wu </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>Y. Li, J. C. Martinez Mori, and D. Work. "Estimating traffic conditions from smart work zone systems." <em>submitted to the Journal of Intelligent Transportation Systems, </em>2016. <strong>Download:</strong> <a href='https://www.dropbox.com/s/0p4s5amhcjjou5h/LiMoriWork2016.pdf?dl=0'>preprint</a>.</li> <li>Y. Li, C. Claudel, B. Piccoli, and D. Work. "A convex formulation of traffic dynamics on transportation networks." <em>submitted to SIAM Journal on Applied Mathematics,</em> 2016. <strong>Download: </strong><a href='https://www.dropbox.com/s/6bid1dgqgzrpamv/LiClaudelPiccoliWork2016.pdf?dl=0'>preprint</a>.</li> <li>Y. Li, J. C. Martinez Mori, and D. Work. "Improving the effectiveness of smart work zone technologies, <em>Illinois Department of Transportation Technical Report</em>," <em>submitted for review July 2016. </em></li> <li>B. Donovan Y. Li,  R. Stern J. Jiang C. Claudel, and D. Work. "Vehicle detection and speed estimation with PIR sensors." <em>International Conference on Information Processing in Sensor Networks, peer reviewed poster session,</em> April 2015. <strong>Download:</strong> <a href='https://www.dropbox.com/s/i8dhtzy3iiessm4/IPSN2015.pdf?dl=0'>preprint</a></li>
+						</ol>
+					
+			
+				<br>
+				
+			
+				
+			
+				
+			
+				
+					<h2>
+						
+								
+						<b>Electric motor failure classification</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/test_bench.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>Predictive maintenance of machinery has recently become a higher-performance methodology compared to traditional condition-based maintenance. This is due to improved sensing capabilities through the internet of things (IoT) and renewed interest in machine learning methods that perform diagnosis well. Fault states as well as machine health values can be predicted in some cases.</p> <p>We are interested in classifying electric motor failure conditions using accelerometer data, with specific application for traction motors on railroad locomotives. Machine learning classifiers were first trained and tested on motor data from a test bench to make the binary prediction of faulty or healthy condition. Ensemble models were then developed to make the multi-label classification of which fault, or which combination of fault, are present in a motor.</p>
+						
+					
+						<p><strong>Funding: </strong> CRRC Corporation Limited </p>
+					
+
+					
+						<p><strong>Students: </strong> Will Barbour, Derek Gloudemans </p>
+					
+
+					
+			
+				<br>
+				
+			
+				
+					<h2>
+						
+								
+						<b>TrafficTurk</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/cdb51-traffic2bturk_11.jpg" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>TrafficTurk is a mobile application that allows easy collection of traffic data.  The app functions as a turning movement counter - the user stands at an intersection and swipes the screen when a vehicle passes.  The user swipes the trajectory of the car on an intersection image - different types of swipes correspond to various types  of turns.  All of these turns are sent wirelessly to a central server in realtime, so they can be analyzed and stored in a database. The purpose of TrafficTurk is to collect data on a large scale during unusual events. Ideally, many users will simultaneously collect data at nearby intersections in order to get a complete picture of the traffic patterns.  The server sends a map to the app, allowing users to scroll around and see various intersections.  They choose the one that they intend to collect data at, and begin counting. TrafficTurk is designed for the worst-case scenario.  During some types of unusual events, mobile networks become crowded or even fail entirely.  For this reason, the app must be able to function with intermittent or absent internet connections.  To support this, the app can easily pre-cache all of the intersections in an area.  In this way, it is possible to count at these intersections even if there are no mobile networks available near them.  Similarly, the app maintains a cache of collected data which only clears once the server has received it.  In this way, the app has a 100% data collection guarantee as long as the phone eventually connects to a wireless network.</p>
+						
+					
+						<p><strong>Funding: </strong> Civil and Environmental Engineering, UIUC; College of Engineering, UIUC; Illinois Department of Transportation; National Science Foundation </p>
+					
+
+					
+						<p><strong>Students: </strong> Brian Donovan, Sudeep Gowrishankar, Mostafa Reisi Gahrooei, Jon Que, Bhinav Sura, Meng Han </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>TrafficTurk Android application <a href='https://play.google.com/store/apps/details?id=my.traffic.turk'>https://play.google.com/store/apps/details?id=my.traffic.turk </a></li> <li>M. Reisi Gahrooei and D. Work. "Inferring traffic signal phases from turning movement counters using hidden Markov models." IEEE Transactions on Intelligent Transportation Systems,</em>PP(99), pp. 1-11, June 2014.<strong> Download: </strong><a href='https://www.dropbox.com/s/gr637fsvg2gkkh1/ReisiGahrooeiWork2014.pdf'>preprint</a>, <a href='https://github.com/reisiga2/TrafficSignalPhaseEstimation'>source code</a></li> <li>S. Gowrishankar and D. Work. "Estimating traffic control strategies with inverse optimal control." <em>in Proceedings of the </em>IEEE Conference on Intelligent Transportation Systems, April 2013.  <strong>Download:</strong><a href='https://www.dropbox.com/s/rbnn7x7n76p7uo7/GowrishankarWork13.pdf'>preprint</a>, <a href='https://github.com/sgowris2/InverseOptimalControl'>source code</a></li> <li>M. Reisi Gahrooei and D. Work. "Estimating traffic signal phases from turning movement counters." <em>in Proceedings of the IEEE Conference on Intelligent Transportation Systems, April 2013, pp. </em>1113 – 1118<em>. </em><strong>Download: </strong><a href='https://www.dropbox.com/s/cahvladdq9xz9wg/IEEEITSC_Phase_Estimation.pdf'>preprint</a>, <a href='https://github.com/reisiga2/Estimating-phases-from-turning-movement-counts'>source code</a></li> <li>AwesomeStitch for OpenStreetMap: <a href='https://github.com/Lab-Work/AwesomeStitch'>https://github.com/Lab-Work/AwesomeStitch</a></li>
+						</ol>
+					
+			
+				<br>
+				
+			
+				
+					<h2>
+						
+								
+						<b>Traffic State Estimation and Incident Detection</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/DensityEvolution.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>Joint traffic state estimation and incident detection is a critical problem for both traffic monitoring and highway safety. In this project, multiple model filtering techniques (e.g., particle filter and Kalman filter) and macroscopic traffic flow models are proposed to jointly estimate the traffic state and detect traffic incidents in real-time using sensor data. The algorithms are tested through incident data generated by a microscopic traffic simulation software (CORSIM) and field data collected from the mobile century experiment by Berkeley, 2008. The left figure shows the traffic density evolution from a CORSIM simulation, where the red area in the plot indicates the traffic congestion caused by an incident.</p>
+						
+					
+						<p><strong>Funding: </strong> Federal Highway Administration </p>
+					
+
+					
+						<p><strong>Students: </strong> Ren Wang </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>R. Wang, S. Fan, and D. Work. "Efficient multiple model particle filtering for joint traffic state estimation and incident detection." <em>Transportation Research Part C: Emerging Technologies (in press), 2016. </em><strong>Download:</strong> <a href='https://www.dropbox.com/s/fun0n62yfg1dx97/WangFanWork_TRC_v1.pdf?dl=0'>preprint</a>.</li> <li>R. Wang, D. Work, and R. Sowers. "Multiple Model Particle Filter for Traffic Estimation and Incident Detection." <em>IEEE Transactions on Intelligent Transportation Systems (in press), 2016. </em><strong>Download: </strong><a href='https://www.dropbox.com/s/fxhsv55ncbo58md/WangWorkSowers2016.pdf?dl=0'>preprint</a>, <a href='https://github.com/Lab-Work/MMPF_Traffic_Estimation_Incident_Detection'>source code</a>.</li> <li>R. Wang and D. Work. "Joint parameter and state estimation algorithms for real-time traffic monitoring." NEXTRANS, technical report. No. DTRT12-G-UTC05, December 2013.</li> <li>R. Wang and D. Work. "Interactive multiple model ensemble Kalman filter for traffic estimation and incident detection." <em>in Proceedings of</em><em> the IEEE Conference on Intelligent Transportation Systems, pp 804–809, October 2014. </em><strong>Download: </strong><a href='https://www.dropbox.com/s/0b27rjncbzoonsr/WangWorkITSC14.pdf?dl=0'>preprint</a>, <a href='https://github.com/Lab-Work/IMM_EnKF_Traffic_Estimation_Incident_Detection'>source code</a></li>
+						</ol>
+					
+			
+				<br>
+				
+			
+				
+			
+				
+					<h2>
+						
+								
+						<b>Decision Making with Data Uncertainty in Life Cycle Assessment</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/LCA.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>In life cycle assessment, when product systems are optimized to minimize environmental impacts, uncertainty in the process data may impact optimal decisions. In this project, a robust optimization approach is proposed for decision making under uncertainty at the life cycle inventory stage. The level of protection against data uncertainty can be controlled to reflect varying degrees of conservatism. The left figure shows the comparison between the proposed robust optimization approach (red) and deterministic optimization approach (blue) in terms of carbon oxygen output for an electricity generation problem with varying degrees of protection against data uncertainty.</p>
+						
+					
+
+					
+						<p><strong>Students: </strong> Ren Wang </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>"Application of robust optimization in matrix-based LCI for decision making under uncertainty." R. Wang and D. Work, <em></em><em>International Journal of Life Cycle Assessment</em>, 19(5) ,pp. 1110-1118, 2014. <strong>Download: </strong><a href='https://www.dropbox.com/s/elvgcnmvjwi0i7t/IJLCA_WangWork.pdf'>preprint</a>, <a href='https://github.com/renwang/Robust_Optimization_LCI_Uncertainty'>source code</a>, <a href='http://link.springer.com/article/10.1007%2Fs11367-013-0685-y'>manuscript</a>.</li>
+						</ol>
+					
+			
+				<br>
+				
+			
+				
+			
+				
+			
+				
+					<h2>
+						
+								
+						<b>Quantifying resilience with coarse GPS data</b>
+							
+						
+					</h2>	
+			
+					<img src="/images/2943c-color_pace_3weeks.png" style="float: right; margin: 5px 10px 5px 20px; border: 1px solid #000000; max-width: 450px; min-width: 250px"> 
+						
+					<p>What effects do natural disasters have on our transportation infrastructure?  How resilient are our cities to extreme events, and how quickly do they recover?  Our work aims to answer these questions in a way that is low-cost and practical, by analyzing millions of GPS records from taxis equipped with GPS.  In this way, it is possible to determine the pace of traffic (i.e., travel time per mile) between various regions of the city, and detect atypical congestion. Our method is tested using a dataset of nearly 700 million taxi trips from New York City.  We have made the dataset publicly available <a title='Open data' href='/data'>here</a>.</p> <p>The basic idea is that city traffic conditions follow a fairly periodic pattern.  The figure (left) shows the average pace (travel time per mile) between various regions of the city over the course of three weeks (East of the Hudson, Upper Manhattan, Midtown, and Lower Manhattan).  High travel times are obvious during rush hour each day, especially in the Midtown-to-Midtown trips (M-M).</p> <p>On a particular day, the traffic conditions may deviate significantly from this expected behavior.  This is usually due to an extreme event such as a natural disaster or bad weather conditions.  Based on this deviation, it is possible to measure how "usual" or "unusual" the traffic conditions are.  For more information about how this probabilistic computation is performed, see our paper:</p> <p>Brian Donovan and Daniel B. Work. Using coarse GPS data to quantify city-scale transportation system resilience to extreme events.  presented at the<em> </em><em>Transportation Research Board 94th Annual Meeting, January 2015. </em> <a href='https://www.dropbox.com/s/deruyszudfqrll0/TRB15DonovanWork.pdf'>preprint</a>, <a href='https://github.com/UIUC-Transportation-Data/gpsresilience'>source code</a>.</p> <p>You can also download the data here:  <a href='http://dx.doi.org/10.13012/J8PN93H8'>http://dx.doi.org/10.13012/J8PN93H8</a></p> <p>Brian Donovan and Daniel B. Work  &#8220;New York City Taxi Trip Data (2010-2013)&#8221;. 1.0. University of Illinois at Urbana-Champaign. Dataset. <a href='http://dx.doi.org/10.13012/J8PN93H8' target='_blank'>http://dx.doi.org/10.13012/J8PN93H8</a>, 2014.</p> <p>This <a href='https://www.youtube.com/watch?v=cIACwnqLT5E'>video</a> shows all of the taxi trips during the weeks before, during and after Hurricane Sandy, color coded by their pace.  On the right is a normal week for comparison.  The graph at the top indicates how typical or atypical the traffic conditions are, and indicates that it took over five days for the city traffic network to recover from the storm.</p> <p>One interesting finding is that travel times are actually lower than expected in many parts of the city during the recovery process.  This indicates a change in the usage of the transportation infrastructure – it is likely that the hurricane caused a decrease in usage.  This is especially true in areas like Lower Manhattan, which experienced severe flooding and power outages.  Another surprising result is observable throughout the city on Wednesday the 31st, when the network is completely congested by people try to return to normal operations. This result  indicates that there is room for further research in the post-disaster process of repopulating the city after an evacuation.</p>
+						
+					
+						<p><strong>Funding: </strong> National Science Foundation </p>
+					
+
+					
+						<p><strong>Students: </strong> Brian Donovan </p>
+					
+
+					
+						<p><strong>Publications and Products:</strong></p>
+						<ol>
+							<li>Source Code: <a href='https://github.com/Lab-Work/gpsresilience'>https://github.com/Lab-Work/gpsresilience</a></li> <li><a href='/data'>2010-2013 NYC Taxi Dataset</a></li> <li><a href='/data'>2010-2013 NYC Traffic Estimates</a></li> <li>B. Donovan, J. Lee, and D. Work. "A high resolution method for quantifying resilience of urban road networks." <em>submitted to IEEE Transactions on Intelligent Transportation Systems, 2016. </em><strong>Download:</strong> <em> </em><a href='https://www.dropbox.com/s/d2d2xgfw89p8jg6/DonovanLeeWorkTransITS.pdf?dl=0'>preprint</a>.</li> <li>X. Guan, C. Chen, and D. Work. "From Warnings to Awareness and Actions: Insights from Hurricane Sandy." <em>submitted to the 2017 Transportation Research Board Annual Meeting</em>, 2016.</li> <li>B. Donovan and D. Work. "Empirically quantifying city-scale transportation resilience to extreme events." <em>submitted to Transportation Research Part C: Emerging Technologies</em><em>,</em> 2016. <strong>Download:</strong> <a href='https://www.dropbox.com/s/hk4kxosxs0umyx8/DonovanWorkTR-C2016.pdf?dl=0'>preprint</a>.</li> <li> X. Guan, C. Chen, and D. Work. "Tracking the Evolution of Infrastructure Systems and Mass Responses Using Publically Available Data." <em>submitted to PLOS ONE</em>, 2016.</li> <li>B. Donovan and D. Work. "Using coarse GPS data to quantify city-scale transportation system resilience to extreme events." <em>presented at the</em> <em>Transportation Research Board 94th Annual Meeting, August 2014. </em><strong>Download: </strong><a href='https://www.dropbox.com/s/deruyszudfqrll0/TRB15DonovanWork.pdf'>preprint</a>, <a href='https://github.com/UIUC-Transportation-Data/gpsresilience'>source code</a> <a href='http://dx.doi.org/10.13012/J8PN93H8'>data</a>.</li>
+						</ol>
+					
+			
+				<br>
+				
+			
+				
+			
+		</div>
+
+	
+
 </p>
 					</section>
 

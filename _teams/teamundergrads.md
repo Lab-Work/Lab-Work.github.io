@@ -3,5 +3,5 @@ name: Current Undergraduate Researchers
 class: current
 appear: 4
 description: 
-people: ["caroline","ricardo","nicole"]
+people: ["caroline","ricardo","nicole","caleb"]
 ---
