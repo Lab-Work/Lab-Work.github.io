@@ -12,6 +12,6 @@ students: "Yue Hu, Yanbing Wang"
 
 publications: "<li>Y. Hu, Y. Wang, C. Jiao, R. Sankaran, C. E. Catlett, D. Work. \"Automatic data cleaning via tensor factorization for large urban environmental sensor networks.\"   <em> Tackling Climate Change with Machine Learning Workshop at at NeurIPS</em>, 2019. <strong>Code: </strong><a href='https://github.com/Lab-Work/Tensor_factorization_for_urban_sensor_network'>github</a>.</li>"
 
-image: /images/aot_2.png
+image: /images/grid_tempMap.png
 ---
 
