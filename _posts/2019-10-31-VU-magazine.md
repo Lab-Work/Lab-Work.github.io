@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Future of Urban Transportation"
-date:   2018-03-10
+date:   2019-10-31
 excerpt: "Dan Work, Will Barbour, and colleages from Vanderbilt and VECTOR are featured in an article on the future of urban transportation."
 image: "/images/VU_magazine.png"
 ---
