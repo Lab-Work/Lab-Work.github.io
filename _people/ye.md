@@ -8,5 +8,4 @@ degrees: "<li>Position after completion: Boston Consulting Group.</li>
 <li>M.S., Sustainable and Resilient Infrastructure Systems, CEE, UIUC, 2014</li>
 <li>B.S., Civil Engineering, Tsinghua University, 2012</li>"
 image: /images/people/Ye-Sun.jpg
-site: http://www.yesunuiuc.com
 ---
