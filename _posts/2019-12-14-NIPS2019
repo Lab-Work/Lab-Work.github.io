@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "NeurIPS 2019 Workshop - Tackling Climate Change with Machine Learning"
+date:   2019-09-19
+excerpt: "Yue Hu and Yanbing Wang presented at NuerIPS 2019 workshop on Automatic Data Cleaning for Urban Sensor Networks. "
+image: "/images/NIPS2019.JPG"
+---
+
+Ph.D. students Yue Hu and Yangbing Wang presented at NeurIPS 2019 Workshop - Tackling Climate Change with Machine Learning on Dec. 14 2019. They presented their work on automatic data cleaning for urban sensor networks.
+
+Low cost urban sensing networks enhance our understanding of cites and urban life. IThe impacts of mitigation strategies in communities can be measured at a fine-grained scale, informing context-aware policies and infrastructure design. However, fine-grained city-scale data analysis is complicated by common, tedious data cleaning tasks such as removing outliers and imputing missing data. To address the challenge of data cleaning, this project applies robust low-rank tensor factorization method to automatically correct anomalies and impute missing entries for high-dimensional urban environmental datasets.
+
+The method is applied to the [Array of Things (AoT)](https://arrayofthings.github.io/) city-scale sensor network. Located in the City of Chicago, IL, AoT collects real time data on the city's environment and activity with more than 90 nodes. Further analysis of AoT data and its broader usages are also under way.
