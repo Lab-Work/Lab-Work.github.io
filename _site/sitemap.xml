@@ -2,9 +2,45 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
+      <loc>https://lab-work.github.io/blog/VU-magazine/</loc>
+      
+        <lastmod>2019-10-31T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/ASCE-STEM/</loc>
+      
+        <lastmod>2019-09-29T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
       <loc>https://lab-work.github.io/blog/KCchamber/</loc>
       
         <lastmod>2019-09-24T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/NIPS2019/</loc>
+      
+        <lastmod>2019-09-19T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/Nikki-Presentation/</loc>
+      
+        <lastmod>2019-09-19T00:00:00-05:00</lastmod>
       
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
@@ -416,6 +452,16 @@
   
     <url>
       <loc>https://lab-work.github.io/blog/page5/</loc>
+       <lastmod>2017-11-02T00:00:00-05:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>1.0</priority>
+      
+     </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/blog/page6/</loc>
        <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
