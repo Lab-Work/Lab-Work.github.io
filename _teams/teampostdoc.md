@@ -1,7 +1,7 @@
 ---
-name: Current Postdoctoral Researchers
+name: Current Research Staff
 class: current
 appear: 1
 description: 
-people: []
+people: ["will"]
 ---
