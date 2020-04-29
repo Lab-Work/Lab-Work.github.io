@@ -2,6 +2,15 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
+      <loc>https://lab-work.github.io/blog/NIPS2019/</loc>
+      
+        <lastmod>2019-12-14T00:00:00-06:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
       <loc>https://lab-work.github.io/blog/VU-magazine/</loc>
       
         <lastmod>2019-10-31T00:00:00-05:00</lastmod>
@@ -23,15 +32,6 @@
       <loc>https://lab-work.github.io/blog/KCchamber/</loc>
       
         <lastmod>2019-09-24T00:00:00-05:00</lastmod>
-      
-      <changefreq>weekly</changefreq>
-      <priority>0.7</priority>
-    </url>
-  
-    <url>
-      <loc>https://lab-work.github.io/blog/NIPS2019/</loc>
-      
-        <lastmod>2019-09-19T00:00:00-05:00</lastmod>
       
       <changefreq>weekly</changefreq>
       <priority>0.7</priority>
@@ -323,6 +323,16 @@
     <url>
       <loc>https://lab-work.github.io/elements/</loc>
        <lastmod>2017-11-02T00:00:00-05:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>0.7</priority>
+      
+     </url>
+  
+    <url>
+      <loc>https://lab-work.github.io/covidtraveltime/</loc>
+       <lastmod>2020-04-27T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
