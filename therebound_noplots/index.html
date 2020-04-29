@@ -1,0 +1,166 @@
+---
+layout: page
+title: The rebound - How Covid-19 could lead to worse traffic
+description: The rebound - How Covid-19 could lead to worse traffic
+sitemap:
+    priority: 0.7
+    lastmod: 2020-04-27
+    changefreq: weekly
+---
+
+<header class="major">
+	<h1>The rebound: How Covid-19 could lead to worse traffic</h1><br>
+	<h3>A rush to single occupancy vehicles could result in large travel time increases in transit heavy communities.</h3><br>
+	<a href="#authors"><h3>By: Yue Hu, Will Barbour, Samitha Samaranayake, Dan Work</h3></a>
+</header>
+
+<center><img src="miami_traffic_crop.jpg" alt="Highway traffic in Miami" align="middle"></center>
+<center><i>Highway traffic in Miami. (<a href="https://commons.wikimedia.org/wiki/File:Miami_traffic_jam,_I-95_North_rush_hour.jpg">source</a>)</i></center><br>
+
+<h2>Summary findings</h2>
+
+<p><u>Traffic jams 101.</u> Traffic jams result when there are more vehicles than the road network can handle. After the roads are fully saturated, the travel times increase with each additional traveler.  In fact, the rate at which traffic grows follows a very predictable pattern.</p>
+
+<p>Similarly, when there is a steep decrease in the number of travelers, traffic can vanish.  The travel restrictions put in place to reduce the spread of Covid-19 resulted in a <a href="https://www.ite.org/about-ite/covid-19-resources/covid-19-traffic-volume-trends/">sharp reduction in traffic</a> throughout the US.</p>
+
+<p>As communities begin to reopen, it is important to understand how quickly traffic will rebound.  Using basic laws of traffic, we can predict the amount of traffic that will occur in each city given only the number of vehicles on the road.  This allows us to explore “what if” scenarios. For example, it is possible that many transit riders could switch to a car instead. We want to know how these decisions will impact traffic.</p>
+
+<p><u>Main point.</u> Cities that depend on transit are at risk for extreme traffic unless transit systems can resume safe, high throughput operations quickly. The cities most at risk include:</p>
+<ul>
+	<li><b>San Francisco:</b> 556,000 - 2,736,000 added traffic hours per day, or 20 - 80 minutes per person.</li>
+	<li><b>New York:</b> 492,000 - 3,758,000 added traffic hours per day (4 - 28 minutes per person).</li>
+	<li><b>Los Angeles:</b> 216,000 - 862,000 added traffic hours per day (2 - 10 minutes per person).</li>
+	<li><b>Boston:</b> 170,000 - 776,000 added traffic hours per day (6 - 22 minutes per person).</li>
+	<li><b>Chicago:</b> 146,000 - 662,000 added traffic hours per day (2 - 10 minutes per person).</li>
+	<li><b>Seattle:</b> 132,000 - 554,000 added traffic hours per day (6 - 20 minutes per person).</li>
+	<li><b>San Jose:</b> 74,000 - 240,000 added traffic hours per day (6 - 16 minutes per person).</li>
+</ul>
+
+<p>The plot below gives a more detailed look at the consequences of shifts away from transit. We assume people quickly return to their regular commutes, but transit and carpool users do not. In one scenario, we assume 1 in 4 transit &amp; carpool commuters take a personal vehicle. In another scenario, we assume 3 in 4 transit &amp; carpool commuters take a personal vehicle. For cities that are already congested and that depend on transit, the impacts could be dramatic.</p>
+
+
+<center><i>Figure 1. Transit heavy congested cities are most at risk of travel time spikes. Travel times are given as one-way commute times. On the interactive plot, switch sets of cities and sort order with the buttons on top, and mouse over bars to see details.</i></center><br>
+
+<p>With just 1 in 4 transit &amp; carpool commuters driving alone, San Francisco could see a travel time increase of 10 minutes per person; New York, Boston, and Seattle could all see 10-minute increases if 3 in 4 transit &amp; carpool commuters switch.</p>
+
+<p>These potential increases are avoidable. If transit ridership returns in step with trips by car, road traffic will return to normal. Monitoring closely road and transit ridership during the rebound is critical.</p>
+
+<p>In the remainder of this article, we will:
+<ul style="margin-top:-2em;">
+	<li>Introduce the data on traffic in US cities</li>
+	<li>Explain how to model traffic trends in these cities</li>
+	<li>Use the model to forecast traffic in different reopening scenarios</li>
+</ul>
+</p>
+
+
+<h2>Data analysis</h2>
+
+<p>In order to understand traffic in cities, we explore <a href="https://data.census.gov/cedsci/table?q=S0804&tid=ACSST1Y2018.S0804">travel data</a> from the American Community Survey (ACS) from the United States Census Bureau (USCB). Using this data, we can answer questions like:
+<ul style="margin-top:-2em;">
+	<li>How many cars are on the road in each city?</li>
+	<li>What is the average travel time <a href="#footnote1">[1]</a> experienced by commuters in each city?</li>
+</ul>
+</p>
+
+<p>This publically available data is reported annually, and most <a href="https://www.census.gov/programs-surveys/metro-micro/about.html">metropolitan statistical areas</a> have data from 2010-2018 <a href="#footnote2">[2]</a>.  We automatically downloaded it via Julien Leider’s <a href="https://github.com/jtleider/censusdata">"censusdata" Python package</a>.</p>
+
+<p>Determining the number of cars on the road is a straightforward calculation. The American Community Survey details the number of commuters in single occupancy vehicles (i.e., 1 car per person); the number of 2-person carpools, 3-person carpools, etc.</p>
+
+<p>Once the number of vehicles are determined, we can begin to compare cities. The plot below shows the travel time and the number of vehicles for most major cities in the US in 2018, which is the most recent data that is available.</p>
+
+
+<center><i>Figure 2. Across cities, average travel times increase with more vehicles on the road.</i></center><br>
+
+<p>Not surprisingly, cities with a large number of vehicles tend to have higher travel times. But the trends are not obvious, since the travel time in each city depends on a number of factors, such as the size of the city, the population density, the average distance traveled, etc.</p>
+
+<p>To better understand the travel times, we can look at the behavior of individual cities.  It turns out that for many cities, travel times follow a regular pattern known as the <a href="https://en.wikipedia.org/wiki/Route_assignment">BPR model</a>. The plots below show the number of cars on the road compared to the average travel time within a single city. The travel times predicted by the BPR model are also shown.</p>
+
+
+<center><i>Figure 3. Within each city, we see how adding cars increases travel times.</i></center><br>
+
+<p>The BPR model was originally designed to relate the travel times on road, but can also be applied to cities. The important point about the model is it captures common sense. When the roads are not completely packed, travel times are low. But after the number of cars is larger than a certain amount, travel times can skyrocket.</p>
+
+<p>When applied to each city, the BPR model allows us to estimate two important numbers:
+<ul style="margin-top:-2em;">
+	<li><i>Empty-road travel time</i>: This is the average travel time commuters experience if the roads are virtually empty and free of traffic.</li>
+	<li><i>Road capacity</i>: This is the number of cars the city can handle before travel times quickly rise.</li>
+</ul>
+</p>
+
+<p>Once we know the empty road travel time and the road capacity for each city, we can standardize each city and compare them again. Instead of plotting travel times against the number of vehicles, we will instead look at:
+<ul style="margin-top:-2em;">
+	<li><i>Travel time ratio</i>: A travel time ratio of 1.1 means the current travel time is 1.1 times (or 10% higher) than the empty road travel time. Similarly, a travel time ratio of 1.5 means the current travel time is 1.5 times (50% higher) then the empty road travel time.</li>
+	<li><i>Capacity ratio</i>:  A capacity ratio of 1.1 means there are 10% more cars than the road capacity. A capacity ratio of 0.9 means there are 10% fewer cars than the road capacity, and so on.</li>
+</ul>
+</p>
+
+<p>When we plot the cities and compare the travel time ratios with the capacity ratio, we see that all of the cities follow the same growing curve. This is the same data from Figure 2 above, just standardized to account for the fact that larger cities tend to have larger capacities and longer commutes, even when the roads are empty.</p>
+
+<p>The fact that the cities fall on a nice curve means traffic is predictable <a href="#footnote3">[3]</a>.</p>
+
+
+<center><i>Figure 4. Travel time ratios increase in a predictable way as the capacity ratio increases. This is true even across cities.</i></center><br>
+
+
+<h2>Traffic scenarios during the rebound</h2>
+
+<p>We now explore what could happen if commuters quickly return to the roads, and transit users switch to cars instead.</p>
+
+<p>We consider four scenarios <a href="#footnote4">[4]</a>:
+<ul  style="margin-top:-2em;">
+	<li>1 in 4 transit users drive instead</li>
+	<li>2 in 4 transit users drive instead</li>
+	<li>3 in 4 transit users drive instead</li>
+	<li>all transit users drive instead</li>
+</ul>
+</p>
+
+<p>The scenarios are created to show a range of possibilities. The actual rate at which transit users shift to personal vehicles will depend on a multitude of factors that are specific to each traveler and each city. The point is that we can identify which cities are the most sensitive to changes in the number of cars on the road.</p>
+
+<p>Two factors determine if travel times will significantly increase:
+<ul style="margin-top:-2em;">
+	<li>Cities that historically have high capacity ratios (many more cars than the network can handle) are naturally sensitive to changes in the number of cars on the road. Even small changes can have big impacts.</li>
+	<li>Cities that historically have lower capacity ratios can also see travel time impacts if the number of cars on the road increases enough. A large change will cause the travel times to increase substantially as well.</li>
+</ul>
+</p>
+
+<p>We can see the predictions for each city under each scenario in the following table and plot:</p>
+
+
+<center><i>Figure 5: Travel time predictions if transit users switch to cars.</i></center><br>
+
+<p>The table and plot have a lot of information in them, so it can help to visualize it in multiple ways. The plot below summarizes the same information but makes it easier to see what cities are most impacted.</p>
+
+
+<center><i>Figure 6: Some of the largest changes are observed for cities with many transit riders.</i></center><br>
+
+<p>Generally, we see that the increases are more severe for larger cities, and those that are more dependent on transit -- 8 of 10 cities with the largest predicted travel time increase also rank  in the top 10 for transit use. The most extreme scenario (when all riders switch) is extremely unlikely. But it does illustrate that keeping transit open, safe, and available will be important to control the traffic rebound.</p>
+
+<p>In the less extreme scenarios, we see that average travel times can increase by a few minutes.  This might not seem like much, but it is. The additional delay is for each trip. When multiplied by the number of travelers in these cities, even a minute of delay per traveler can easily result in thousands of hours of additional time spent in traffic every day.</p>
+
+<h2>A few take home messages</h2>
+<ul>
+	<li>When the roads are already saturated, adding cars is detrimental to everyone’s commute. This is a basic law of traffic.</li>
+	<li>Covid-19 cleared the streets in many communities. As we reopen, traffic will eventually rebound.  If transit ridership does not return, travel times will increase, sometimes dramatically.</li>
+	<li>Travel time increases of 5-10 minutes are possible in high-transit cities, which adds up to hundreds of thousands of hours of additional travel time each day.</li>
+	<li>These increases are avoidable, if transit ridership resumes in step with car traffic.</li>
+</ul>
+
+<h3>Notes</h3>
+<p><a id="footnote1">[1]</a>The travel times are average over the population and the day. This means people traveling during rush hours have longer commutes, and people traveling off peak have shorter ones.<br>
+
+<a id="footnote2">[2]</a>The data is from 2018. It is the most current data we have. The travel times were probably higher in 2019.<br>
+
+<a id="footnote3">[3]</a>Many, but not all cities follow the law! Some cities do not have enough variation in the census data for us to accurately determine how they behave. More details on methods and technical approaches coming next.<br>
+
+<a id="footnote4">[4]</a>These scenarios do not consider offsetting factors. For example, we may see fewer vehicles on the road due to <a href="https://www.dol.gov/ui/data.pdf">high unemployment</a>, <a href="https://john-joseph-horton.com/papers/remote_work.pdf">remote work</a>, etc. If we know these numbers, we can make more accurate predictions.</p><br>
+
+
+<a id="authors"><h3>Research team (contact us)</h3></a>
+<ul>
+	<li><a href="https://yuehu9.github.io/index.html">Yue Hu</a> is a PhD student at Vanderbilt University</li>
+	<li><a href="https://barbourww.github.io">Will Barbour</a> is a research scientist at Vanderbilt University</li>
+	<li><a href="https://cee.cornell.edu/samitha/">Samitha Samaranayake</a> is an assistant professor at Cornell University</li>
+	<li><a href="https://engineering.vanderbilt.edu/bio/daniel-work">Dan Work</a> is an associate professor at Vanderbilt University</li>
+</ul>
