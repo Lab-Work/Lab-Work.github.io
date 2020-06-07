@@ -1,7 +1,7 @@
 ---
 name: Current Undergraduate Researchers
 class: current
-appear: 4
+appear: 5
 description: 
-people: ["caroline","ricardo","nicole","caleb"]
+people: ["caroline","ricardo","nicole","caleb","nam"]
 ---
