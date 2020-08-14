@@ -5,8 +5,8 @@ order: 1
 
 name: "Traffic flow control with connected and autonomous vehicles"
 
-description: "<p>Increasingly the make-up of traffic includes vehicles with partially autonomous features, usch as Adaptive Cruise Control (ACC). While it has been shown that careful control of autonomous vehicles in mixed traffic can smooth traffic instabilities caused by human drivers, it has also been shown that currently available ACCs can fall victim to the same instabilities.</p>
-<p>This project will explore how connacted and autonomous vehicles (CAVs) can be used to effectively smooth traffic insyabilities. Currently, several Reinforcement Learning control methods have been developed that optimize for global smoothing. Experiments will be run in the future which involve real CAVs executing control algorithms in a freeway environment.</p>"
+description: "<p>Increasingly the make-up of traffic includes vehicles with partially autonomous features, such as Adaptive Cruise Control (ACC). While it has been shown that careful control of autonomous vehicles in mixed traffic can smooth traffic instabilities caused by human drivers, it has also been shown that currently available ACCs can fall victim to the same instabilities.</p>
+<p>This project will explore how connected and autonomous vehicles (CAVs) can be used to effectively smooth traffic instabilities. Currently, several Reinforcement Learning control methods have been developed that optimize for global smoothing. Experiments will be run in the future which involve real CAVs executing control algorithms in a freeway environment.</p>"
 
 funding: "National Science Foundation"
 
