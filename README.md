@@ -1,5 +1,5 @@
 # README for website configuration and content modification
-### Updated Feb. 2021
+### Updated March 2021
 
 This document contains information for setting up this website and instructions for modifying its content. The original theme for this website is 'Massively' by HTML5 UP (html5up.net | @ajlkn). Free personal and commercial use under the CCA 3.0 [license](https://html5up.net/license) is permitted.
 
