@@ -17,7 +17,7 @@ funding: "Department of Energy, National Science Foundation"
 
 students: "Matt Nice"
 
-publications: "<li>M. Nice, S. Elmadani, R. Bhadani, M. Bunting, J. Sprinkle, and D. Work. 2021. \"CAN coach: vehicular control through human cyber-physical systems.\" <em>In Proceedings of the ACM/IEEE 12th International Conference on Cyber-Physical Systems (ICCPS '21)</em>. Association for Computing Machinery, New York, NY, USA, 132–142. <strong>DOI: </strong><a href='https://doi.org/10.1145/3450267.3450541'>Abstract</a>.</li>
+publications: "<li>M. Nice, S. Elmadani, R. Bhadani, M. Bunting, J. Sprinkle, and D. Work. 2021. \"CAN coach: vehicular control through human cyber-physical systems.\" <em>In Proceedings of the ACM/IEEE 12th International Conference on Cyber-Physical Systems (ICCPS '21)</em>. Association for Computing Machinery, New York, NY, USA, 132–142. <strong>Download: </strong><a href='https://doi.org/10.1145/3450267.3450541'> manuscript</a>.</li>
 
 <li>S. Elmadani, M. Nice, R. Bhadani, M. Bunting, J. Sprinkle, \"From CAN to ROS: A Monitoring and Data Recording Bridge\", 2021, <em>In: The Workshop on CPS Data for Transportation with Human-in-the-loop 2021.</em></li>"
 
