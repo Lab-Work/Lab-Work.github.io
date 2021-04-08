@@ -1,7 +1,7 @@
 ---
 key: "mixed_autonomy_control"
 
-order: 1
+order: 2
 
 name: "Traffic flow control with connected and autonomous vehicles"
 
