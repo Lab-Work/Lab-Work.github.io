@@ -1,5 +1,5 @@
 ---
-key: "social-distnacing"
+key: "social_distancing"
 
 order: 1
 
