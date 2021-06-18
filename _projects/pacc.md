@@ -12,7 +12,7 @@ funding: "National Science Foundation, Toyota Motor North America"
 
 students: "Yanbing Wang"
 
-publications: "<li>Y. Wang, Z. Wang, K. Han, P. Tiwari, D. B. Work \"Personalized Adaptive Cruise Control via Gaussian Process Regression.\" <em>Submitted to IEEE Transactions on Intelligent Transportation Systems, </em>2021</li>"
+publications: "<li>Y. Wang, Z. Wang, K. Han, P. Tiwari, D. B. Work \"Personalized Adaptive Cruise Control via Gaussian Process Regression.\" Submitted to <em>IEEE Transactions on Intelligent Transportation Systems, </em>2021</li>"
 
 image: /images/Unity2.png
 ---
