@@ -12,5 +12,5 @@ funding: "National Science Foundation, Toyota Motor North America"
 
 students: "Yanbing Wang"
 
-image: /images/.png
+image: /images/Unity2.png
 ---
