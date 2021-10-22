@@ -1,0 +1,28 @@
+---
+layout: post
+title: "We are currently seeking undergraduate researchers for Spring & Summer 2022"
+excerpt: "We are seeking an undergraduate research assistant to conduct data visualization and analytics of the vehicle trajectory for the I24 MOTION project (https://i24motion.org)"
+date: 2021-10-21
+image: "/images/i24-trajectory.png"
+---
+
+We are seeking an undergraduate research assistant to conduct data visualization and analytics of the vehicle trajectory for the I24 MOTION project (https://i24motion.org). Our team has been building a software pipeline for vehicle detection, tracking, as well as post processing trajectory data. Vehicle trajectory data allows us to uncover new insights into how traffic flow influences individual vehicle behavior. The testbed will also be a facility that can host new tests of autonomous vehicle systems in real highway traffic. The understanding of traffic through data collection and analysis is more important than ever due to the increasing automation capability of individual vehicles, which are beginning to influence traffic flow through their interactions with conventional vehicles. 
+
+The ideal candidate is an advanced undergraduate student who is eager to conduct research during spring 2022 with the possibility for extension into the summer and fall 2022. Candidates can expect to design data visualizations about real time traffic data and system status that will be integrated into a website and viewed by researchers and the public.
+
+Availability
+Spring 2022: 10-20 hours per week; possibility of summer 2022 at 20-40 hours per week
+
+Preferred experience
+Proficiency in a data-science oriented programming language (Python preferred)
+Familiar with data visualization techniques, data logging and storage
+(Optional) Web application development
+
+Strong preference for applicants with at least one of
+Experience working with large (1GB+) datasets and/or database systems
+Knowledge of transportation systems and/or highway traffic analysis
+
+This project is conducted by Yanbing Wang and Derek Gloudemans under the supervision of Prof. Dan Work in Civil Engineering/Computer Science and the Institute for Software Integrated Systems at Vanderbilt University.
+
+
+If you are interested, please send a copy of your resume along with any relevant coursework to Yanbing Wang (yanbing.wang@vanderbilt.edu).
