@@ -1,3 +1,9 @@
+- firstname: Nam
+  lastname: Dau
+  degree: BS
+  department: Computer Science
+  year: 2019
+  tag: VU
 - firstname: Daniel
   lastname: Chen
   degree: BS
