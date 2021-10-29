@@ -1,7 +1,7 @@
 ---
 key: "tensor_outlier"
 
-order: 7
+order: 3
 
 name: "Extreme Event Detection from Massive Transportation Data"
 

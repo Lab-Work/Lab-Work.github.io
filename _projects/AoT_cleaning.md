@@ -1,7 +1,7 @@
 ---
 key: "AoT_cleaning"
 
-order: 8
+order: 3
 
 name: "Automatic Data Cleaning for Urban Sensor Networks"
 
