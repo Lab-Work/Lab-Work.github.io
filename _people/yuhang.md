@@ -7,5 +7,5 @@ description: "<p>Yuhang Zhang is a PhD student in Civil Engineering and the Inst
 degrees: "<li>Ph.D, Civil Infrastructure Systems, CEE, Vanderbilt University 2026 (expected)</li>
 <li>M.S.E., Civil and Systems Engineering, Johns Hopkins University 2021</li>
 <li>B.E., Civil Engineering, Central South University, China, 2019</li>"
-image: /images/people/yuhang.jpg
+image: /images/people/yuhang.JPG
 ---
