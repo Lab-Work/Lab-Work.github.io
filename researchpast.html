@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Research
+title: Past Research
 description: 
 sitemap:
     priority: 0.7
@@ -8,29 +8,14 @@ sitemap:
     changefreq: monthly
 ---
 
-<header class="major">
-	<h1>Research</h1>
-</header>
-
-<p>Our lab's research focuses on developing new estimation approaches to improve our understanding of transportation systems at increasingly large scales. A summary of current projects, major and otherwise, is given here. Please see the following links for our past projects and a list of all research publications.</p>
-
-<footer>
-	  <ul class="actions">
-			<li><a href="{{ "/researchpast/" | absolute_url }}" class="button">See our past projects here</a></li>
-		 	<li><a href="{{ "/publications/" | absolute_url }}" class="button">All lab publications</a></li>
-	  </ul>
-</footer>
-
-<br>
-
 {% assign sorted = (site.research | sort: 'order') %}
 {% assign sortedprojects = (site.projects | sort: 'order') %}
 
 {% for pl in sorted %}
-	{% if pl.order < 5 %}
+	{% if pl.order >= 3 %}
 		{% if pl.projects.size > 0 %}
-			
-			<div class="content">
+
+			<div class="content" id="list_{{ forloop.counter }}">
 				<h1>
 					{{pl.name}}
 				</h1>
