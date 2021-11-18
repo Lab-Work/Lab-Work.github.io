@@ -378,22 +378,22 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/thereboundv1/</loc>
-       <lastmod>2020-04-27T00:00:00-05:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>0.7</priority>
-      
-     </url>
-  
-    <url>
       <loc>http://localhost:4000/</loc>
        <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
       
        <priority>1.0</priority>
+      
+     </url>
+  
+    <url>
+      <loc>http://localhost:4000/thereboundv1/</loc>
+       <lastmod>2020-04-27T00:00:00-05:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>0.7</priority>
       
      </url>
   
@@ -409,7 +409,17 @@
   
     <url>
       <loc>http://localhost:4000/research/</loc>
-       <lastmod>2018-07-03T00:00:00-05:00</lastmod>
+       <lastmod>2021-11-17T00:00:00-06:00</lastmod>
+      
+       <changefreq>monthly</changefreq>
+      
+       <priority>0.7</priority>
+      
+     </url>
+  
+    <url>
+      <loc>http://localhost:4000/researchpast/</loc>
+       <lastmod>2021-11-17T00:00:00-06:00</lastmod>
       
        <changefreq>monthly</changefreq>
       
