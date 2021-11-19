@@ -145,5 +145,5 @@ dt.printshorthands{float:left; clear:left; margin-right:1em;}
 .thebibliography{text-align: left; !important; }
 dl dt { font-weight: bold; display: inline; float: none; white-space: pre-line; }
 dl dd { display: inline; margin-inline-start: 1em; }
-pp { }
+p { display: inline; !important; }
 /* end css.sty */
