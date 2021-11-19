@@ -1,7 +1,7 @@
 ---
 key: "traffic_counting"
 
-order: 1
+order: 6
 
 name: "Fast and Accurate Vehicle Turning-Movement Counting at Intersections and Along Roadways"
 
