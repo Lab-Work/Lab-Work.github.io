@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Servers arrive for I-24 MOTION trajectory generation"
+excerpt: "The majority of servers that will power the I-24 MOTION computing cluster have been delivered."
+date: 2022-05-02
+image: "/images/i24_servers.jpg"
+---
+
+The I-24 MOTION project’s trajectory computation servers were delivered to the Vanderbilt datacenter. Ten servers with graphics processing units (GPUs) will convert video into anonymized trajectory points and an additional server will perform post-processing on trajectories to produce a complete, high-quality dataset comprising each vehicle on the roadway through time and space. Vanderbilt IT will be installing the servers over the coming weeks, with additional system support servers expected this summer.
