@@ -3,5 +3,5 @@ name: Current Undergraduate Researchers
 class: current
 appear: 4
 description: 
-people: ["arthur", "gracie", "leo", "zi", "josh", "xinxuan", "shepard", "lisa"]
+people: ["arthur", "gracie", "leo", "zi", "josh", "xinxuan", "shepard", "lisa", "brandon"]
 ---
