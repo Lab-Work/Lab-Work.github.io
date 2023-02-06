@@ -7,7 +7,7 @@ description: "<p>Junyi Ji is a Ph.D. student in Civil Engineering and the Instit
 
 Junyi's primary interest is to better understand and predict the microscopic and macroscopic traffic flow characteristics, and to formulate new control strategies to improve efficiency, stability and safety of highway systems. His current research is focusing on smoothing traffic trajectories at scale with application on the I-24 MOTION testbed. 
 
-Junyi’s other domain interests include data-driven approaches in transportation and sustainable transportation (road safety, active mode traffic, and environmental impacts). He believes sustainability is the future of transportation! </p>" 
+Junyi’s other domain interests include data-driven approaches in sustainable transportation (road safety, active mode traffic, and environmental impacts). Sustainablity is his pursuit. </p>" 
 
 degrees: "<li>Ph.D., Civil and Environmental Engineering, CEE, Vanderbilt University 2026 (expected)</li>
 
