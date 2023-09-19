@@ -13,5 +13,5 @@ degrees: "<li>Ph.D., Civil and Environmental Engineering, Vanderbilt University 
 <li>M.S., Transportation Engineering, Southeast University, China, 2022</li>
 <li>B.Eng., Traffic Engineering, Southeast University, China, 2019</li>"
 image: /images/people/junyi_23S.png
-site: https://sites.google.com/view/jijunyi/home
+site: https://www.jijunyi.com/
 ---
