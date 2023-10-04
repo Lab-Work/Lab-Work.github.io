@@ -1,0 +1,9 @@
+---
+layout: post
+title: "I-24 MOTION system article published in Transportation Research Part C"
+excerpt: "A comprehensive article detailing the I-24 MOTION testbed has been published in a major transportation journal."
+date: 2023-09-15
+image: "/images/I24M_TRC.png"
+---
+
+The first peer-reviewed journal article detailing the entire I-24 MOTION testbed was published in Transportation Research Part C: Emerging Technologies. The [article can be found here](https://www.sciencedirect.com/science/article/pii/S0968090X23003005) (pre-print available on [Arxiv](https://arxiv.org/abs/2301.11198)). The dataset described in the TR-C article is now [available for download](https://i24motion.org/data)!
