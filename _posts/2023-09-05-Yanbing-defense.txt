@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Congratulations to Dr. Yanbing Wang!"
+excerpt: "Yanbing Wang, I-24 MOTION researcher, defends her Ph.D."
+date: 2023-09-05
+image: "/images/yanbing_defense.jpg"
+---
+
+Dr. Yanbing Wang successfully defended her PhD dissertation on "Reconstruction of mixed traffic dynamics at micro and macro scales" on September 4, 2023. The dissertation includes recent work on trajectory post processing that is implemented in the I-24 MOTION software pipeline. Congratulations Yanbing!
