@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Congratulations to Dr. Derek Gloudemans!"
+excerpt: "Derek Gloudemans, I-24 MOTION computer vision researcher, defends his Ph.D."
+date: 2023-10-05
+image: "/images/derek_defense_lr.JPG"
+---
+
+Dr. Derek Gloudemans successfully defended his PhD dissertation titled "Interstate 24 MOTION: a multi-camera vehicle tracking instrument for large-scale trajectory extraction" on October 4, 2023. The dissertation chronicles years of dedicated work on the computer vision pipeline for I-24 MOTION, building up from a small feasibility test to a full-scale, computationally efficient 3D tracking system for nearly 300 cameras. Congratulations Derek!
