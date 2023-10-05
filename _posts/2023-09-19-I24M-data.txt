@@ -1,0 +1,11 @@
+---
+layout: post
+title: "I-24 MOTION shares first public data release"
+excerpt: "Ten days of vehicle trajectory data are now available for download by the transportation research community"
+date: 2023-09-19
+image: "/images/I24M_data.png"
+---
+
+The I-24 MOTION project team released the first dataset from the testbed to the public on September 19. This dataset, codename [INCEPTION v1.0.0](https://i24motion.org/data), contains ten days of data from various traffic scenarios totaling 47 hours. This is the largest high-resolution vehicle trajectory dataset to date on a highway at this 4-mile scale. The project is expected to drive new insight into traffic phenomena, driver behavior, and connected and automated vehicles.
+
+This is the first of many datasets to be produced by I-24 MOTION. Continuous, daily data production is expected to start at the end of 2023. Read more about I-24 MOTION and its data [here](https://i24motion.org).
