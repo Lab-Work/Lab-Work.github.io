@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "I-24 MOTION system article published in Transportation Research Part C"
-excerpt: "A comprehensive article detailing the I-24 MOTION testbed has been published in a major transportation journal."
+excerpt: "A comprehensive article detailing the I-24 MOTION testbed has been published in a major transportation journal"
 date: 2023-09-15
 image: "/images/I24M_TRC.png"
 ---
