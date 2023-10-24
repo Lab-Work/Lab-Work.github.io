@@ -3,7 +3,7 @@ key: "junyi"
 firstname: "Junyi"
 lastname: "Ji"
 degreedate: 2026-05-01
-description: "<p>Junyi Ji is a Ph.D. student in Civil Engineering and the Institute for Software Integrated Systems at Vanderbilt University. He earned his M.S. in Transportation Engineering and B.Eng. in Traffic Engineering from Southeast University, China. 
+description: "<p>Junyi Ji is a Ph.D. student in Civil Engineering and the Institute for Software Integrated Systems at Vanderbilt University. He earned his M.S. in Transportation Engineering and B.Eng. in Traffic Engineering from Southeast University, China. </p>
 
 Junyi's primary interest is to better understand the microscopic and macroscopic traffic flow characteristics and to formulate control strategies to improve the efficiency and safety of freeway systems. He is actively involved in freeway traffic testbed development and field experiments. His current research is focusing on smoothing traffic trajectories at scale with application on the I-24 MOTION testbed.</p>
 
