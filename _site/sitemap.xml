@@ -2,6 +2,69 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
     <url>
+      <loc>http://localhost:4000/blog/Derek-defense/</loc>
+      
+        <lastmod>2023-10-05T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/blog/I24M-data/</loc>
+      
+        <lastmod>2023-09-19T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/blog/I24M-TRC/</loc>
+      
+        <lastmod>2023-09-15T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/blog/Yanbing-defense/</loc>
+      
+        <lastmod>2023-09-05T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/blog/I24-servers/</loc>
+      
+        <lastmod>2022-05-02T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/blog/TETC-presentation/</loc>
+      
+        <lastmod>2022-04-28T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
+      <loc>http://localhost:4000/blog/I24-construction/</loc>
+      
+        <lastmod>2022-03-16T00:00:00-05:00</lastmod>
+      
+      <changefreq>weekly</changefreq>
+      <priority>0.7</priority>
+    </url>
+  
+    <url>
       <loc>http://localhost:4000/blog/AI-DSS/</loc>
       
         <lastmod>2021-04-21T00:00:00-05:00</lastmod>
@@ -478,16 +541,6 @@
      </url>
   
     <url>
-      <loc>http://localhost:4000/feed.xslt.xml</loc>
-       <lastmod>2017-11-10T00:20:35+00:00</lastmod>
-      
-       <changefreq>weekly</changefreq>
-      
-       <priority>0.5</priority>
-      
-     </url>
-  
-    <url>
       <loc>http://localhost:4000/blog/page2/</loc>
        <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
@@ -529,6 +582,16 @@
   
     <url>
       <loc>http://localhost:4000/blog/page6/</loc>
+       <lastmod>2017-11-02T00:00:00-05:00</lastmod>
+      
+       <changefreq>weekly</changefreq>
+      
+       <priority>1.0</priority>
+      
+     </url>
+  
+    <url>
+      <loc>http://localhost:4000/blog/page7/</loc>
        <lastmod>2017-11-02T00:00:00-05:00</lastmod>
       
        <changefreq>weekly</changefreq>
