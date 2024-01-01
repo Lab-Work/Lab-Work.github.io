@@ -6,7 +6,7 @@ date: 2023-12-08
 image: "/images/junyi_ashe.jpeg"
 ---
 
-Our Ph.D. student, Junyi Ji, has been honored with the prestigious ASHE Middle Tennessee General Academic Scholarship, a testament to his innovative work and academic prowess in the field of transportation engineering.
+Our Ph.D. student, Junyi Ji, has been awarded with the prestigious ASHE Middle Tennessee General Academic Scholarship, a testament to his innovative work and academic prowess in the field of transportation engineering.
 
 Junyi has been a member of the I-24 MOTION team, contributing to the world's largest full-scale trajectory observation testbed for connected and automated vehicles and intelligent transportation systems. His academic dedication is further highlighted by his receipt of both the Russell G. Hamilton Scholarship and the 
 ITS Tennessee Student Scholarship.
