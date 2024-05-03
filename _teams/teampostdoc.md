@@ -3,5 +3,5 @@ name: Current Research Staff
 class: current
 appear: 1
 description:
-people: ["will", "matt", "derek"]
+people: ["will", "marcos", "matt", "derek"]
 ---
