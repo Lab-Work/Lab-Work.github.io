@@ -7,7 +7,7 @@ description: "<p>Junyi Ji is a Ph.D. student in Civil Engineering and the Instit
 
 Junyi’s other interests include developing data analytical tools for sustainable transportation, aligned with the UN Sustainable Development Goals (SDGs). He is actively involved in volunteering with SustainableCity, a leading organization in China focused on sustainability, and MoveVU, an initiative aimed at transitioning Vanderbilt towards sustainable mobility. </p>
 
-He is the founder of the workshop on [vehicle trajectory data camp](http://i24motion.org/camp) and serves as a team member of the [REproducible Research In Transportation Engineering](https://reriteworkinggroup.github.io/RERITE_website/team.html) working group.</p>"
+He is the founder of the workshop on vehicle trajectory data camp and serves as a team member of the REproducible Research In Transportation Engineering (RE-RITE) working group.</p>"
 
 degrees: "<li>Ph.D., Civil and Environmental Engineering, Vanderbilt University 2026 (expected)</li>
 <li>M.S., Transportation Engineering, Southeast University, China, 2022</li>
