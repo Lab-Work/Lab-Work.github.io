@@ -2,7 +2,7 @@
 layout: post
 title: "Junyi Ji selected as finalist in Vanderbilt's 11th Annual Three Minute Thesis Competition"
 excerpt: "Junyi shared his reearch story on stop-and-go waves to a broader audience!"
-date: 2023-12-08
+date: 2024-11-03
 image: "/images/junyi_3mt.jpg"
 ---
 
