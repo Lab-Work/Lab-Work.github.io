@@ -12,6 +12,6 @@ He is the initiator of the workshop on vehicle trajectory data camp and serves a
 degrees: "<li>Ph.D., Civil and Environmental Engineering, Vanderbilt University 2026 (expected)</li>
 <li>M.S., Transportation Engineering, Southeast University, China, 2022</li>
 <li>B.Eng., Traffic Engineering, Southeast University, China, 2019</li>"
-image: /images/people/Junyi_23F.png
+image: /images/people/junyi_25S_worklab.png
 site: https://www.jijunyi.com
 ---
