@@ -1,0 +1,9 @@
+---
+layout: post
+title: "Congratulations to Dr. George Gunter!"
+excerpt: "George Gunter, defends his Ph.D."
+date: 2023-10-05
+image: "/images/goerge_defense.JPG"
+---
+
+Dr. George Gunter successfully defended his PhD dissertation on "Formal safety and cyber-security of mixed-autonomy traffic" on March 4, 2025. His work focused on the critical challenge of ensuring safety as automated vehicles (AVs) join our roadways alongside human drivers in mixed-autonomy traffic. Congratulations George!
