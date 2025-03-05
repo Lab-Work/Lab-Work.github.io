@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Congratulations to Dr. George Gunter!"
-excerpt: "George Gunter, defends his Ph.D."
+excerpt: "George Gunter defends his Ph.D."
 date: 2025-03-05
 image: "/images/goerge_defense.JPG"
 ---
