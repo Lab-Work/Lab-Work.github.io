@@ -2,7 +2,7 @@
 layout: post
 title: "Junyi Ji selected as a 2025 CPS rising star"
 excerpt: "Congratulations to Junyi, way to go!"
-date: 2024-11-03
+date: 2025-03-12
 image: "/images/junyi-cps.png"
 ---
 
