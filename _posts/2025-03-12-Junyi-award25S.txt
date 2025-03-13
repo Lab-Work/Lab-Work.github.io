@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Junyi Ji selected as a 2025 CPS rising star"
+excerpt: "Congratulations to Junyi, way to go!"
+date: 2024-11-03
+image: "/images/junyi-cps.png"
+---
+
+We are delighted to share that Junyi Ji has been recognized as a 2025 CPS Rising Star! This prestigious recognition highlights Junyi’s meaningful contributions to the field of Cyber-Physical Systems (CPS) and reflects his dedication to advancing research and innovation.
+
+Junyi’s work focuses on utilizing extensive trajectory data from I-24 MOTION to explore novel computational approaches and contribute to scientific discovery in Transportation CPS.
+
+The CPS Rising Stars workshop aims to identify and mentor outstanding PhD students and postdocs who are interested in pursuing academic careers in Cyber-Physical Systems (CPS) related areas. Junyi’s selection is a wonderful acknowledgment of his hard work, commitment, and potential to contribute to the future of CPS.
