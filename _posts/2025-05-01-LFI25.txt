@@ -1,0 +1,15 @@
+---
+layout: post
+title: "Our student team awarded Lacy-Fischer Interdisciplinary research grant for freeway safety"
+excerpt: "Friendship fuels innovation!"
+date: 2025-05-01
+image: "/images/LFI.jpg"
+---
+
+We are proud to announce that our student team’s project, “Protect Your Drive: Implementing Early Warnings of Freeway Slowdowns,” has been awarded the prestigious Lacy-Fischer Interdisciplinary Research Grant.
+
+This competitive grant, awarded by Vanderbilt University’s Graduate School, supports graduate student-led collaborations across disciplines and fosters innovative, cross-field research.
+
+By combining expertise in traffic engineering, computational science, and cyber-physical systems, this research aims to bridge traffic science with cutting-edge computing to deliver smarter, more responsive freeway operation solutions.
+
+The team, Junyi Ji, Austin Coursey, and Alex Richardson, has already demonstrated the strength of their collaboration, earning a publication at NeurIPS and receiving an Outstanding Paper Award from the Institute for Software Integrated Systems. This grant will further fuel their innovation, enabling new advances in freeway operations through real-time data and computational methods.
