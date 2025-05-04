@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Our student team awarded Lacy-Fischer Interdisciplinary research grant for freeway safety"
+title: "Our student team awarded Lacy-Fischer Interdisciplinary research grant on freeway safety"
 excerpt: "Friendship fuels innovation!"
 date: 2025-05-01
 image: "/images/LFI.jpg"
