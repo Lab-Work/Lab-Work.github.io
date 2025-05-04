@@ -3,7 +3,7 @@ layout: post
 title: "Our student team awarded Lacy-Fischer Interdisciplinary research grant on freeway safety"
 excerpt: "Friendship fuels innovation!"
 date: 2025-05-01
-image: "/images/LFI.jpg"
+image: "/images/LFI.JPG"
 ---
 
 We are proud to announce that our student team’s project, “Protect Your Drive: Implementing Early Warnings of Freeway Slowdowns,” has been awarded the prestigious Lacy-Fischer Interdisciplinary Research Grant.
