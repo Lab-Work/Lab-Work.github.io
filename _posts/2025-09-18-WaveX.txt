@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "I-24 MOTION Enables Generative AI: Our Recent Publication in Transportation Research Part C"
+title: "I-24 MOTION Enables Generative AI for Freeway Operations"
 excerpt: "Our generative AI framework for reconstructing stop-and-go traffic waves is now published, with the dataset publicly available."
 date: 2025-09-18
 image: "/images/wavex_TRC.png"
