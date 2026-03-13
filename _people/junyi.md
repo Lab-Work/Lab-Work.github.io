@@ -9,7 +9,7 @@ Junyi’s other interests include developing data analytical tools for sustainab
 
 He is the initiator of the workshop on vehicle trajectory data camp and serves as a member of the REproducible Research In Transportation Engineering (RERITE) working group. He is a strong advocate of open science.</p>"
 
-degrees: "<li>Ph.D., Civil and Environmental Engineering, Vanderbilt University 2026 (expected)</li>
+degrees: "<li>Ph.D., Civil and Environmental Engineering, Vanderbilt University 2026</li>
 <li>M.S., Transportation Engineering, Southeast University, China, 2022</li>
 <li>B.Eng., Traffic Engineering, Southeast University, China, 2019</li>"
 image: /images/people/junyi_25F.jpeg
