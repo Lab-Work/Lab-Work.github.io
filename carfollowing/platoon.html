@@ -1,0 +1,956 @@
+<meta charset="utf-8">
+<title>Platoon Following Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#eef0ee;
+    --surface:#ffffff;
+    --surface-2:#e3e7e1;
+    --ink:#171a1c;
+    --muted:#57626b;
+    --line:#d7dbd3;
+    --accent:#1f6f8b;
+    --accent-ink:#ffffff;
+    --accent-soft:#dcebf0;
+    --pos-far:#7c5cbf;
+    --speed-slow:#c94a5b;
+    --speed-mid:#e3a13d;
+    --speed-fast:#2f9e64;
+    --shadow:0 1px 2px rgba(20,25,25,.06), 0 6px 20px rgba(20,25,25,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14171a;
+      --surface:#1b2024;
+      --surface-2:#20262b;
+      --ink:#e8eaec;
+      --muted:#98a2ab;
+      --line:#2b3138;
+      --accent:#4fb3d9;
+      --accent-ink:#0b1013;
+      --accent-soft:#1d323a;
+      --pos-far:#a688e0;
+      --speed-slow:#e0616d;
+      --speed-mid:#eeb35b;
+      --speed-fast:#41c17f;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14171a;
+    --surface:#1b2024;
+    --surface-2:#20262b;
+    --ink:#e8eaec;
+    --muted:#98a2ab;
+    --line:#2b3138;
+    --accent:#4fb3d9;
+    --accent-ink:#0b1013;
+    --accent-soft:#1d323a;
+    --pos-far:#a688e0;
+    --speed-slow:#e0616d;
+    --speed-mid:#eeb35b;
+    --speed-fast:#41c17f;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{ box-sizing:border-box; }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:"Barlow Semi Condensed", system-ui, sans-serif;
+    text-wrap:balance;
+    margin:0;
+  }
+  .num{
+    font-family:"IBM Plex Mono", ui-monospace, monospace;
+    font-variant-numeric:tabular-nums;
+  }
+  .app{
+    max-width:1240px;
+    margin:0 auto;
+    padding:20px 24px 48px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .topbar{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    padding-bottom:14px;
+  }
+  .topbar h1{ font-size:28px; font-weight:700; letter-spacing:.2px; }
+  .topbar-title{ display:flex; flex-direction:column; }
+
+  .dashboard{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 300px;
+    gap:16px;
+    align-items:start;
+  }
+  .main-column{ display:flex; flex-direction:column; gap:16px; min-width:0; }
+  @media (max-width:860px){
+    .dashboard{ grid-template-columns:1fr; }
+  }
+
+  .card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:10px;
+    box-shadow:var(--shadow);
+  }
+
+  .stage-panel{ display:flex; flex-direction:column; gap:10px; }
+  .stage{
+    position:relative;
+    height:190px;
+    border-radius:10px;
+    overflow:hidden;
+    background:var(--surface);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+  }
+  .stage canvas{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+
+  .car{
+    position:absolute;
+    top:50%;
+    width:40px;
+    height:17px;
+    transform:translate(-50%,-50%);
+    z-index:2;
+  }
+  .car svg{ width:100%; height:100%; display:block; }
+  .car .car-fill{ transition:fill .12s linear; }
+  .car .car-glass{ fill:rgba(255,255,255,.5); }
+  .car .car-detail{ fill:rgba(0,0,0,.2); }
+
+  .readout{
+    position:absolute;
+    top:calc(50% - 40px);
+    transform:translateX(-50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1px;
+    padding:3px 8px;
+    border-radius:6px;
+    background:var(--surface);
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    z-index:3;
+    pointer-events:none;
+    white-space:nowrap;
+  }
+  .readout .val{ font-size:14px; font-weight:500; }
+  .readout .accel{ font-size:10.5px; color:var(--muted); }
+  .readout .lbl{ font-size:9.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+
+  .collision-banner{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 20px;
+    background:color-mix(in srgb, var(--speed-slow) 16%, var(--surface) 84%);
+    color:var(--speed-slow);
+    font-family:"Barlow Semi Condensed", sans-serif;
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:.02em;
+    z-index:5;
+  }
+  .collision-banner[hidden]{ display:none; }
+
+  .legend{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 12px;
+    font-size:11.5px;
+    color:var(--muted);
+  }
+  .legend .bar{
+    flex:1;
+    height:8px;
+    border-radius:4px;
+    background:linear-gradient(90deg, var(--speed-slow), var(--speed-mid), var(--speed-fast));
+  }
+  .legend .bar.position{ background:linear-gradient(90deg, var(--accent), var(--pos-far)); flex:0 0 90px; }
+  .legend span.tag{ text-transform:uppercase; letter-spacing:.06em; font-size:10px; }
+
+  .controls-panel{ display:flex; flex-direction:column; gap:14px; }
+  .control-group{ padding:14px 16px 16px; display:flex; flex-direction:column; gap:12px; }
+  .control-group h2{
+    font-size:14.5px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--muted);
+  }
+  .control{ display:flex; flex-direction:column; gap:5px; }
+  .control-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:12.5px; }
+  .control-row .name{ color:var(--ink); }
+  .control-row .value{ color:var(--accent); font-size:13px; font-weight:500; }
+  input[type="range"]{
+    -webkit-appearance:none; width:100%; height:4px; border-radius:2px; background:var(--surface-2); outline:none;
+  }
+  input[type="range"]::-webkit-slider-thumb{
+    -webkit-appearance:none; width:15px; height:15px; border-radius:50%;
+    background:var(--accent); border:2px solid var(--surface); box-shadow:0 0 0 1px var(--accent); cursor:pointer;
+  }
+  input[type="range"]::-moz-range-thumb{
+    width:15px; height:15px; border-radius:50%;
+    background:var(--accent); border:2px solid var(--surface); box-shadow:0 0 0 1px var(--accent); cursor:pointer;
+  }
+  .hint{ font-size:10.5px; color:var(--muted); }
+
+  .equation{
+    font-family:"IBM Plex Mono", monospace; font-size:11.5px; line-height:1.6; color:var(--muted);
+    background:var(--surface-2); border-radius:6px; padding:8px 10px;
+  }
+  .control-group.minor{ padding-top:11px; padding-bottom:12px; gap:9px; }
+  .control.minor .control-row .name{ color:var(--muted); font-size:11px; }
+  .control.minor .control-row .value{ font-size:11px; color:var(--muted); font-weight:400; }
+  .control.minor input[type="range"]{ height:3px; }
+  .control.minor input[type="range"]::-webkit-slider-thumb{ width:11px; height:11px; background:var(--muted); box-shadow:0 0 0 1px var(--muted); }
+  .control.minor input[type="range"]::-moz-range-thumb{ width:11px; height:11px; background:var(--muted); box-shadow:0 0 0 1px var(--muted); }
+  .equation.minor{ font-size:10.5px; padding:6px 9px; }
+
+  .playback{ flex-direction:row; flex-wrap:wrap; gap:8px; }
+  button{
+    font-family:"IBM Plex Sans", sans-serif; font-size:12.5px; font-weight:500; border-radius:7px;
+    border:1px solid var(--line); background:var(--surface-2); color:var(--ink); padding:8px 14px; cursor:pointer;
+  }
+  button.primary{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+  button:focus-visible, input:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  .charts-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  @media (max-width:700px){ .charts-grid{ grid-template-columns:1fr; } }
+  .chart-card{ padding:12px 14px 10px; display:flex; flex-direction:column; gap:6px; }
+  .chart-card.span-2{ grid-column:1 / -1; }
+  .chart-card.span-2 canvas{ height:118px; }
+  .chart-head{ display:flex; justify-content:space-between; align-items:baseline; }
+  .chart-head h3{ font-size:14px; font-weight:600; letter-spacing:.01em; }
+  .chart-head .now{ font-size:12.5px; color:var(--muted); }
+  .chart-card canvas{ width:100%; height:118px; display:block; }
+
+  .timespace-card{ padding:12px 14px 10px; display:flex; flex-direction:column; gap:6px; }
+  .timespace-card canvas{ width:100%; height:280px; display:block; }
+
+  @media (prefers-reduced-motion: reduce){ * { transition:none !important; } }
+</style>
+
+<div class="app">
+  <header class="topbar">
+    <div class="topbar-title">
+      <h1>Platoon Following Simulator</h1>
+    </div>
+    <a href="index.html" style="font-size:12.5px; color:var(--accent); text-decoration:none; white-space:nowrap;">← 2-vehicle version</a>
+  </header>
+
+  <main class="dashboard">
+    <div class="main-column">
+      <section class="stage-panel">
+        <div class="stage" id="stage">
+          <canvas id="roadCanvas"></canvas>
+          <div class="collision-banner" id="collisionBanner" hidden></div>
+        </div>
+        <div class="legend">
+          <span class="tag">Slow</span>
+          <span class="bar"></span>
+          <span class="tag">Free-flow</span>
+          <span style="margin-left:6px;">vehicle color = its current speed</span>
+        </div>
+        <div class="legend">
+          <span class="tag">Near lead</span>
+          <span class="bar position"></span>
+          <span class="tag">End of platoon</span>
+          <span style="margin-left:6px;">chart-line color = position in the platoon</span>
+        </div>
+      </section>
+
+      <section class="charts-grid">
+        <div class="chart-card card">
+          <div class="chart-head"><h3>Speed</h3><span class="now num" id="speedNow">–</span></div>
+          <canvas id="chartSpeed"></canvas>
+        </div>
+        <div class="chart-card card">
+          <div class="chart-head"><h3>Relative speed Δv</h3><span class="now num" id="dvNow">–</span></div>
+          <canvas id="chartDv"></canvas>
+        </div>
+        <div class="chart-card card">
+          <div class="chart-head"><h3>Space gap Δx</h3><span class="now num" id="gapNow">–</span></div>
+          <canvas id="chartGap"></canvas>
+        </div>
+        <div class="chart-card card">
+          <div class="chart-head"><h3>Time gap</h3><span class="now num" id="tgapNow">–</span></div>
+          <canvas id="chartTgap"></canvas>
+        </div>
+        <div class="chart-card card span-2">
+          <div class="chart-head"><h3>Acceleration</h3><span class="now num" id="accelNow">–</span></div>
+          <canvas id="chartAccel"></canvas>
+        </div>
+      </section>
+
+      <section class="timespace-card card">
+        <div class="chart-head">
+          <h3>Time&ndash;space diagram</h3>
+          <span class="now num" style="color:var(--muted); font-weight:400;">position vs. time, colored by instantaneous speed &mdash; watch a slowdown propagate backward as a shockwave</span>
+        </div>
+        <canvas id="chartTimeSpace"></canvas>
+      </section>
+    </div>
+
+    <aside class="controls-panel">
+      <div class="control-group card">
+        <h2>Lead vehicle</h2>
+        <div class="control">
+          <div class="control-row">
+            <span class="name">Target speed</span>
+            <span class="value num" id="vLeadTargetVal">20.0 m/s</span>
+          </div>
+          <input type="range" id="vLeadTarget" min="0" max="35" step="0.5" value="20">
+        </div>
+        <div class="control">
+          <div class="control-row">
+            <span class="name">Max acceleration</span>
+            <span class="value num" id="aMaxVal">3.0 m/s²</span>
+          </div>
+          <input type="range" id="aMax" min="1" max="5" step="0.1" value="3">
+          <span class="hint">Caps how fast the lead car can speed up or brake — it ramps toward the slider, it doesn't jump.</span>
+        </div>
+      </div>
+
+      <div class="control-group card">
+        <h2>Car-following model</h2>
+        <div class="control">
+          <div class="control-row">
+            <span class="name">α — sensitivity</span>
+            <span class="value num" id="alphaVal">0.50 /s</span>
+          </div>
+          <input type="range" id="alpha" min="0.1" max="2" step="0.01" value="0.5">
+        </div>
+        <div class="control">
+          <div class="control-row">
+            <span class="name">τ — desired time gap</span>
+            <span class="value num" id="tauVal">1.50 s</span>
+          </div>
+          <input type="range" id="tau" min="0.5" max="4" step="0.1" value="1.5">
+        </div>
+        <div class="equation">
+          dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>
+          dv<sub>i</sub>/dt = α · [Δx<sub>i</sub> − (g<sub>min</sub> + τ·v<sub>i</sub>)]<br>
+          same α, τ for every follower i = 1…N
+        </div>
+      </div>
+
+      <div class="control-group card minor">
+        <div class="control minor">
+          <div class="control-row">
+            <span class="name">L — vehicle length</span>
+            <span class="value num" id="carLengthVal">4.5 m</span>
+          </div>
+          <input type="range" id="carLength" min="3" max="7" step="0.1" value="4.5">
+        </div>
+        <div class="control minor">
+          <div class="control-row">
+            <span class="name">g<sub>min</sub> — minimum gap</span>
+            <span class="value num" id="minGapVal">2.0 m</span>
+          </div>
+          <input type="range" id="minGap" min="0.5" max="5" step="0.1" value="2">
+        </div>
+      </div>
+
+      <div class="control-group card">
+        <h2>Platoon</h2>
+        <div class="control">
+          <div class="control-row">
+            <span class="name">N — number of followers</span>
+            <span class="value num" id="countVal">10</span>
+          </div>
+          <input type="range" id="count" min="2" max="30" step="1" value="10">
+          <span class="hint">Changing this resets the platoon to a fresh, fully-settled state.</span>
+        </div>
+      </div>
+
+      <div class="control-group card playback">
+        <button class="primary" id="playPause">Pause</button>
+        <button id="reset">Reset</button>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  const MAX_N = 30;
+  const HISTORY_WINDOW = 45; // seconds
+  const SUBSTEP = 1/240;
+  const PX_PER_METER_MAX = 9;
+  const PX_PER_METER_MIN = 5; // legibility floor - cars never render smaller than this scale implies
+  const CAR_ASPECT = 17/40;
+
+  const DEFAULTS = { vLead:20, alpha:0.5, tau:1.5, aMax:3, vLeadTarget:20, carLength:4.5, minGap:2, N:10 };
+
+  const state = {
+    running:true,
+    collided:false,
+    collidedIndex:-1,
+    t:0,
+    vLead:DEFAULTS.vLead,
+    vLeadTarget:DEFAULTS.vLeadTarget,
+    aMax:DEFAULTS.aMax,
+    alpha:DEFAULTS.alpha,
+    tau:DEFAULTS.tau,
+    carLength:DEFAULTS.carLength,
+    minGap:DEFAULTS.minGap,
+    N:DEFAULTS.N,
+    roadOffset:0,       // meters the lead has traveled since t=0 (also drives lane-dash scroll)
+    aLead:0,
+    gap:new Array(MAX_N).fill(0),   // gap[i] = space gap ahead of follower i (i=0 is right behind the lead)
+    vF:new Array(MAX_N).fill(0),
+    aF:new Array(MAX_N).fill(0)
+  };
+
+  let history = []; // {t, vLead, aLead, worldLead, gap[], vF[], dv[], tgap[], aF[], world[]}
+
+  // ---------------- DOM ----------------
+  const stage = document.getElementById('stage');
+  const roadCanvas = document.getElementById('roadCanvas');
+  const roadCtx = roadCanvas.getContext('2d');
+  const collisionBanner = document.getElementById('collisionBanner');
+
+  const vLeadTargetInput = document.getElementById('vLeadTarget');
+  const aMaxInput = document.getElementById('aMax');
+  const alphaInput = document.getElementById('alpha');
+  const tauInput = document.getElementById('tau');
+  const carLengthInput = document.getElementById('carLength');
+  const minGapInput = document.getElementById('minGap');
+  const countInput = document.getElementById('count');
+
+  const vLeadTargetVal = document.getElementById('vLeadTargetVal');
+  const aMaxVal = document.getElementById('aMaxVal');
+  const alphaVal = document.getElementById('alphaVal');
+  const tauVal = document.getElementById('tauVal');
+  const carLengthVal = document.getElementById('carLengthVal');
+  const minGapVal = document.getElementById('minGapVal');
+  const countVal = document.getElementById('countVal');
+
+  const playPauseBtn = document.getElementById('playPause');
+  const resetBtn = document.getElementById('reset');
+
+  const speedNow = document.getElementById('speedNow');
+  const dvNow = document.getElementById('dvNow');
+  const gapNow = document.getElementById('gapNow');
+  const tgapNow = document.getElementById('tgapNow');
+  const accelNow = document.getElementById('accelNow');
+
+  // ---------------- car icon pool (pre-built once, shown/hidden per N) ----------------
+  function makeCarSvg(){
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('viewBox','0 0 96 40');
+    svg.innerHTML =
+      '<rect class="car-fill" x="2" y="10" width="92" height="20" rx="8"/>' +
+      '<path class="car-fill" d="M20 12 Q30 0 56 0 Q72 0 78 12 Z"/>' +
+      '<path class="car-glass" d="M27 11 Q34 3 55 3 Q66 3 72 11 Z"/>' +
+      '<circle class="car-detail" cx="24" cy="31" r="7"/>' +
+      '<circle class="car-detail" cx="72" cy="31" r="7"/>';
+    return svg;
+  }
+  const carEls = []; // index 0 = lead, index 1..MAX_N = followers 1..MAX_N
+  for(let i=0;i<=MAX_N;i++){
+    const div = document.createElement('div');
+    div.className = 'car';
+    div.appendChild(makeCarSvg());
+    stage.appendChild(div);
+    carEls.push(div);
+  }
+  function makeReadout(label){
+    const div = document.createElement('div');
+    div.className = 'readout';
+    div.innerHTML = '<span class="val num"></span><span class="accel num"></span><span class="lbl">'+label+'</span>';
+    stage.appendChild(div);
+    return { root:div, val:div.querySelector('.val'), accel:div.querySelector('.accel'), lbl:div.querySelector('.lbl') };
+  }
+  const leadChip = makeReadout('Lead');
+  const tailChip = makeReadout('Last follower');
+
+  // ---------------- controls wiring ----------------
+  function syncLabels(){
+    vLeadTargetVal.textContent = state.vLeadTarget.toFixed(1) + ' m/s';
+    aMaxVal.textContent = state.aMax.toFixed(1) + ' m/s²';
+    alphaVal.textContent = state.alpha.toFixed(2) + ' /s';
+    tauVal.textContent = state.tau.toFixed(2) + ' s';
+    carLengthVal.textContent = state.carLength.toFixed(1) + ' m';
+    minGapVal.textContent = state.minGap.toFixed(1) + ' m';
+    countVal.textContent = String(state.N);
+  }
+  vLeadTargetInput.addEventListener('input', e=>{ state.vLeadTarget = parseFloat(e.target.value); syncLabels(); });
+  aMaxInput.addEventListener('input', e=>{ state.aMax = parseFloat(e.target.value); syncLabels(); });
+  alphaInput.addEventListener('input', e=>{ state.alpha = parseFloat(e.target.value); syncLabels(); });
+  tauInput.addEventListener('input', e=>{ state.tau = parseFloat(e.target.value); syncLabels(); });
+  carLengthInput.addEventListener('input', e=>{ state.carLength = parseFloat(e.target.value); syncLabels(); });
+  minGapInput.addEventListener('input', e=>{ state.minGap = parseFloat(e.target.value); syncLabels(); });
+  countInput.addEventListener('input', e=>{ state.N = parseInt(e.target.value,10); syncLabels(); resetSim(); });
+
+  playPauseBtn.addEventListener('click', ()=>{
+    if(state.collided) return;
+    state.running = !state.running;
+    playPauseBtn.textContent = state.running ? 'Pause' : 'Play';
+  });
+  resetBtn.addEventListener('click', resetSim);
+
+  function resetSim(){
+    state.t = 0;
+    state.vLead = DEFAULTS.vLead;
+    state.roadOffset = 0;
+    state.aLead = 0;
+    state.collided = false;
+    state.collidedIndex = -1;
+    state.running = true;
+    playPauseBtn.textContent = 'Pause';
+    collisionBanner.hidden = true;
+    // start every follower already at the model's own equilibrium: Δx* = g_min + tau*v
+    const eqGap = state.minGap + state.tau*DEFAULTS.vLead;
+    for(let i=0;i<MAX_N;i++){
+      state.gap[i] = eqGap;
+      state.vF[i] = DEFAULTS.vLead;
+      state.aF[i] = 0;
+    }
+    history = [];
+    for(let i=0;i<=MAX_N;i++) carEls[i].hidden = (i>state.N);
+  }
+  resetSim();
+  syncLabels();
+
+  // ---------------- physics ----------------
+  // Model (continuous time), same for every follower i = 1..N:
+  //   dΔx_i/dt = v_{i-1} - v_i
+  //   dv_i/dt  = alpha * (Δx_i - (g_min + tau*v_i))
+  // The lead (i=0) has no ODE - it's a rate-limited controller chasing the
+  // target-speed slider. Each follower reacts only to the vehicle directly
+  // ahead of it, so the whole platoon is a simple chain.
+  function stepPhysics(dt){
+    let remaining = dt;
+    while(remaining > 0){
+      const h = Math.min(SUBSTEP, remaining);
+      remaining -= h;
+
+      // lead: rate-limited controller, capped at +-aMax*h
+      const leadSpeedError = state.vLeadTarget - state.vLead;
+      const dvLead = Math.max(-state.aMax*h, Math.min(state.aMax*h, leadSpeedError));
+      state.vLead += dvLead;
+      state.roadOffset += state.vLead * h;
+
+      // Walk the chain from the lead backward. `aheadV` is the speed of
+      // whichever vehicle is directly in front of the one we're updating -
+      // it's already been advanced this substep by the time we use it here,
+      // same convention as the single-vehicle model.
+      let aheadV = state.vLead;
+      let collidedThisStep = -1;
+      for(let i=0;i<state.N;i++){
+        const dGap = (aheadV - state.vF[i]) * h;
+        const dvFollower = state.alpha * (state.gap[i] - (state.minGap + state.tau*state.vF[i])) * h;
+
+        state.gap[i] = Math.max(0, state.gap[i] + dGap);
+        state.vF[i] = Math.max(0, state.vF[i] + dvFollower);
+
+        if(state.gap[i] <= state.minGap && collidedThisStep<0){ collidedThisStep = i; }
+        aheadV = state.vF[i];
+      }
+      if(collidedThisStep>=0){
+        state.collided = true;
+        state.collidedIndex = collidedThisStep;
+        state.running = false;
+      }
+
+      state.t += h;
+      if(state.collided) break;
+    }
+  }
+
+  // ---------------- color scales ----------------
+  const SPEED_DOMAIN = 35;
+  function lerp(a,b,t){ return a+(b-a)*t; }
+  function hexToRgb(hex){ const n=parseInt(hex.slice(1),16); return [(n>>16)&255,(n>>8)&255,n&255]; }
+  function rgbToHex(rgb){ return '#'+rgb.map(v=>Math.round(Math.max(0,Math.min(255,v))).toString(16).padStart(2,'0')).join(''); }
+
+  function speedToColor(v, css){
+    const slow = hexToRgb(css.getPropertyValue('--speed-slow').trim());
+    const mid  = hexToRgb(css.getPropertyValue('--speed-mid').trim());
+    const fast = hexToRgb(css.getPropertyValue('--speed-fast').trim());
+    const t = Math.max(0, Math.min(1, v/SPEED_DOMAIN));
+    const out = t<0.5 ? slow.map((c,i)=>lerp(c,mid[i],t/0.5)) : mid.map((c,i)=>lerp(c,fast[i],(t-0.5)/0.5));
+    return rgbToHex(out);
+  }
+  function positionColor(t, css){
+    const near = hexToRgb(css.getPropertyValue('--accent').trim());
+    const far  = hexToRgb(css.getPropertyValue('--pos-far').trim());
+    return rgbToHex(near.map((c,i)=>lerp(c,far[i],Math.max(0,Math.min(1,t)))));
+  }
+
+  // ---------------- stage rendering ----------------
+  let dpr = Math.max(1, window.devicePixelRatio||1);
+
+  function fitCanvas(canvas, ctx){
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = Math.round(rect.width*dpr);
+    canvas.height = Math.round(rect.height*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    return rect;
+  }
+
+  function computeGeom(rect){
+    const w = rect.width, h = rect.height;
+    const leadX = w*0.94;
+    const midY = h*0.5;
+
+    // The scale is NOT chosen to force the whole platoon into view - at
+    // realistic following distances (tens of meters) that would make cars
+    // shrink to invisible slivers once N gets past a handful. Instead we
+    // pick a scale that keeps about REFERENCE_CARS worth of the *typical*
+    // (target-speed) equilibrium spacing comfortably sized, clamped to a
+    // legible minimum. Anything beyond that simply extends past the left
+    // edge of the stage (clipped by its overflow:hidden) - still simulated
+    // correctly, just not all on screen at once.
+    const REFERENCE_CARS = 3;
+    const refGap = state.minGap + state.tau*state.vLeadTarget;
+    const refChainLength = Math.max(1, REFERENCE_CARS*(refGap+state.carLength));
+    const availablePx = leadX - 55; // leave room so a chip doesn't clip off the left edge
+    const scale = Math.max(PX_PER_METER_MIN, Math.min(PX_PER_METER_MAX, availablePx/refChainLength));
+
+    const carWidthPx = Math.max(18, state.carLength*scale);
+    const carHeightPx = Math.max(9, carWidthPx*CAR_ASPECT);
+
+    // cumulative screen x for the lead and every follower (uses the REAL,
+    // current gaps - only the scale above is decoupled from them)
+    const xs = new Array(state.N+1);
+    xs[0] = leadX;
+    let cum = 0;
+    for(let i=0;i<state.N;i++){
+      cum += state.gap[i] + state.carLength;
+      xs[i+1] = leadX - cum*scale;
+    }
+
+    // the last follower still actually on stage - the tail chip should
+    // track this one, not a vehicle that's scrolled off out of view
+    let lastVisible = 0;
+    for(let i=1;i<=state.N;i++) if(xs[i] > 10) lastVisible = i;
+
+    return { w, h, midY, leadX, scale, carWidthPx, carHeightPx, xs, lastVisible };
+  }
+
+  function drawRoad(rect, geom){
+    const { w, h, midY, scale } = geom;
+    roadCtx.clearRect(0,0,w,h);
+    const css = getComputedStyle(document.documentElement);
+    const laneY = midY;
+
+    roadCtx.fillStyle = css.getPropertyValue('--surface-2').trim();
+    roadCtx.fillRect(0, laneY-1.5, w, 3);
+
+    const dashLen = 26, gapLen = 22, period = dashLen+gapLen;
+    const offsetPx = (state.roadOffset*scale) % period;
+    roadCtx.fillStyle = css.getPropertyValue('--line').trim();
+    for(let x = -period + (period-offsetPx); x < w+period; x += period){
+      roadCtx.fillRect(x, laneY-1.5, dashLen, 3);
+    }
+  }
+
+  function positionCars(rect, geom){
+    const css = getComputedStyle(document.documentElement);
+    const { midY, carWidthPx, carHeightPx, xs, lastVisible } = geom;
+
+    for(let k=0;k<=state.N;k++){
+      const el = carEls[k];
+      el.style.width = carWidthPx+'px';
+      el.style.height = carHeightPx+'px';
+      el.style.left = xs[k]+'px';
+      el.style.top = midY+'px';
+      const v = k===0 ? state.vLead : state.vF[k-1];
+      const color = speedToColor(v, css);
+      el.querySelectorAll('.car-fill').forEach(p=> p.style.fill = color);
+    }
+    for(let k=state.N+1;k<=MAX_N;k++) carEls[k].hidden = true;
+
+    leadChip.root.style.left = xs[0]+'px';
+    leadChip.root.style.top = (midY-56)+'px';
+    leadChip.val.textContent = state.vLead.toFixed(1)+' m/s';
+    leadChip.accel.textContent = (state.aLead>=0?'+':'')+state.aLead.toFixed(2)+' m/s²';
+
+    const tailCarIdx = Math.max(1, lastVisible); // car index (1..N); the follower array index is one less
+    const lastIdx = tailCarIdx - 1;
+    tailChip.root.style.left = xs[tailCarIdx]+'px';
+    tailChip.root.style.top = (midY-56)+'px';
+    tailChip.val.textContent = state.vF[lastIdx].toFixed(1)+' m/s';
+    tailChip.accel.textContent = (state.aF[lastIdx]>=0?'+':'')+state.aF[lastIdx].toFixed(2)+' m/s²';
+    tailChip.lbl.textContent = tailCarIdx===state.N ? 'Last follower' : 'Follower #'+tailCarIdx+' of '+state.N;
+
+    if(state.collided){
+      const who = state.collidedIndex===0 ? 'the 1st follower' : 'follower #'+(state.collidedIndex+1);
+      collisionBanner.textContent = who+' closed past the minimum gap. Press Reset.';
+    }
+    collisionBanner.hidden = !state.collided;
+  }
+
+  // ---------------- charts ----------------
+  function buildFollowerSeries(){
+    const s = [];
+    for(let i=0;i<state.N;i++){
+      s.push({ getSpeed:h=>h.vF[i], getDv:h=>h.dv[i], getGap:h=>h.gap[i], getTgap:h=>h.tgap[i], getA:h=>h.aF[i], posIndex:i });
+    }
+    return s;
+  }
+  let followerSeries = buildFollowerSeries();
+  // rebuild the per-follower series list whenever the platoon is resized
+  countInput.addEventListener('input', ()=>{ followerSeries = buildFollowerSeries(); });
+
+  const chartSpeed = { canvas:document.getElementById('chartSpeed'), ctx:null, yUnit:'m/s', domain:[0,38], nowEl:speedNow, fmt:v=>v.toFixed(1)+' m/s' };
+  const chartDv    = { canvas:document.getElementById('chartDv'), ctx:null, yUnit:'m/s', zeroLine:true, nowEl:dvNow, fmt:v=>(v>=0?'+':'')+v.toFixed(1)+' m/s' };
+  const chartGap   = { canvas:document.getElementById('chartGap'), ctx:null, yUnit:'m', nowEl:gapNow, fmt:v=>v.toFixed(1)+' m', refLines:[{key:'minGap', color:'--speed-slow', dash:[2,3], alpha:0.75}] };
+  const chartTgap  = { canvas:document.getElementById('chartTgap'), ctx:null, yUnit:'s', domain:[0,6], nowEl:tgapNow, fmt:v=>v.toFixed(2)+' s', refLines:[{key:'tau', color:'--speed-mid', dash:[4,3], alpha:1}] };
+  const chartAccel = { canvas:document.getElementById('chartAccel'), ctx:null, yUnit:'m/s²', zeroLine:true, nowEl:accelNow, fmt:v=>(v>=0?'+':'')+v.toFixed(2)+' m/s²' };
+  const chartDefs = [chartSpeed, chartDv, chartGap, chartTgap, chartAccel];
+  chartDefs.forEach(c=> c.ctx = c.canvas.getContext('2d'));
+
+  function fitChartCanvas(c){
+    const rect = c.canvas.getBoundingClientRect();
+    c.canvas.width = Math.round(rect.width*dpr);
+    c.canvas.height = Math.round(rect.height*dpr);
+    c.ctx.setTransform(dpr,0,0,dpr,0,0);
+    return rect;
+  }
+
+  // Subsample the rolling history so a 30-vehicle platoon doesn't force
+  // thousands of line segments per series every frame.
+  function subsample(arr, maxPoints){
+    if(arr.length<=maxPoints) return arr;
+    const out = [];
+    const step = arr.length/maxPoints;
+    for(let i=0;i<maxPoints;i++) out.push(arr[Math.floor(i*step)]);
+    out.push(arr[arr.length-1]);
+    return out;
+  }
+
+  function drawStandardChart(c, sampled){
+    const rect = fitChartCanvas(c);
+    const w = rect.width, h = rect.height;
+    const ctx = c.ctx;
+    ctx.clearRect(0,0,w,h);
+    if(sampled.length < 2) return;
+
+    const css = getComputedStyle(document.documentElement);
+    const tMax = sampled[sampled.length-1].t;
+    const tMin = Math.max(0, tMax - HISTORY_WINDOW);
+
+    // build this chart's series list fresh each draw (lead + one per follower)
+    let series;
+    if(c===chartSpeed) series = [{get:hp=>hp.vLead, color:'--speed-mid'}, ...followerSeries.map(s=>({get:s.getSpeed, posIndex:s.posIndex}))];
+    else if(c===chartDv) series = followerSeries.map(s=>({get:s.getDv, posIndex:s.posIndex}));
+    else if(c===chartGap) series = followerSeries.map(s=>({get:s.getGap, posIndex:s.posIndex}));
+    else if(c===chartTgap) series = followerSeries.map(s=>({get:s.getTgap, posIndex:s.posIndex}));
+    else series = [{get:hp=>hp.aLead, color:'--speed-mid'}, ...followerSeries.map(s=>({get:s.getA, posIndex:s.posIndex}))];
+
+    let yMin, yMax;
+    if(c.domain){ [yMin,yMax] = c.domain; }
+    else {
+      yMin=Infinity; yMax=-Infinity;
+      for(const p of sampled){ if(p.t<tMin) continue;
+        for(const s of series){ const v=s.get(p); if(v==null||!isFinite(v)) continue; if(v<yMin)yMin=v; if(v>yMax)yMax=v; } }
+      if(c.zeroLine){ yMin=Math.min(yMin,0); yMax=Math.max(yMax,0); }
+      if(!isFinite(yMin)||!isFinite(yMax)){ yMin=0; yMax=1; }
+      const pad = Math.max(0.5,(yMax-yMin)*0.15);
+      yMin-=pad; yMax+=pad;
+    }
+    if(yMax-yMin<1e-6) yMax=yMin+1;
+
+    const padL=34, padR=6, padT=13, padB=15;
+    const plotW=w-padL-padR, plotH=h-padT-padB;
+    const xOf = t => padL + ((t-tMin)/HISTORY_WINDOW)*plotW;
+    const yOf = v => padT + (1-(v-yMin)/(yMax-yMin))*plotH;
+
+    ctx.textBaseline='middle'; ctx.font='10px "IBM Plex Mono", monospace';
+    ctx.strokeStyle = css.getPropertyValue('--line').trim();
+    ctx.fillStyle = css.getPropertyValue('--muted').trim();
+    ctx.lineWidth=1; ctx.textAlign='right';
+    ctx.beginPath();
+    for(let i=0;i<=3;i++){
+      const y = padT+(plotH/3)*i;
+      ctx.moveTo(padL,y); ctx.lineTo(w-padR,y);
+      const v = yMax-(i/3)*(yMax-yMin);
+      ctx.fillText(v.toFixed(Math.abs(v)>=100?0:1), padL-5, y);
+    }
+    ctx.stroke();
+
+    ctx.textAlign='left'; ctx.fillText(c.yUnit||'', 2, padT-7);
+    ctx.textBaseline='alphabetic'; ctx.textAlign='left';
+    ctx.fillText('-'+HISTORY_WINDOW+'s', padL, h-3);
+    ctx.textAlign='right'; ctx.fillText('now', w-padR, h-3);
+    ctx.textBaseline='middle';
+
+    if(c.zeroLine && yMin<0 && yMax>0){
+      ctx.strokeStyle=css.getPropertyValue('--muted').trim(); ctx.globalAlpha=0.5;
+      ctx.beginPath(); ctx.moveTo(padL,yOf(0)); ctx.lineTo(w-padR,yOf(0)); ctx.stroke(); ctx.globalAlpha=1;
+    }
+    if(c.refLines){
+      for(const r of c.refLines){
+        const refV = state[r.key]; if(refV==null) continue;
+        ctx.strokeStyle = css.getPropertyValue(r.color).trim();
+        ctx.globalAlpha = r.alpha??1; ctx.setLineDash(r.dash||[4,3]);
+        ctx.beginPath(); ctx.moveTo(padL,yOf(refV)); ctx.lineTo(w-padR,yOf(refV)); ctx.stroke();
+        ctx.setLineDash([]); ctx.globalAlpha=1;
+      }
+    }
+
+    for(const s of series){
+      const colorStr = s.posIndex!=null ? positionColor(state.N>1?s.posIndex/(state.N-1):0, css) : css.getPropertyValue(s.color).trim();
+      ctx.strokeStyle = colorStr; ctx.lineWidth = s.posIndex!=null?1.3:1.8;
+      ctx.beginPath(); let started=false;
+      for(const p of sampled){
+        if(p.t<tMin) continue;
+        const v=s.get(p); if(v==null||!isFinite(v)){ started=false; continue; }
+        const x=xOf(p.t), y=yOf(v);
+        if(!started){ ctx.moveTo(x,y); started=true; } else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    }
+
+    const last = sampled[sampled.length-1];
+    if(c===chartSpeed){
+      speedNow.textContent = 'lead '+last.vLead.toFixed(1)+' m/s   last follower '+last.vF[state.N-1].toFixed(1)+' m/s';
+    } else if(c===chartAccel){
+      accelNow.textContent = 'lead '+(last.aLead>=0?'+':'')+last.aLead.toFixed(2)+' m/s²   last follower '+(last.aF[state.N-1]>=0?'+':'')+last.aF[state.N-1].toFixed(2)+' m/s²';
+    } else {
+      const v = series[series.length-1].get(last);
+      c.nowEl.textContent = (v==null||!isFinite(v)) ? '—' : c.fmt(v);
+    }
+  }
+
+  // ---------------- time-space diagram ----------------
+  const tsCanvas = document.getElementById('chartTimeSpace');
+  const tsCtx = tsCanvas.getContext('2d');
+
+  function drawTimeSpace(sampled){
+    const rect = (function(){ const r=tsCanvas.getBoundingClientRect(); tsCanvas.width=Math.round(r.width*dpr); tsCanvas.height=Math.round(r.height*dpr); tsCtx.setTransform(dpr,0,0,dpr,0,0); return r; })();
+    const w = rect.width, h = rect.height;
+    tsCtx.clearRect(0,0,w,h);
+    if(sampled.length<2) return;
+    const css = getComputedStyle(document.documentElement);
+
+    const tMax = sampled[sampled.length-1].t;
+    const tMin = Math.max(0, tMax-HISTORY_WINDOW);
+
+    let yMin=Infinity, yMax=-Infinity;
+    for(const p of sampled){
+      if(p.t<tMin) continue;
+      if(p.worldLead<yMin) yMin=p.worldLead;
+      if(p.worldLead>yMax) yMax=p.worldLead;
+      for(const w2 of p.world){ if(w2<yMin) yMin=w2; if(w2>yMax) yMax=w2; }
+    }
+    if(!isFinite(yMin)||!isFinite(yMax)){ yMin=0; yMax=1; }
+    if(yMax-yMin<1) yMax=yMin+1;
+
+    const padL=40, padR=8, padT=8, padB=18;
+    const plotW=w-padL-padR, plotH=h-padT-padB;
+    const xOf = t => padL + ((t-tMin)/HISTORY_WINDOW)*plotW;
+    const yOf = v => padT + (1-(v-yMin)/(yMax-yMin))*plotH;
+
+    tsCtx.strokeStyle = css.getPropertyValue('--line').trim();
+    tsCtx.fillStyle = css.getPropertyValue('--muted').trim();
+    tsCtx.font='10px "IBM Plex Mono", monospace'; tsCtx.textBaseline='middle'; tsCtx.textAlign='right';
+    tsCtx.lineWidth=1; tsCtx.beginPath();
+    for(let i=0;i<=3;i++){
+      const y = padT+(plotH/3)*i;
+      tsCtx.moveTo(padL,y); tsCtx.lineTo(w-padR,y);
+      const v = yMax-(i/3)*(yMax-yMin);
+      tsCtx.fillText(v.toFixed(0), padL-6, y);
+    }
+    tsCtx.stroke();
+    tsCtx.textAlign='left'; tsCtx.fillText('m', 2, padT-2);
+    tsCtx.textBaseline='alphabetic'; tsCtx.textAlign='left'; tsCtx.fillText('-'+HISTORY_WINDOW+'s', padL, h-4);
+    tsCtx.textAlign='right'; tsCtx.fillText('now', w-padR, h-4);
+
+    // one segment-colored trajectory per vehicle: color = that vehicle's
+    // instantaneous speed at each point, so a slowdown shows up as the
+    // line changing color as it moves through time.
+    function drawTrajectory(getPos, getSpeed){
+      let prev = null;
+      for(const p of sampled){
+        if(p.t<tMin){ prev=null; continue; }
+        const pos = getPos(p), spd = getSpeed(p);
+        if(pos==null||!isFinite(pos)){ prev=null; continue; }
+        if(prev){
+          tsCtx.strokeStyle = speedToColor((spd+prev.spd)/2, css);
+          tsCtx.lineWidth = 1.4;
+          tsCtx.beginPath(); tsCtx.moveTo(xOf(prev.t),yOf(prev.pos)); tsCtx.lineTo(xOf(p.t),yOf(pos)); tsCtx.stroke();
+        }
+        prev = { t:p.t, pos, spd };
+      }
+    }
+    drawTrajectory(p=>p.worldLead, p=>p.vLead);
+    for(let i=0;i<state.N;i++) drawTrajectory(p=>p.world[i], p=>p.vF[i]);
+  }
+
+  // ---------------- main loop ----------------
+  let lastTime = null;
+
+  function frame(now){
+    if(lastTime==null) lastTime = now;
+    let dt = (now-lastTime)/1000;
+    lastTime = now;
+    dt = Math.min(dt, 0.1);
+
+    if(state.running && !state.collided && dt>0){
+      const vLeadBefore = state.vLead;
+      const vFBefore = state.vF.slice(0, state.N);
+      stepPhysics(dt);
+      state.aLead = (state.vLead - vLeadBefore)/dt;
+      for(let i=0;i<state.N;i++) state.aF[i] = (state.vF[i]-vFBefore[i])/dt;
+
+      const gap = state.gap.slice(0, state.N);
+      const vF = state.vF.slice(0, state.N);
+      const aF = state.aF.slice(0, state.N);
+      const dv = new Array(state.N);
+      const tgap = new Array(state.N);
+      let aheadV = state.vLead;
+      for(let i=0;i<state.N;i++){
+        dv[i] = aheadV - vF[i];
+        tgap[i] = vF[i]>0.4 ? gap[i]/vF[i] : null;
+        aheadV = vF[i];
+      }
+      const world = new Array(state.N);
+      let cum = 0;
+      for(let i=0;i<state.N;i++){ cum += gap[i]+state.carLength; world[i] = state.roadOffset - cum; }
+
+      history.push({ t:state.t, vLead:state.vLead, aLead:state.aLead, worldLead:state.roadOffset, gap, vF, dv, tgap, aF, world });
+      const cutoff = state.t - HISTORY_WINDOW - 2;
+      while(history.length && history[0].t < cutoff) history.shift();
+    }
+
+    const rect = fitCanvas(roadCanvas, roadCtx);
+    const geom = computeGeom(rect);
+    drawRoad(rect, geom);
+    positionCars(rect, geom);
+
+    const sampled = subsample(history, 220);
+    chartDefs.forEach(c=>drawStandardChart(c, sampled));
+    drawTimeSpace(sampled);
+
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', ()=>{ dpr = Math.max(1, window.devicePixelRatio||1); });
+  requestAnimationFrame(frame);
+})();
+</script>
