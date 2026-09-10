@@ -217,6 +217,15 @@
     font-family:"IBM Plex Mono", monospace; font-size:11.5px; line-height:1.6; color:var(--muted);
     background:var(--surface-2); border-radius:6px; padding:8px 10px;
   }
+  .ss-row{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .ss-row + .ss-row{ margin-top:6px; }
+  .ss-pill{
+    font-family:"IBM Plex Sans", sans-serif; font-size:10.5px; font-weight:600;
+    padding:2px 8px; border-radius:999px; letter-spacing:.02em;
+    background:var(--surface); border:1px solid var(--line); color:var(--muted);
+  }
+  .ss-pill.pass{ background:color-mix(in srgb, var(--speed-fast) 20%, var(--surface) 80%); border-color:var(--speed-fast); color:var(--speed-fast); }
+  .ss-pill.fail{ background:color-mix(in srgb, var(--speed-slow) 16%, var(--surface) 84%); border-color:var(--speed-slow); color:var(--speed-slow); }
   .control-group.minor{ padding-top:11px; padding-bottom:12px; gap:9px; }
   .control.minor .control-row .name{ color:var(--muted); font-size:11px; }
   .control.minor .control-row .value{ font-size:11px; color:var(--muted); font-weight:400; }
@@ -350,6 +359,19 @@
           dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>
           dv<sub>i</sub>/dt = α · [Δx<sub>i</sub> − (g<sub>min</sub> + τ·v<sub>i</sub>)]<br>
           same α, τ for every follower i = 1…N
+        </div>
+        <div class="equation" id="stringStabilityBox">
+          <div class="ss-row">
+            <span>String stability, this α·τ² = <span class="num" id="ssAtau2">–</span></span>
+          </div>
+          <div class="ss-row">
+            <span class="ss-pill" id="ssL2Pill">L2</span>
+            <span class="hint" style="margin:0;">needs ατ² ≥ 2</span>
+          </div>
+          <div class="ss-row">
+            <span class="ss-pill" id="ssLinfPill">L∞</span>
+            <span class="hint" style="margin:0;">needs ατ² ≥ 4 (the stricter test)</span>
+          </div>
         </div>
       </div>
 
@@ -486,7 +508,29 @@
   const leadChip = makeReadout('Lead');
   const tailChip = makeReadout('Last follower');
 
+  const ssAtau2 = document.getElementById('ssAtau2');
+  const ssL2Pill = document.getElementById('ssL2Pill');
+  const ssLinfPill = document.getElementById('ssLinfPill');
+
   // ---------------- controls wiring ----------------
+  // String stability of our exact model (f_h=alpha, f_hdot=0, f_v=-alpha*tau),
+  // via Wilson (2008)/Ward & Wilson (2011) and Monteil, Bouroche & Leith
+  // (arXiv:1609.07382): L2 strict string stability needs alpha*tau^2 >= 2;
+  // L∞ strict string stability (the stricter, peak/collision-relevant test)
+  // needs alpha*tau^2 >= 4. g_min never enters this - it only shifts the
+  // equilibrium gap, not the linearized dynamics around it.
+  function updateStringStability(){
+    const aTau2 = state.alpha * state.tau * state.tau;
+    ssAtau2.textContent = aTau2.toFixed(2);
+    const setPill = (el, label, ok) => {
+      el.textContent = label + ' ' + (ok ? 'stable' : 'unstable');
+      el.classList.toggle('pass', ok);
+      el.classList.toggle('fail', !ok);
+    };
+    setPill(ssL2Pill, 'L2', aTau2 >= 2);
+    setPill(ssLinfPill, 'L∞', aTau2 >= 4);
+  }
+
   function syncLabels(){
     vLeadTargetVal.textContent = state.vLeadTarget.toFixed(1) + ' m/s';
     aMaxVal.textContent = state.aMax.toFixed(1) + ' m/s²';
@@ -495,6 +539,7 @@
     carLengthVal.textContent = state.carLength.toFixed(1) + ' m';
     minGapVal.textContent = state.minGap.toFixed(1) + ' m';
     countVal.textContent = String(state.N);
+    updateStringStability();
   }
   vLeadTargetInput.addEventListener('input', e=>{ state.vLeadTarget = parseFloat(e.target.value); syncLabels(); });
   aMaxInput.addEventListener('input', e=>{ state.aMax = parseFloat(e.target.value); syncLabels(); });
