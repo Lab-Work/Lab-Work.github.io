@@ -217,6 +217,15 @@
     font-family:"IBM Plex Mono", monospace; font-size:11.5px; line-height:1.6; color:var(--muted);
     background:var(--surface-2); border-radius:6px; padding:8px 10px;
   }
+  .toggle-group{ display:flex; gap:6px; }
+  .toggle-btn{
+    flex:1; font-family:"IBM Plex Sans", sans-serif; font-size:12px; font-weight:500; border-radius:7px;
+    border:1px solid var(--line); background:var(--surface-2); color:var(--muted); padding:6px 8px; cursor:pointer;
+  }
+  .toggle-btn.active{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
+  .toggle-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .hidden-control{ display:none; }
+  .ss-title{ font-family:"IBM Plex Sans", sans-serif; font-size:11px; font-weight:600; color:var(--ink); margin-bottom:5px; }
   .ss-row{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
   .ss-row + .ss-row{ margin-top:6px; }
   .ss-pill{
@@ -342,9 +351,18 @@
       <div class="control-group card">
         <h2>Car-following model</h2>
         <div class="control">
+          <div class="control-row"><span class="name">Following policy</span></div>
+          <div class="toggle-group" role="group" aria-label="Following policy">
+            <button type="button" class="toggle-btn active" id="modeTimeBtn">Time gap</button>
+            <button type="button" class="toggle-btn" id="modeSpaceBtn">Space gap</button>
+            <button type="button" class="toggle-btn" id="modeTimeVBtn">Time gap + ΔV</button>
+          </div>
+          <span class="hint">Time gap: desired distance grows with speed. Space gap: a fixed desired distance (no τ). Time gap + ΔV: the time-gap law plus λ·ΔV, a term that reacts to relative speed. Changing it mid-run is a live perturbation; Reset starts every follower at the active model's equilibrium.</span>
+        </div>
+        <div class="control">
           <div class="control-row">
-            <span class="name">α — sensitivity</span>
-            <span class="value num" id="alphaVal">0.50 /s</span>
+            <span class="name">α — gap gain</span>
+            <span class="value num" id="alphaVal">0.50 s⁻²</span>
           </div>
           <input type="range" id="alpha" min="0.1" max="2" step="0.01" value="0.5">
         </div>
@@ -355,24 +373,52 @@
           </div>
           <input type="range" id="tau" min="0.5" max="4" step="0.1" value="1.5">
         </div>
-        <div class="equation">
+        <div class="control hidden-control" id="gDesControl">
+          <div class="control-row">
+            <span class="name">g<sub>des</sub> — desired gap</span>
+            <span class="value num" id="gDesVal">20.0 m</span>
+          </div>
+          <input type="range" id="gDes" min="2" max="80" step="1" value="20">
+          <span class="hint">A fixed following distance, independent of speed; g<sub>min</sub> stays a separate, small safety floor.</span>
+        </div>
+        <div class="control hidden-control" id="lambdaControl">
+          <div class="control-row">
+            <span class="name">λ — relative-speed gain</span>
+            <span class="value num" id="lambdaVal">0.70 s⁻¹</span>
+          </div>
+          <input type="range" id="lambda" min="0" max="3" step="0.05" value="0.7">
+          <span class="hint">Closing on the vehicle ahead (ΔV &lt; 0) brakes you; pulling away lets you accelerate.</span>
+        </div>
+        <div class="equation" id="mainEquation">
           dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>
           dv<sub>i</sub>/dt = α · [Δx<sub>i</sub> − (g<sub>min</sub> + τ·v<sub>i</sub>)]<br>
-          same α, τ for every follower i = 1…N
+          same parameters for every follower i = 1…N
         </div>
-        <div class="equation" id="stringStabilityBox">
-          <div class="ss-row">
-            <span>String stability, this α·τ² = <span class="num" id="ssAtau2">–</span></span>
-          </div>
+        <div class="equation" id="stabilityBox">
+          <div class="ss-title">String stability (linearized)</div>
           <div class="ss-row">
             <span class="ss-pill" id="ssL2Pill">L2</span>
-            <span class="hint" style="margin:0;">needs ατ² ≥ 2</span>
+            <span class="hint" id="ssL2Text" style="margin:0;"></span>
           </div>
           <div class="ss-row">
             <span class="ss-pill" id="ssLinfPill">L∞</span>
-            <span class="hint" style="margin:0;">needs ατ² ≥ 4 (the stricter test)</span>
+            <span class="hint" id="ssLinfText" style="margin:0;"></span>
           </div>
+          <div class="hint" style="margin-top:6px;">Small perturbations only: ignores acceleration caps, speed and gap floors, and large disturbances.</div>
         </div>
+      </div>
+
+      <div class="control-group card">
+        <h2>Follower acceleration cap</h2>
+        <div class="control">
+          <div class="toggle-group" role="group" aria-label="Follower acceleration cap">
+            <button type="button" class="toggle-btn active" id="accCapOffBtn">Off</button>
+            <button type="button" class="toggle-btn" id="accCapPriusBtn">Prius ACC</button>
+            <button type="button" class="toggle-btn" id="accCapRav4Btn">RAV4 ACC</button>
+          </div>
+          <span class="hint">Applied to every follower. Prius: speed-dependent a<sub>max</sub>(v) = 0.4 + 0.015(40−v), a<sub>min</sub>(v) = −0.6 − 0.04(40−v) m/s², fit from instrumented test drives (Zhou et al. 2021, arXiv:2108.03232). RAV4: flat −3.5 / +1.5 m/s² (limits supplied by the lab, not from that fit).</span>
+        </div>
+        <div class="equation" id="accCapReadout">uncapped</div>
       </div>
 
       <div class="control-group card minor">
@@ -423,7 +469,7 @@
   const PX_PER_METER_MIN = 5; // legibility floor - cars never render smaller than this scale implies
   const CAR_ASPECT = 17/40;
 
-  const DEFAULTS = { vLead:20, alpha:0.5, tau:1.5, aMax:3, vLeadTarget:20, carLength:4.5, minGap:2, N:10 };
+  const DEFAULTS = { vLead:20, alpha:0.5, tau:1.5, aMax:3, vLeadTarget:20, carLength:4.5, minGap:2, gDes:20, lambda:0.7, N:10 };
 
   const state = {
     running:true,
@@ -437,6 +483,10 @@
     tau:DEFAULTS.tau,
     carLength:DEFAULTS.carLength,
     minGap:DEFAULTS.minGap,
+    gDes:DEFAULTS.gDes,
+    lambda:DEFAULTS.lambda, // relative-speed gain, used only by the 'timeV' model
+    mode:'time',            // 'time' | 'space' | 'timeV'
+    accCap:'off',           // 'off' | 'prius' | 'rav4'
     N:DEFAULTS.N,
     roadOffset:0,       // meters the lead has traveled since t=0 (also drives lane-dash scroll)
     aLead:0,
@@ -460,6 +510,17 @@
   const carLengthInput = document.getElementById('carLength');
   const minGapInput = document.getElementById('minGap');
   const countInput = document.getElementById('count');
+  const gDesInput = document.getElementById('gDes');
+  const lambdaInput = document.getElementById('lambda');
+  const gDesControl = document.getElementById('gDesControl');
+  const lambdaControl = document.getElementById('lambdaControl');
+  const gDesVal = document.getElementById('gDesVal');
+  const lambdaVal = document.getElementById('lambdaVal');
+  const tauControl = tauInput.closest('.control');
+  const mainEquation = document.getElementById('mainEquation');
+  const modeBtns = { time:document.getElementById('modeTimeBtn'), space:document.getElementById('modeSpaceBtn'), timeV:document.getElementById('modeTimeVBtn') };
+  const capBtns = { off:document.getElementById('accCapOffBtn'), prius:document.getElementById('accCapPriusBtn'), rav4:document.getElementById('accCapRav4Btn') };
+  const accCapReadout = document.getElementById('accCapReadout');
 
   const vLeadTargetVal = document.getElementById('vLeadTargetVal');
   const aMaxVal = document.getElementById('aMaxVal');
@@ -508,45 +569,114 @@
   const leadChip = makeReadout('Lead');
   const tailChip = makeReadout('Last follower');
 
-  const ssAtau2 = document.getElementById('ssAtau2');
+  const ssL2Text = document.getElementById('ssL2Text');
+  const ssLinfText = document.getElementById('ssLinfText');
   const ssL2Pill = document.getElementById('ssL2Pill');
   const ssLinfPill = document.getElementById('ssLinfPill');
 
   // ---------------- controls wiring ----------------
-  // String stability of our exact model (f_h=alpha, f_hdot=0, f_v=-alpha*tau),
-  // via Wilson (2008)/Ward & Wilson (2011) and Monteil, Bouroche & Leith
-  // (arXiv:1609.07382): L2 strict string stability needs alpha*tau^2 >= 2;
-  // L∞ strict string stability (the stricter, peak/collision-relevant test)
-  // needs alpha*tau^2 >= 4. g_min never enters this - it only shifts the
-  // equilibrium gap, not the linearized dynamics around it.
-  function updateStringStability(){
-    const aTau2 = state.alpha * state.tau * state.tau;
-    ssAtau2.textContent = aTau2.toFixed(2);
+  // Linearized string stability of the active model, from the partials
+  // f1 = d(accel)/dv, f2 = d(accel)/d(gap), f3 = d(accel)/d(relative speed)
+  // (Monteil, Bouroche & Leith, arXiv:1609.07382; Wilson & Ward 2011).
+  //   time:  f1=-a*tau, f2=a, f3=0      space: f1=0, f2=a, f3=0
+  //   timeV: f1=-a*tau, f2=a, f3=lambda
+  // g_min is a constant offset: it never enters any partial.
+  // Characteristic polynomial: s^2 + (f3 - f1) s + f2.
+  //   L2   : f1^2 - 2 f1 f3 - 2 f2 >= 0   (|Gamma(jw)| <= 1 for all w)
+  //   Linf : the impulse response of Gamma(s) = (f3 s + f2)/(s^2+(f3-f1)s+f2)
+  //          must never go negative: real poles AND the zero not slower than
+  //          the slow pole (f2 >= f3 * p_slow). The paper's real-poles +
+  //          stable-zero pair alone misses this second clause.
+  function updateStability(){
+    const a = state.alpha, t = state.tau, l = state.lambda;
+    const f1 = state.mode==='space' ? 0 : -a*t, f2 = a, f3 = state.mode==='timeV' ? l : 0;
+    const c = f3 - f1, D = c*c - 4*f2;
+    const l2ok = f1*f1 - 2*f1*f3 - 2*f2 >= 0;
+    let linfok = false;
+    if(D >= 0 && c > 0){
+      const pSlow = (c - Math.sqrt(D))/2;
+      linfok = f2 - f3*pSlow >= -1e-12;
+    }
+    const fmt = x => x.toFixed(2);
+    let l2Text, linfText;
+    if(state.mode==='space'){
+      l2Text = linfText = 'undamped (poles ±i√α): no string stability';
+    } else if(state.mode==='time'){
+      l2Text = 'ατ² = '+fmt(a*t*t)+', needs ≥ 2';
+      linfText = 'ατ² = '+fmt(a*t*t)+', needs ≥ 4';
+    } else {
+      l2Text = 'ατ² + 2λτ = '+fmt(a*t*t + 2*l*t)+', needs ≥ 2';
+      const clauseFail = D >= 0 && a*t < l && l < 1/t;
+      linfText = '(λ+ατ)² = '+fmt((l+a*t)**2)+', needs ≥ 4α = '+fmt(4*a) +
+                 (clauseFail ? '; but λ ∈ (ατ, 1/τ) breaks it' : '');
+    }
     const setPill = (el, label, ok) => {
       el.textContent = label + ' ' + (ok ? 'stable' : 'unstable');
       el.classList.toggle('pass', ok);
       el.classList.toggle('fail', !ok);
     };
-    setPill(ssL2Pill, 'L2', aTau2 >= 2);
-    setPill(ssLinfPill, 'L∞', aTau2 >= 4);
+    setPill(ssL2Pill, 'L2', l2ok);
+    setPill(ssLinfPill, 'L∞', linfok);
+    ssL2Text.textContent = l2Text;
+    ssLinfText.textContent = linfText;
   }
 
   function syncLabels(){
     vLeadTargetVal.textContent = state.vLeadTarget.toFixed(1) + ' m/s';
     aMaxVal.textContent = state.aMax.toFixed(1) + ' m/s²';
-    alphaVal.textContent = state.alpha.toFixed(2) + ' /s';
+    alphaVal.textContent = state.alpha.toFixed(2) + ' s⁻²';
     tauVal.textContent = state.tau.toFixed(2) + ' s';
     carLengthVal.textContent = state.carLength.toFixed(1) + ' m';
     minGapVal.textContent = state.minGap.toFixed(1) + ' m';
+    gDesVal.textContent = state.gDes.toFixed(1) + ' m';
+    lambdaVal.textContent = state.lambda.toFixed(2) + ' s⁻¹';
     countVal.textContent = String(state.N);
-    updateStringStability();
+    updateStability();
   }
+
+  const EQUATIONS = {
+    time:  'dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>dv<sub>i</sub>/dt = α · [Δx<sub>i</sub> − (g<sub>min</sub> + τ·v<sub>i</sub>)]<br>same parameters for every follower i = 1…N',
+    space: 'dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>dv<sub>i</sub>/dt = α · (Δx<sub>i</sub> − g<sub>des</sub>)<br>same parameters for every follower i = 1…N',
+    timeV: 'dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>dv<sub>i</sub>/dt = α · [Δx<sub>i</sub> − (g<sub>min</sub> + τ·v<sub>i</sub>)] + λ · (v<sub>i-1</sub> − v<sub>i</sub>)<br>same parameters for every follower i = 1…N'
+  };
+  function setMode(mode){
+    state.mode = mode;
+    for(const k in modeBtns) modeBtns[k].classList.toggle('active', k===mode);
+    tauControl.classList.toggle('hidden-control', mode==='space');
+    gDesControl.classList.toggle('hidden-control', mode!=='space');
+    lambdaControl.classList.toggle('hidden-control', mode!=='timeV');
+    mainEquation.innerHTML = EQUATIONS[mode];
+    updateStability();
+  }
+  for(const k in modeBtns) modeBtns[k].addEventListener('click', ()=> setMode(k));
+
+  // Follower acceleration caps. Prius: speed-dependent fit (Zhou et al. 2021,
+  // arXiv:2108.03232, Figs. 3c/4c). RAV4: flat limits supplied by the lab.
+  function priusBounds(v){
+    const vv = Math.max(0, Math.min(40, v)); // the fit only covers 0-40 m/s
+    return { max: 0.4 + 0.015*(40 - vv), min: -(0.6 + 0.04*(40 - vv)) };
+  }
+  const RAV4_BOUNDS = { max: 1.5, min: -3.5 };
+  function accelBounds(kind, v){
+    if(kind==='prius') return priusBounds(v);
+    if(kind==='rav4') return RAV4_BOUNDS;
+    return null;
+  }
+  function setAccCap(kind){
+    state.accCap = kind;
+    for(const k in capBtns) capBtns[k].classList.toggle('active', k===kind);
+    if(kind==='off') accCapReadout.textContent = 'uncapped';
+  }
+  for(const k in capBtns) capBtns[k].addEventListener('click', ()=> setAccCap(k));
+
   vLeadTargetInput.addEventListener('input', e=>{ state.vLeadTarget = parseFloat(e.target.value); syncLabels(); });
   aMaxInput.addEventListener('input', e=>{ state.aMax = parseFloat(e.target.value); syncLabels(); });
   alphaInput.addEventListener('input', e=>{ state.alpha = parseFloat(e.target.value); syncLabels(); });
   tauInput.addEventListener('input', e=>{ state.tau = parseFloat(e.target.value); syncLabels(); });
   carLengthInput.addEventListener('input', e=>{ state.carLength = parseFloat(e.target.value); syncLabels(); });
   minGapInput.addEventListener('input', e=>{ state.minGap = parseFloat(e.target.value); syncLabels(); });
+  gDesInput.addEventListener('input', e=>{ state.gDes = parseFloat(e.target.value); syncLabels(); });
+  lambdaInput.addEventListener('input', e=>{ state.lambda = parseFloat(e.target.value); syncLabels(); });
   countInput.addEventListener('input', e=>{ state.N = parseInt(e.target.value,10); syncLabels(); resetSim(); });
 
   playPauseBtn.addEventListener('click', ()=>{
@@ -566,8 +696,9 @@
     state.running = true;
     playPauseBtn.textContent = 'Pause';
     collisionBanner.hidden = true;
-    // start every follower already at the model's own equilibrium: Δx* = g_min + tau*v
-    const eqGap = state.minGap + state.tau*DEFAULTS.vLead;
+    // start every follower already at the active model's equilibrium:
+    // time-gap models Δx* = g_min + tau*v (the λ term vanishes at ΔV=0); space-gap Δx* = g_des
+    const eqGap = state.mode==='space' ? state.gDes : state.minGap + state.tau*DEFAULTS.vLead;
     for(let i=0;i<MAX_N;i++){
       state.gap[i] = eqGap;
       state.vF[i] = DEFAULTS.vLead;
@@ -582,7 +713,7 @@
   // ---------------- physics ----------------
   // Model (continuous time), same for every follower i = 1..N:
   //   dΔx_i/dt = v_{i-1} - v_i
-  //   dv_i/dt  = alpha * (Δx_i - (g_min + tau*v_i))
+  //   dv_i/dt  = alpha * (Δx_i - (g_min + tau*v_i))   [+ lambda*(v_{i-1} - v_i) in the 'timeV' model]
   // The lead (i=0) has no ODE - it's a rate-limited controller chasing the
   // target-speed slider. Each follower reacts only to the vehicle directly
   // ahead of it, so the whole platoon is a simple chain.
@@ -606,7 +737,13 @@
       let collidedThisStep = -1;
       for(let i=0;i<state.N;i++){
         const dGap = (aheadV - state.vF[i]) * h;
-        const dvFollower = state.alpha * (state.gap[i] - (state.minGap + state.tau*state.vF[i])) * h;
+        // Desired gap by model; the 'timeV' model adds lambda*(v_ahead - v_i).
+        const desiredGap = state.mode==='space' ? state.gDes : (state.minGap + state.tau*state.vF[i]);
+        const relSpeedTerm = state.mode==='timeV' ? state.lambda * (aheadV - state.vF[i]) : 0;
+        let dvFollower = (state.alpha * (state.gap[i] - desiredGap) + relSpeedTerm) * h;
+        // Optional actuator limit (not part of the ODE): clamp to the ACC envelope.
+        const bounds = accelBounds(state.accCap, state.vF[i]);
+        if(bounds) dvFollower = Math.max(bounds.min*h, Math.min(bounds.max*h, dvFollower));
 
         state.gap[i] = Math.max(0, state.gap[i] + dGap);
         state.vF[i] = Math.max(0, state.vF[i] + dvFollower);
@@ -670,7 +807,7 @@
     // edge of the stage (clipped by its overflow:hidden) - still simulated
     // correctly, just not all on screen at once.
     const REFERENCE_CARS = 3;
-    const refGap = state.minGap + state.tau*state.vLeadTarget;
+    const refGap = state.mode==='space' ? state.gDes : state.minGap + state.tau*state.vLeadTarget;
     const refChainLength = Math.max(1, REFERENCE_CARS*(refGap+state.carLength));
     const availablePx = leadX - 55; // leave room so a chip doesn't clip off the left edge
     const scale = Math.max(PX_PER_METER_MIN, Math.min(PX_PER_METER_MAX, availablePx/refChainLength));
@@ -764,8 +901,12 @@
   const chartSpeed = { canvas:document.getElementById('chartSpeed'), ctx:null, yUnit:'m/s', domain:[0,38], nowEl:speedNow, fmt:v=>v.toFixed(1)+' m/s' };
   const chartDv    = { canvas:document.getElementById('chartDv'), ctx:null, yUnit:'m/s', zeroLine:true, nowEl:dvNow, fmt:v=>(v>=0?'+':'')+v.toFixed(1)+' m/s' };
   const chartGap   = { canvas:document.getElementById('chartGap'), ctx:null, yUnit:'m', nowEl:gapNow, fmt:v=>v.toFixed(1)+' m', refLines:[{key:'minGap', color:'--speed-slow', dash:[2,3], alpha:0.75}] };
-  const chartTgap  = { canvas:document.getElementById('chartTgap'), ctx:null, yUnit:'s', domain:[0,6], nowEl:tgapNow, fmt:v=>v.toFixed(2)+' s', refLines:[{key:'tau', color:'--speed-mid', dash:[4,3], alpha:1}] };
-  const chartAccel = { canvas:document.getElementById('chartAccel'), ctx:null, yUnit:'m/s²', zeroLine:true, nowEl:accelNow, fmt:v=>(v>=0?'+':'')+v.toFixed(2)+' m/s²' };
+  const chartTgap  = { canvas:document.getElementById('chartTgap'), ctx:null, yUnit:'s', domain:[0,6], nowEl:tgapNow, fmt:v=>v.toFixed(2)+' s', refLines:[{value:s=>s.mode!=='space' ? s.tau : null, color:'--speed-mid', dash:[4,3], alpha:1}] };
+  const chartAccel = { canvas:document.getElementById('chartAccel'), ctx:null, yUnit:'m/s²', zeroLine:true, nowEl:accelNow, fmt:v=>(v>=0?'+':'')+v.toFixed(2)+' m/s²',
+    refLines:[
+      {value:s=>{ const b=accelBounds(s.accCap, s.vLead); return b ? b.max : null; }, color:'--speed-fast', dash:[3,2], alpha:0.7},
+      {value:s=>{ const b=accelBounds(s.accCap, s.vLead); return b ? b.min : null; }, color:'--speed-fast', dash:[3,2], alpha:0.7}
+    ] };
   const chartDefs = [chartSpeed, chartDv, chartGap, chartTgap, chartAccel];
   chartDefs.forEach(c=> c.ctx = c.canvas.getContext('2d'));
 
@@ -850,7 +991,7 @@
     }
     if(c.refLines){
       for(const r of c.refLines){
-        const refV = state[r.key]; if(refV==null) continue;
+        const refV = r.value ? r.value(state) : state[r.key]; if(refV==null) continue;
         ctx.strokeStyle = css.getPropertyValue(r.color).trim();
         ctx.globalAlpha = r.alpha??1; ctx.setLineDash(r.dash||[4,3]);
         ctx.beginPath(); ctx.moveTo(padL,yOf(refV)); ctx.lineTo(w-padR,yOf(refV)); ctx.stroke();
@@ -987,6 +1128,11 @@
     const geom = computeGeom(rect);
     drawRoad(rect, geom);
     positionCars(rect, geom);
+
+    const capB = accelBounds(state.accCap, state.vLead);
+    if(capB){
+      accCapReadout.textContent = (state.accCap==='prius' ? 'at lead speed '+state.vLead.toFixed(1)+' m/s: ' : 'flat: ')+'each follower capped to ['+capB.min.toFixed(2)+', +'+capB.max.toFixed(2)+'] m/s²';
+    }
 
     const sampled = subsample(history, 220);
     chartDefs.forEach(c=>drawStandardChart(c, sampled));
