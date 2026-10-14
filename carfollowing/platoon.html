@@ -225,6 +225,10 @@
   .toggle-btn.active{ background:var(--accent); border-color:var(--accent); color:var(--accent-ink); }
   .toggle-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
   .hidden-control{ display:none; }
+  .cbf-line{ margin-top:6px; }
+  .cbf-line:first-child{ margin-top:0; }
+  .num-input{ width:74px; font-family:"IBM Plex Mono", monospace; font-size:12px; padding:2px 5px; border:1px solid var(--line); border-radius:5px; background:var(--surface); color:var(--ink); }
+  button:not(.toggle-btn){ font-family:"IBM Plex Sans", sans-serif; font-size:12.5px; border:1px solid var(--line); background:var(--surface-2); color:var(--ink); border-radius:7px; padding:7px 12px; cursor:pointer; }
   .ss-title{ font-family:"IBM Plex Sans", sans-serif; font-size:11px; font-weight:600; color:var(--ink); margin-bottom:5px; }
   .ss-row{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
   .ss-row + .ss-row{ margin-top:6px; }
@@ -355,16 +359,17 @@
           <div class="toggle-group" role="group" aria-label="Following policy">
             <button type="button" class="toggle-btn active" id="modeTimeBtn">Time gap</button>
             <button type="button" class="toggle-btn" id="modeSpaceBtn">Space gap</button>
-            <button type="button" class="toggle-btn" id="modeTimeVBtn">Time gap + ΔV</button>
+            <button type="button" class="toggle-btn" id="modeTimeVBtn">Time + ΔV</button>
+            <button type="button" class="toggle-btn" id="modeCruiseBtn">Cruise</button>
           </div>
-          <span class="hint">Time gap: desired distance grows with speed. Space gap: a fixed desired distance (no τ). Time gap + ΔV: the time-gap law plus λ·ΔV, a term that reacts to relative speed. Changing it mid-run is a live perturbation; Reset starts every follower at the active model's equilibrium.</span>
+          <span class="hint">Time gap: desired distance grows with speed. Space gap: a fixed desired distance (no τ). Time + ΔV: the time-gap law plus λ·ΔV, a term that reacts to relative speed. Cruise: every follower tracks a set speed and ignores the vehicle ahead, so it needs the CBF filter to stay safe. Changing it mid-run is a live perturbation; Reset starts every follower at the active model's equilibrium.</span>
         </div>
         <div class="control">
           <div class="control-row">
             <span class="name">α — gap gain</span>
             <span class="value num" id="alphaVal">0.50 s⁻²</span>
           </div>
-          <input type="range" id="alpha" min="0.1" max="2" step="0.01" value="0.5">
+          <input type="range" id="alpha" min="0.02" max="2" step="0.01" value="0.5">
         </div>
         <div class="control">
           <div class="control-row">
@@ -388,6 +393,23 @@
           </div>
           <input type="range" id="lambda" min="0" max="3" step="0.05" value="0.7">
           <span class="hint">Closing on the vehicle ahead (ΔV &lt; 0) brakes you; pulling away lets you accelerate.</span>
+        </div>
+        <div class="control hidden-control" id="cruiseControl" style="gap:12px;">
+          <div class="control">
+            <div class="control-row">
+              <span class="name">v<sub>set</sub> — set speed</span>
+              <span class="value num" id="vSetVal">28.0 m/s</span>
+            </div>
+            <input type="range" id="vSet" min="5" max="35" step="0.5" value="28">
+          </div>
+          <div class="control">
+            <div class="control-row">
+              <span class="name">κ — speed-tracking gain</span>
+              <span class="value num" id="kappaVal">0.30 s⁻¹</span>
+            </div>
+            <input type="range" id="kappa" min="0.05" max="1" step="0.05" value="0.3">
+            <span class="hint">Cruise control ignores the vehicle ahead: dv/dt = κ·(v<sub>set</sub> − v). Alone it is unsafe behind a slower vehicle (the nominal controller in Gunter et al.'s RAV4 experiment); only the CBF filter below keeps each follower off the one ahead.</span>
+          </div>
         </div>
         <div class="equation" id="mainEquation">
           dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>
@@ -419,6 +441,48 @@
           <span class="hint">Applied to every follower. Prius: speed-dependent a<sub>max</sub>(v) = 0.4 + 0.015(40−v), a<sub>min</sub>(v) = −0.6 − 0.04(40−v) m/s², fit from instrumented test drives (Zhou et al. 2021, arXiv:2108.03232). RAV4: flat −3.5 / +1.5 m/s² (limits supplied by the lab, not from that fit).</span>
         </div>
         <div class="equation" id="accCapReadout">uncapped</div>
+      </div>
+
+      <div class="control-group card">
+        <h2>CBF safety filter</h2>
+        <div class="control">
+          <div class="toggle-group" role="group" aria-label="CBF safety filter">
+            <button type="button" class="toggle-btn active" id="cbfOffBtn">Off</button>
+            <button type="button" class="toggle-btn" id="cbfOnBtn">On</button>
+          </div>
+          <span class="hint">Control barrier function (Gunter et al.) on every follower: keeps h = Δx − t<sub>min</sub>·v − d<sub>min</sub> ≥ 0 by capping acceleration at u ≤ (k·h + ΔV)/t<sub>min</sub>, i.e. u = min(u<sub>model</sub>, u<sub>CBF</sub>). Applied on top of the model and before the acceleration caps above. Reset starts inside the safe set; switching it on mid-run from an unsafe state shows the recovery.</span>
+        </div>
+        <div class="control hidden-control" id="cbfParams" style="gap:12px;">
+          <div class="control">
+            <div class="control-row"><span class="name">t<sub>min</sub> — minimum time gap</span><span class="value num" id="cbfTminVal">2.0 s</span></div>
+            <input type="range" id="cbfTmin" min="0.5" max="4" step="0.1" value="2">
+            <span class="hint" id="cbfTminEq"></span>
+          </div>
+          <div class="control">
+            <div class="control-row"><span class="name">d<sub>min</sub> — standoff distance</span><span class="value num" id="cbfDminVal">15.0 m</span></div>
+            <input type="range" id="cbfDmin" min="0" max="30" step="0.5" value="15">
+            <span class="hint" id="cbfDminEq"></span>
+          </div>
+          <div class="control">
+            <div class="control-row"><span class="name">k — class-K gain (α(h) = k·h)</span><span class="value num" id="cbfKVal">0.10 s⁻¹</span></div>
+            <input type="range" id="cbfK" min="0.01" max="1.5" step="0.01" value="0.1">
+          </div>
+          <div class="control">
+            <div class="control-row"><span class="name">Equivalent α = k / t<sub>min</sub></span><span class="num"><input class="num-input" type="number" id="cbfAlphaIn" min="0.005" max="3" step="0.005" value="0.05"> s⁻²</span></div>
+            <span class="hint" id="cbfKHint"></span>
+          </div>
+          <button type="button" id="cbfCutInBtn">Cut-in ahead of follower 1: shrink its gap by 40%</button>
+        </div>
+        <div class="equation hidden-control" id="cbfReadout">
+          <div class="cbf-line">Safety property: <span id="cbfProp"></span></div>
+          <div class="ss-row cbf-line"><span class="ss-pill" id="cbfSafePill">–</span><span id="cbfNow"></span></div>
+          <div class="cbf-line" id="cbfTimeGap"></div>
+          <div class="cbf-line" id="cbfFilter"></div>
+          <div class="cbf-line" id="cbfAuth"></div>
+          <div class="ss-row cbf-line"><span class="ss-pill" id="cbfL2Pill">L2</span><span class="ss-pill" id="cbfLinfPill">L∞</span><span class="hint" style="margin:0;" id="cbfStabText"></span></div>
+          <div class="cbf-line" id="cbfDesign"></div>
+          <div class="cbf-line" id="cbfRun"></div>
+        </div>
       </div>
 
       <div class="control-group card minor">
@@ -485,11 +549,14 @@
     minGap:DEFAULTS.minGap,
     gDes:DEFAULTS.gDes,
     lambda:DEFAULTS.lambda, // relative-speed gain, used only by the 'timeV' model
+    kappa:0.3, vSet:28,     // cruise model: dv/dt = kappa*(vSet - v), ignores the vehicle ahead
     mode:'time',            // 'time' | 'space' | 'timeV'
     accCap:'off',           // 'off' | 'prius' | 'rav4'
     N:DEFAULTS.N,
     roadOffset:0,       // meters the lead has traveled since t=0 (also drives lane-dash scroll)
     aLead:0,
+    cbf:{ on:false, tMin:2.0, dMin:15, k:0.1 }, // CBF safety filter (Gunter et al.), applied to every follower
+    minH:Infinity, peakBrake:0, cutinAt:null, cutinH:0, recoveredAt:null,
     gap:new Array(MAX_N).fill(0),   // gap[i] = space gap ahead of follower i (i=0 is right behind the lead)
     vF:new Array(MAX_N).fill(0),
     aF:new Array(MAX_N).fill(0)
@@ -512,13 +579,17 @@
   const countInput = document.getElementById('count');
   const gDesInput = document.getElementById('gDes');
   const lambdaInput = document.getElementById('lambda');
+  const cruiseControl = document.getElementById('cruiseControl');
+  const alphaControl = document.getElementById('alpha').closest('.control');
+  const vSetInput = document.getElementById('vSet'), kappaInput = document.getElementById('kappa');
+  const vSetVal = document.getElementById('vSetVal'), kappaVal = document.getElementById('kappaVal');
   const gDesControl = document.getElementById('gDesControl');
   const lambdaControl = document.getElementById('lambdaControl');
   const gDesVal = document.getElementById('gDesVal');
   const lambdaVal = document.getElementById('lambdaVal');
   const tauControl = tauInput.closest('.control');
   const mainEquation = document.getElementById('mainEquation');
-  const modeBtns = { time:document.getElementById('modeTimeBtn'), space:document.getElementById('modeSpaceBtn'), timeV:document.getElementById('modeTimeVBtn') };
+  const modeBtns = { time:document.getElementById('modeTimeBtn'), space:document.getElementById('modeSpaceBtn'), timeV:document.getElementById('modeTimeVBtn'), cruise:document.getElementById('modeCruiseBtn') };
   const capBtns = { off:document.getElementById('accCapOffBtn'), prius:document.getElementById('accCapPriusBtn'), rav4:document.getElementById('accCapRav4Btn') };
   const accCapReadout = document.getElementById('accCapReadout');
 
@@ -587,16 +658,28 @@
   //          must never go negative: real poles AND the zero not slower than
   //          the slow pole (f2 >= f3 * p_slow). The paper's real-poles +
   //          stable-zero pair alone misses this second clause.
+  // Exact L2 / L-inf string-stability verdict from the partials (see above).
+  function stabilityVerdict(f1, f2, f3){
+    const c = f3 - f1, D = c*c - 4*f2;
+    const l2 = f1*f1 - 2*f1*f3 - 2*f2 >= -1e-9;
+    let linf = false;
+    if(D >= -1e-12 && c > 0){
+      const pSlow = (c - Math.sqrt(Math.max(0, D)))/2;
+      linf = f2 - f3*pSlow >= -1e-9;
+    }
+    return { l2, linf };
+  }
   function updateStability(){
+    if(state.mode==='cruise'){
+      for(const el of [ssL2Pill, ssLinfPill]){ el.classList.remove('pass','fail'); }
+      ssL2Pill.textContent = 'L2 n/a'; ssLinfPill.textContent = 'L∞ n/a';
+      ssL2Text.textContent = ssLinfText.textContent = 'ignores the vehicle ahead: disturbances do not propagate (Γ = 0), but nothing holds the gap; see the CBF filter';
+      return;
+    }
     const a = state.alpha, t = state.tau, l = state.lambda;
     const f1 = state.mode==='space' ? 0 : -a*t, f2 = a, f3 = state.mode==='timeV' ? l : 0;
     const c = f3 - f1, D = c*c - 4*f2;
-    const l2ok = f1*f1 - 2*f1*f3 - 2*f2 >= 0;
-    let linfok = false;
-    if(D >= 0 && c > 0){
-      const pSlow = (c - Math.sqrt(D))/2;
-      linfok = f2 - f3*pSlow >= -1e-12;
-    }
+    const { l2:l2ok, linf:linfok } = stabilityVerdict(f1, f2, f3);
     const fmt = x => x.toFixed(2);
     let l2Text, linfText;
     if(state.mode==='space'){
@@ -630,6 +713,8 @@
     minGapVal.textContent = state.minGap.toFixed(1) + ' m';
     gDesVal.textContent = state.gDes.toFixed(1) + ' m';
     lambdaVal.textContent = state.lambda.toFixed(2) + ' s⁻¹';
+    vSetVal.textContent = state.vSet.toFixed(1) + ' m/s';
+    kappaVal.textContent = state.kappa.toFixed(2) + ' s⁻¹';
     countVal.textContent = String(state.N);
     updateStability();
   }
@@ -637,14 +722,17 @@
   const EQUATIONS = {
     time:  'dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>dv<sub>i</sub>/dt = α · [Δx<sub>i</sub> − (g<sub>min</sub> + τ·v<sub>i</sub>)]<br>same parameters for every follower i = 1…N',
     space: 'dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>dv<sub>i</sub>/dt = α · (Δx<sub>i</sub> − g<sub>des</sub>)<br>same parameters for every follower i = 1…N',
+    cruise:'dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>dv<sub>i</sub>/dt = κ · (v<sub>set</sub> − v<sub>i</sub>)  (ignores the vehicle ahead)<br>same parameters for every follower i = 1…N',
     timeV: 'dΔx<sub>i</sub>/dt = v<sub>i-1</sub> − v<sub>i</sub><br>dv<sub>i</sub>/dt = α · [Δx<sub>i</sub> − (g<sub>min</sub> + τ·v<sub>i</sub>)] + λ · (v<sub>i-1</sub> − v<sub>i</sub>)<br>same parameters for every follower i = 1…N'
   };
   function setMode(mode){
     state.mode = mode;
     for(const k in modeBtns) modeBtns[k].classList.toggle('active', k===mode);
-    tauControl.classList.toggle('hidden-control', mode==='space');
+    tauControl.classList.toggle('hidden-control', mode==='space' || mode==='cruise');
+    alphaControl.classList.toggle('hidden-control', mode==='cruise');
     gDesControl.classList.toggle('hidden-control', mode!=='space');
     lambdaControl.classList.toggle('hidden-control', mode!=='timeV');
+    cruiseControl.classList.toggle('hidden-control', mode!=='cruise');
     mainEquation.innerHTML = EQUATIONS[mode];
     updateStability();
   }
@@ -669,6 +757,115 @@
   }
   for(const k in capBtns) capBtns[k].addEventListener('click', ()=> setAccCap(k));
 
+  // ---------------- CBF safety filter ----------------
+  // Safety property h = Δx - t_min*v - d_min >= 0 (Gunter, Nice, Bunting,
+  // Sprinkle & Work; d_min is the standoff in the lab's later form). With the
+  // linear class-K function alpha(h) = k*h, forward invariance needs
+  //   h_dot = ΔV - t_min*u >= -k*h   <=>   u <= (k*h + ΔV)/t_min.
+  // u_cmd = min(u_model, u_CBF): an acceleration ceiling, nothing else.
+  // While that ceiling binds, a follower obeys the time-gap + ΔV law with
+  // alpha = k/t_min, tau = t_min, lambda = 1/t_min, g_min = d_min.
+  const cbfIds = ['cbfOffBtn','cbfOnBtn','cbfParams','cbfReadout','cbfTmin','cbfTminVal','cbfDmin','cbfDminVal','cbfK','cbfKVal','cbfAlphaIn','cbfKHint','cbfCutInBtn','cbfProp','cbfSafePill','cbfNow','cbfTimeGap','cbfFilter','cbfAuth','cbfTminEq','cbfDminEq','cbfL2Pill','cbfLinfPill','cbfStabText','cbfDesign','cbfRun'];
+  const cbfEl = {}; cbfIds.forEach(id=> cbfEl[id] = document.getElementById(id));
+  function cbfBarrier(gap, v){ return gap - state.cbf.tMin*v - state.cbf.dMin; }
+  function cbfCeiling(gap, v, vAhead){ return (state.cbf.k*cbfBarrier(gap, v) + (vAhead - v)) / state.cbf.tMin; }
+  function nominalAccel(i, aheadV){
+    if(state.mode==='cruise') return state.kappa * (state.vSet - state.vF[i]);
+    const desiredGap = state.mode==='space' ? state.gDes : (state.minGap + state.tau*state.vF[i]);
+    const relSpeedTerm = state.mode==='timeV' ? state.lambda * (aheadV - state.vF[i]) : 0;
+    return state.alpha * (state.gap[i] - desiredGap) + relSpeedTerm;
+  }
+  function resetCbfStats(){ state.minH = Infinity; state.peakBrake = 0; state.cutinAt = null; state.cutinH = 0; state.recoveredAt = null; }
+  function syncCbfLabels(){
+    const c = state.cbf;
+    cbfEl.cbfTminVal.textContent = c.tMin.toFixed(1)+' s';
+    cbfEl.cbfDminVal.textContent = c.dMin.toFixed(1)+' m';
+    cbfEl.cbfKVal.textContent = c.k.toFixed(2)+' s⁻¹';
+    cbfEl.cbfTminEq.innerHTML = 'acts as τ = t<sub>min</sub> = '+c.tMin.toFixed(1)+' s and λ = 1/t<sub>min</sub> = '+(1/c.tMin).toFixed(2)+' s⁻¹';
+    cbfEl.cbfDminEq.innerHTML = 'acts as g<sub>min</sub> = d<sub>min</sub> = '+c.dMin.toFixed(1)+' m';
+    if(document.activeElement !== cbfEl.cbfAlphaIn) cbfEl.cbfAlphaIn.value = (c.k/c.tMin).toFixed(3);
+    cbfEl.cbfKHint.innerHTML = 'Changing t<sub>min</sub> keeps k fixed, so α moves. When the filter binds, |h| closes at rate ≥ k (time constant 1/k = '+(1/c.k).toFixed(1)+' s). Larger k: recovers faster after a cut-in but brakes harder, and lets h shrink toward 0 before stepping in. Smaller k: earlier, gentler braking. k does not change string stability.';
+  }
+  function setCbf(on){
+    state.cbf.on = on;
+    cbfEl.cbfOffBtn.classList.toggle('active', !on);
+    cbfEl.cbfOnBtn.classList.toggle('active', on);
+    cbfEl.cbfParams.classList.toggle('hidden-control', !on);
+    cbfEl.cbfReadout.classList.toggle('hidden-control', !on);
+    resetCbfStats();
+    syncCbfLabels();
+  }
+  cbfEl.cbfOffBtn.addEventListener('click', ()=> setCbf(false));
+  cbfEl.cbfOnBtn.addEventListener('click', ()=> setCbf(true));
+  cbfEl.cbfTmin.addEventListener('input', e=>{ state.cbf.tMin = parseFloat(e.target.value); resetCbfStats(); syncCbfLabels(); });
+  cbfEl.cbfDmin.addEventListener('input', e=>{ state.cbf.dMin = parseFloat(e.target.value); resetCbfStats(); syncCbfLabels(); });
+  cbfEl.cbfK.addEventListener('input', e=>{ state.cbf.k = parseFloat(e.target.value); syncCbfLabels(); });
+  cbfEl.cbfAlphaIn.addEventListener('change', e=>{
+    const a = parseFloat(e.target.value);
+    if(isFinite(a) && a > 0){ state.cbf.k = Math.max(0.01, Math.min(1.5, a * state.cbf.tMin)); cbfEl.cbfK.value = state.cbf.k; }
+    syncCbfLabels();
+  });
+  cbfEl.cbfCutInBtn.addEventListener('click', ()=>{
+    state.gap[0] = Math.max(state.minGap + 1, state.gap[0] * 0.6);
+    state.cutinAt = state.t; state.recoveredAt = null; state.cutinH = cbfBarrier(state.gap[0], state.vF[0]);
+  });
+  // Per-frame bookkeeping over all followers (called while the sim advances).
+  function trackCbf(){
+    if(!state.cbf.on) return;
+    for(let i=0;i<state.N;i++){
+      state.minH = Math.min(state.minH, cbfBarrier(state.gap[i], state.vF[i]));
+      state.peakBrake = Math.min(state.peakBrake, state.aF[i]);
+    }
+    const h0 = cbfBarrier(state.gap[0], state.vF[0]);
+    if(state.cutinAt !== null && state.recoveredAt === null && (h0 >= 0 || h0 >= 0.1*state.cutinH)) state.recoveredAt = state.t - state.cutinAt;
+  }
+  function updateCbfReadout(){
+    if(!state.cbf.on) return;
+    const c = state.cbf, E = cbfEl, fmt = x => (x>=0?'+':'')+x.toFixed(1);
+    let hMin = Infinity, worst = 0, binding = 0, limited = 0, tgMin = Infinity;
+    for(let i=0;i<state.N;i++){
+      const aheadV = i===0 ? state.vLead : state.vF[i-1];
+      const h = cbfBarrier(state.gap[i], state.vF[i]);
+      if(h < hMin){ hMin = h; worst = i; }
+      const uC = cbfCeiling(state.gap[i], state.vF[i], aheadV);
+      if(uC < nominalAccel(i, aheadV)) binding++;
+      const b = accelBounds(state.accCap, state.vF[i]);
+      if(b && uC < b.min) limited++;
+      if(state.vF[i] > 0.4) tgMin = Math.min(tgMin, (state.gap[i] - c.dMin)/state.vF[i]);
+    }
+    const safe = hMin >= 0;
+    E.cbfProp.textContent = 'Δx ≥ '+c.tMin.toFixed(1)+'·v + '+c.dMin.toFixed(1)+' m (every follower)';
+    E.cbfSafePill.textContent = safe ? 'safe set held' : 'violated';
+    E.cbfSafePill.classList.toggle('pass', safe);
+    E.cbfSafePill.classList.toggle('fail', !safe);
+    E.cbfNow.textContent = 'worst h = '+fmt(hMin)+' m (follower '+(worst+1)+') now · min since reset '+(isFinite(state.minH) ? fmt(state.minH) : '–')+' m';
+    E.cbfTimeGap.textContent = isFinite(tgMin)
+      ? 'smallest time gap beyond the standoff, (Δx − d_min)/v = '+tgMin.toFixed(2)+' s (need ≥ '+c.tMin.toFixed(1)+' s)'
+      : 'time gap beyond the standoff: n/a at standstill';
+    E.cbfFilter.textContent = 'ceiling binding on '+binding+' of '+state.N+' followers right now';
+    E.cbfAuth.textContent = limited > 0
+      ? '⚠ braking authority limited on '+limited+' follower(s): the CBF asks for more braking than the cap allows, so the safety guarantee is not held there'
+      : (state.accCap==='off' ? 'braking authority: unlimited (no cap)' : 'braking authority: the cap is not limiting the filter now');
+    const v = stabilityVerdict(-c.k, c.k/c.tMin, 1/c.tMin);
+    for(const [el,label,ok] of [[E.cbfL2Pill,'L2',v.l2],[E.cbfLinfPill,'L∞',v.linf]]){
+      el.textContent = label+' '+(ok ? 'stable' : 'unstable');
+      el.classList.toggle('pass', ok); el.classList.toggle('fail', !ok);
+    }
+    E.cbfStabText.textContent = 'filter dynamics: Γ(s) = 1/(t_min·s + 1) for every k';
+    const alphaEq = c.k / c.tMin;
+    const b0 = accelBounds(state.accCap, state.vLead);
+    let design = 'Design: a violation of depth |h| (e.g. a cut-in at equal speeds) costs braking ≈ α·|h|, and |h| closes 90% in ln10/k = '+(Math.LN10/c.k).toFixed(1)+' s.';
+    if(b0) design += ' With the active cap a follower fully absorbs a cut-in up to |h| ≤ '+Math.abs(b0.min).toFixed(2)+'/α = '+(Math.abs(b0.min)/alphaEq).toFixed(1)+' m.';
+    E.cbfDesign.textContent = design;
+    let run = 'peak braking since reset '+state.peakBrake.toFixed(2)+' m/s²';
+    if(state.cutinAt !== null){
+      run += state.recoveredAt !== null ? ' · cut-in: follower 1\'s |h| back to 10% after '+state.recoveredAt.toFixed(1)+' s (theory ln10/k = '+(Math.LN10/c.k).toFixed(1)+' s)' : ' · cut-in: recovering…';
+    }
+    E.cbfRun.textContent = run;
+  }
+  syncCbfLabels();
+
+
   vLeadTargetInput.addEventListener('input', e=>{ state.vLeadTarget = parseFloat(e.target.value); syncLabels(); });
   aMaxInput.addEventListener('input', e=>{ state.aMax = parseFloat(e.target.value); syncLabels(); });
   alphaInput.addEventListener('input', e=>{ state.alpha = parseFloat(e.target.value); syncLabels(); });
@@ -677,6 +874,8 @@
   minGapInput.addEventListener('input', e=>{ state.minGap = parseFloat(e.target.value); syncLabels(); });
   gDesInput.addEventListener('input', e=>{ state.gDes = parseFloat(e.target.value); syncLabels(); });
   lambdaInput.addEventListener('input', e=>{ state.lambda = parseFloat(e.target.value); syncLabels(); });
+  vSetInput.addEventListener('input', e=>{ state.vSet = parseFloat(e.target.value); syncLabels(); });
+  kappaInput.addEventListener('input', e=>{ state.kappa = parseFloat(e.target.value); syncLabels(); });
   countInput.addEventListener('input', e=>{ state.N = parseInt(e.target.value,10); syncLabels(); resetSim(); });
 
   playPauseBtn.addEventListener('click', ()=>{
@@ -698,13 +897,17 @@
     collisionBanner.hidden = true;
     // start every follower already at the active model's equilibrium:
     // time-gap models Δx* = g_min + tau*v (the λ term vanishes at ΔV=0); space-gap Δx* = g_des
-    const eqGap = state.mode==='space' ? state.gDes : state.minGap + state.tau*DEFAULTS.vLead;
+    // cruise has no equilibrium gap: start with a comfortable 60 m so the approach is visible
+    const baseGap = state.mode==='cruise' ? 60 : state.mode==='space' ? state.gDes : state.minGap + state.tau*DEFAULTS.vLead;
+    // with the CBF on, never start inside the unsafe set (forward invariance needs h(0) >= 0)
+    const eqGap = state.cbf.on ? Math.max(baseGap, state.cbf.tMin*DEFAULTS.vLead + state.cbf.dMin) : baseGap;
     for(let i=0;i<MAX_N;i++){
       state.gap[i] = eqGap;
       state.vF[i] = DEFAULTS.vLead;
       state.aF[i] = 0;
     }
     history = [];
+    resetCbfStats();
     for(let i=0;i<=MAX_N;i++) carEls[i].hidden = (i>state.N);
   }
   resetSim();
@@ -740,8 +943,13 @@
         // Desired gap by model; the 'timeV' model adds lambda*(v_ahead - v_i).
         const desiredGap = state.mode==='space' ? state.gDes : (state.minGap + state.tau*state.vF[i]);
         const relSpeedTerm = state.mode==='timeV' ? state.lambda * (aheadV - state.vF[i]) : 0;
-        let dvFollower = (state.alpha * (state.gap[i] - desiredGap) + relSpeedTerm) * h;
+        let dvFollower = (state.mode==='cruise' ? state.kappa * (state.vSet - state.vF[i]) : state.alpha * (state.gap[i] - desiredGap) + relSpeedTerm) * h;
         // Optional actuator limit (not part of the ODE): clamp to the ACC envelope.
+        if(state.cbf.on){
+          // CBF supervisor: u_cmd = min(u_model, u_CBF), an acceleration ceiling.
+          const uCbf = cbfCeiling(state.gap[i], state.vF[i], aheadV);
+          dvFollower = Math.min(dvFollower, uCbf * h);
+        }
         const bounds = accelBounds(state.accCap, state.vF[i]);
         if(bounds) dvFollower = Math.max(bounds.min*h, Math.min(bounds.max*h, dvFollower));
 
@@ -807,7 +1015,8 @@
     // edge of the stage (clipped by its overflow:hidden) - still simulated
     // correctly, just not all on screen at once.
     const REFERENCE_CARS = 3;
-    const refGap = state.mode==='space' ? state.gDes : state.minGap + state.tau*state.vLeadTarget;
+    let refGap = state.mode==='cruise' ? 60 : state.mode==='space' ? state.gDes : state.minGap + state.tau*state.vLeadTarget;
+    if(state.cbf.on) refGap = Math.max(refGap, state.cbf.tMin*state.vLeadTarget + state.cbf.dMin);
     const refChainLength = Math.max(1, REFERENCE_CARS*(refGap+state.carLength));
     const availablePx = leadX - 55; // leave room so a chip doesn't clip off the left edge
     const scale = Math.max(PX_PER_METER_MIN, Math.min(PX_PER_METER_MAX, availablePx/refChainLength));
@@ -900,8 +1109,11 @@
 
   const chartSpeed = { canvas:document.getElementById('chartSpeed'), ctx:null, yUnit:'m/s', domain:[0,38], nowEl:speedNow, fmt:v=>v.toFixed(1)+' m/s' };
   const chartDv    = { canvas:document.getElementById('chartDv'), ctx:null, yUnit:'m/s', zeroLine:true, nowEl:dvNow, fmt:v=>(v>=0?'+':'')+v.toFixed(1)+' m/s' };
-  const chartGap   = { canvas:document.getElementById('chartGap'), ctx:null, yUnit:'m', nowEl:gapNow, fmt:v=>v.toFixed(1)+' m', refLines:[{key:'minGap', color:'--speed-slow', dash:[2,3], alpha:0.75}] };
-  const chartTgap  = { canvas:document.getElementById('chartTgap'), ctx:null, yUnit:'s', domain:[0,6], nowEl:tgapNow, fmt:v=>v.toFixed(2)+' s', refLines:[{value:s=>s.mode!=='space' ? s.tau : null, color:'--speed-mid', dash:[4,3], alpha:1}] };
+  const chartGap   = { canvas:document.getElementById('chartGap'), ctx:null, yUnit:'m', nowEl:gapNow, fmt:v=>v.toFixed(1)+' m', refLines:[
+    {key:'minGap', color:'--speed-slow', dash:[2,3], alpha:0.75},
+    {value:s=> s.cbf.on ? s.cbf.tMin*s.vLead + s.cbf.dMin : null, color:'--speed-mid', dash:[6,3], alpha:0.9}
+  ] };
+  const chartTgap  = { canvas:document.getElementById('chartTgap'), ctx:null, yUnit:'s', domain:[0,6], nowEl:tgapNow, fmt:v=>v.toFixed(2)+' s', refLines:[{value:s=>(s.mode==='time'||s.mode==='timeV') ? s.tau : null, color:'--speed-mid', dash:[4,3], alpha:1}] };
   const chartAccel = { canvas:document.getElementById('chartAccel'), ctx:null, yUnit:'m/s²', zeroLine:true, nowEl:accelNow, fmt:v=>(v>=0?'+':'')+v.toFixed(2)+' m/s²',
     refLines:[
       {value:s=>{ const b=accelBounds(s.accCap, s.vLead); return b ? b.max : null; }, color:'--speed-fast', dash:[3,2], alpha:0.7},
@@ -1103,6 +1315,7 @@
       stepPhysics(dt);
       state.aLead = (state.vLead - vLeadBefore)/dt;
       for(let i=0;i<state.N;i++) state.aF[i] = (state.vF[i]-vFBefore[i])/dt;
+      trackCbf();
 
       const gap = state.gap.slice(0, state.N);
       const vF = state.vF.slice(0, state.N);
@@ -1128,6 +1341,7 @@
     const geom = computeGeom(rect);
     drawRoad(rect, geom);
     positionCars(rect, geom);
+    updateCbfReadout();
 
     const capB = accelBounds(state.accCap, state.vLead);
     if(capB){
